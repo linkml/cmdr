@@ -1,7 +1,21 @@
 classes:
-  Sample:
-    description: stuff
+  Condition:
+    aliases:
+    - Disease
+    - Phenotype
     from_schema: TEMP
+  Diagnosis:
+    from_schema: TEMP
+    in_subset:
+    - temporal_data
+    is_a: Information
+    slot_usage:
+      is_about:
+        range: Condition
+      source: {}
+    slots:
+    - is_about
+    - source
 default_prefix: TEMP
 default_range: string
 id: TEMP
@@ -11,3 +25,10 @@ name: TEMP
 prefixes:
   TEMP: https://example.org/TEMP/
   linkml: https://w3id.org/linkml/
+slots:
+  is_about:
+    from_schema: TEMP
+  source:
+    from_schema: TEMP
+subsets:
+  temporal_data: {}

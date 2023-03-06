@@ -275,7 +275,7 @@
   "source_file": "cmdr.yaml",
   "source_file_date": "2023-03-06T14:04:18",
   "source_file_size": 490,
-  "generation_date": "2023-03-06T14:15:19",
+  "generation_date": "2023-03-06T14:28:00",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cmdr.context.jsonld",
