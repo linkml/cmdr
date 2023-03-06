@@ -6,7 +6,55 @@
    "example": "https://example.org/",
    "linkml": "https://w3id.org/linkml/",
    "schema": "http://schema.org/",
-   "Sample": {
-      "@id": "TEMP:Sample"
+   "Condition": {
+      "@id": "TEMP:Condition"
+   },
+   "Database": {
+      "@id": "TEMP:Database"
+   },
+   "Diagnosis": {
+      "@id": "TEMP:Diagnosis"
+   },
+   "Document": {
+      "@id": "TEMP:Document"
+   },
+   "Event": {
+      "@id": "TEMP:Event"
+   },
+   "Information": {
+      "@id": "TEMP:Information"
+   },
+   "MaterialEntity": {
+      "@id": "TEMP:MaterialEntity"
+   },
+   "Measurment": {
+      "@id": "TEMP:Measurment"
+   },
+   "Observation": {
+      "@id": "TEMP:Observation"
+   },
+   "Process": {
+      "@id": "TEMP:Process"
+   },
+   "ResearchProject": {
+      "@id": "TEMP:ResearchProject"
+   },
+   "ResearchSubject": {
+      "@id": "TEMP:ResearchSubject"
+   },
+   "Sampling": {
+      "@id": "TEMP:Sampling"
+   },
+   "Site": {
+      "@id": "TEMP:Site"
+   },
+   "Specimen": {
+      "@id": "TEMP:Specimen"
+   },
+   "Study": {
+      "@id": "TEMP:Study"
+   },
+   "Subject": {
+      "@id": "TEMP:Subject"
    }
 }

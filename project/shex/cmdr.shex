@@ -37,9 +37,123 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
-TEMP:Sample CLOSED {
-    (  $TEMP:Sample_tes rdf:type . * ;
-       rdf:type [ TEMP:Sample ] ?
+TEMP:Condition CLOSED {
+    (  $TEMP:Condition_tes rdf:type . * ;
+       rdf:type [ TEMP:Condition ] ?
+    )
+}
+
+TEMP:Database CLOSED {
+    (  $TEMP:Database_tes TEMP:subjects @TEMP:Subject ? ;
+       rdf:type [ TEMP:Database ] ?
+    )
+}
+
+TEMP:Diagnosis CLOSED {
+    (  $TEMP:Diagnosis_tes (  &TEMP:Information_tes ;
+          rdf:type [ TEMP:Information ] ? ;
+          TEMP:is_about @TEMP:Condition ? ;
+          TEMP:source @linkml:String ?
+       ) ;
+       rdf:type [ TEMP:Diagnosis ] ?
+    )
+}
+
+TEMP:Document CLOSED {
+    (  $TEMP:Document_tes TEMP:is_about @linkml:String ? ;
+       rdf:type [ TEMP:Document ] ?
+    )
+}
+
+TEMP:Event CLOSED {
+    (  $TEMP:Event_tes rdf:type . * ;
+       rdf:type [ TEMP:Event ] ?
+    )
+}
+
+TEMP:Information  (
+    CLOSED {
+       (  $TEMP:Information_tes rdf:type . * ;
+          rdf:type [ TEMP:Information ] ?
+       )
+    } OR @TEMP:Diagnosis
+)
+
+TEMP:MaterialEntity  (
+    CLOSED {
+       (  $TEMP:MaterialEntity_tes rdf:type . * ;
+          rdf:type [ TEMP:MaterialEntity ] ?
+       )
+    } OR @TEMP:Subject
+)
+
+TEMP:Measurment CLOSED {
+    (  $TEMP:Measurment_tes rdf:type . * ;
+       rdf:type [ TEMP:Measurment ] ?
+    )
+}
+
+TEMP:Observation CLOSED {
+    (  $TEMP:Observation_tes rdf:type . * ;
+       rdf:type [ TEMP:Observation ] ?
+    )
+}
+
+TEMP:Process CLOSED {
+    (  $TEMP:Process_tes (  TEMP:has_input @linkml:String ? ;
+          TEMP:has_output @linkml:String ?
+       ) ;
+       rdf:type [ TEMP:Process ] ?
+    )
+}
+
+TEMP:ResearchProject CLOSED {
+    (  $TEMP:ResearchProject_tes rdf:type . * ;
+       rdf:type [ TEMP:ResearchProject ] ?
+    )
+}
+
+TEMP:ResearchSubject CLOSED {
+    (  $TEMP:ResearchSubject_tes rdf:type . * ;
+       rdf:type [ TEMP:ResearchSubject ] ?
+    )
+}
+
+TEMP:Sampling CLOSED {
+    (  $TEMP:Sampling_tes (  TEMP:has_input @linkml:String ? ;
+          TEMP:has_output @linkml:String ?
+       ) ;
+       rdf:type [ TEMP:Sampling ] ?
+    )
+}
+
+TEMP:Site CLOSED {
+    (  $TEMP:Site_tes rdf:type . * ;
+       rdf:type [ TEMP:Site ] ?
+    )
+}
+
+TEMP:Specimen CLOSED {
+    (  $TEMP:Specimen_tes (  TEMP:has_source @TEMP:ResearchSubject ? ;
+          TEMP:has_parent_specimen @TEMP:Specimen ?
+       ) ;
+       rdf:type [ TEMP:Specimen ] ?
+    )
+}
+
+TEMP:Study CLOSED {
+    (  $TEMP:Study_tes rdf:type . * ;
+       rdf:type [ TEMP:Study ] ?
+    )
+}
+
+TEMP:Subject CLOSED {
+    (  $TEMP:Subject_tes (  &TEMP:MaterialEntity_tes ;
+          rdf:type [ TEMP:MaterialEntity ] ? ;
+          TEMP:taxon @linkml:String ? ;
+          TEMP:birth_date @linkml:String ?
+       ) ;
+       rdf:type [ TEMP:Subject ] ?
     )
 }
 

@@ -2,9 +2,134 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://example.org/TEMP/Sample> a sh:NodeShape ;
+<https://example.org/TEMP/Database> a sh:NodeShape ;
     sh:closed true ;
-    sh:description "stuff" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass <https://example.org/TEMP/Sample> .
+    sh:property [ sh:class <https://example.org/TEMP/Subject> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/subjects> ] ;
+    sh:targetClass <https://example.org/TEMP/Database> .
+
+<https://example.org/TEMP/Diagnosis> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/source> ],
+        [ sh:class <https://example.org/TEMP/Condition> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/is_about> ] ;
+    sh:targetClass <https://example.org/TEMP/Diagnosis> .
+
+<https://example.org/TEMP/Document> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/is_about> ] ;
+    sh:targetClass <https://example.org/TEMP/Document> .
+
+<https://example.org/TEMP/Event> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/Event> .
+
+<https://example.org/TEMP/Information> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/Information> .
+
+<https://example.org/TEMP/MaterialEntity> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/MaterialEntity> .
+
+<https://example.org/TEMP/Measurment> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/Measurment> .
+
+<https://example.org/TEMP/Observation> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/Observation> .
+
+<https://example.org/TEMP/Process> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/has_output> ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/has_input> ] ;
+    sh:targetClass <https://example.org/TEMP/Process> .
+
+<https://example.org/TEMP/ResearchProject> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/ResearchProject> .
+
+<https://example.org/TEMP/Sampling> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/has_output> ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/has_input> ] ;
+    sh:targetClass <https://example.org/TEMP/Sampling> .
+
+<https://example.org/TEMP/Site> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/Site> .
+
+<https://example.org/TEMP/Study> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "the root class of the data model" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/Study> .
+
+<https://example.org/TEMP/Condition> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/Condition> .
+
+<https://example.org/TEMP/ResearchSubject> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A Subject that has participated in at least on Study" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/ResearchSubject> .
+
+<https://example.org/TEMP/Specimen> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://example.org/TEMP/ResearchSubject> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/has_source> ],
+        [ sh:class <https://example.org/TEMP/Specimen> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/has_parent_specimen> ] ;
+    sh:targetClass <https://example.org/TEMP/Specimen> .
+
+<https://example.org/TEMP/Subject> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/taxon> ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/birth_date> ] ;
+    sh:targetClass <https://example.org/TEMP/Subject> .
 

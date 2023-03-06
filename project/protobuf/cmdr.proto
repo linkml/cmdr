@@ -1,0 +1,33 @@
+message Database
+ {
+  subject subjects = 0
+ }
+message Diagnosis
+ {
+  condition isAbout = 0
+  string source = 0
+ }
+message Document
+ {
+  string isAbout = 0
+ }
+message Process
+ {
+  string hasInput = 0
+  string hasOutput = 0
+ }
+message Sampling
+ {
+  string hasInput = 0
+  string hasOutput = 0
+ }
+message Specimen
+ {
+  researchSubject hasSource = 0
+  specimen hasParentSpecimen = 0
+ }
+message Subject
+ {
+  string taxon = 0
+  string birthDate = 0
+ }

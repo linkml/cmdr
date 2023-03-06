@@ -1,0 +1,5 @@
+subjects:
+  - taxon: abc1
+    birth_date: xyz
+  - taxon: abc2
+    birth_date: xyz

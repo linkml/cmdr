@@ -1,4 +1,80 @@
-type Sample
+type Condition
   {
+  }
+
+type Database
+  {
+    subjects: Subject
+  }
+
+type Diagnosis
+  {
+    isAbout: Condition
+    source: String
+  }
+
+type Document
+  {
+    isAbout: String
+  }
+
+type Event
+  {
+  }
+
+type Information
+  {
+  }
+
+type MaterialEntity
+  {
+  }
+
+type Measurment
+  {
+  }
+
+type Observation
+  {
+  }
+
+type Process
+  {
+    hasInput: String
+    hasOutput: String
+  }
+
+type ResearchProject
+  {
+  }
+
+type ResearchSubject
+  {
+  }
+
+type Sampling
+  {
+    hasInput: String
+    hasOutput: String
+  }
+
+type Site
+  {
+  }
+
+type Specimen
+  {
+    hasSource: ResearchSubject
+    hasParentSpecimen: Specimen
+  }
+
+type Study
+  {
+  }
+
+type Subject
+  {
+    taxon: String
+    birthDate: String
   }
 

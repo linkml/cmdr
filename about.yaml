@@ -3,4 +3,4 @@ author: My Name <my-name@my-org.org>
 description: Core Model for Data Research (Tentative)
 source_schema_path: src/cmdr/schema/cmdr.yaml
 google_sheet_id: 1X6WhWZ-NE3637TuoZfKZWBziuXP6PN9ut1ix6bJMHaw
-google_sheet_tabs: conservative subsets
+google_sheet_tabs: class_slot_usage subsets

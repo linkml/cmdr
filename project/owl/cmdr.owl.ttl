@@ -6,8 +6,18 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-linkml:SlotDefinition a owl:Class ;
-    rdfs:label "slot_definition" .
+<https://example.org/TEMP/Diagnosis> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Diagnosis" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://example.org/TEMP/Condition> ;
+            owl:onProperty <https://example.org/TEMP/is_about> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://example.org/TEMP/source> ],
+        <https://example.org/TEMP/Information> .
 
 linkml:SubsetDefinition a owl:Class ;
     rdfs:label "subset_definition" .
@@ -17,23 +27,196 @@ linkml:TypeDefinition a owl:Class ;
 
 linkml:cmdr a owl:Ontology ;
     rdfs:label "cmdr" ;
-    IAO:0000700 <https://example.org/TEMP/Sample> ;
+    IAO:0000700 <https://example.org/TEMP/Condition>,
+        <https://example.org/TEMP/Database>,
+        <https://example.org/TEMP/Document>,
+        <https://example.org/TEMP/Event>,
+        <https://example.org/TEMP/Information>,
+        <https://example.org/TEMP/MaterialEntity>,
+        <https://example.org/TEMP/Measurment>,
+        <https://example.org/TEMP/Observation>,
+        <https://example.org/TEMP/Process>,
+        <https://example.org/TEMP/ResearchProject>,
+        <https://example.org/TEMP/ResearchSubject>,
+        <https://example.org/TEMP/Sampling>,
+        <https://example.org/TEMP/Site>,
+        <https://example.org/TEMP/Specimen>,
+        <https://example.org/TEMP/Study> ;
     dcterms:license "MIT" ;
     dcterms:title "cmdr" ;
     rdfs:seeAlso "https://linkml.github.io/cmdr" ;
-    linkml:generation_date "2023-03-06T14:28:02" ;
+    linkml:generation_date "2023-03-06T14:49:52" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "cmdr.yaml" ;
-    linkml:source_file_date "2023-03-06T14:04:18" ;
-    linkml:source_file_size 490 .
+    linkml:source_file_date "2023-03-06T14:28:28" ;
+    linkml:source_file_size 486 .
 
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
 
-<https://example.org/TEMP/Sample> a owl:Class,
+<https://example.org/TEMP/Database> a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "Sample" ;
-    skos:definition "stuff" .
+    rdfs:label "Database" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://example.org/TEMP/Subject> ;
+            owl:onProperty <https://example.org/TEMP/subjects> ] .
+
+<https://example.org/TEMP/Document> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Document" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://example.org/TEMP/is_about> ] .
+
+<https://example.org/TEMP/Event> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Event" .
+
+<https://example.org/TEMP/Measurment> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Measurment" .
+
+<https://example.org/TEMP/Observation> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Observation" .
+
+<https://example.org/TEMP/Process> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Process" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://example.org/TEMP/has_output> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://example.org/TEMP/has_input> ] .
+
+<https://example.org/TEMP/ResearchProject> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ResearchProject" .
+
+<https://example.org/TEMP/Sampling> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Sampling" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://example.org/TEMP/has_input> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://example.org/TEMP/has_output> ] ;
+    skos:altLabel "SampleCollection",
+        "SpecimenCreation" .
+
+<https://example.org/TEMP/Site> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Site" .
+
+<https://example.org/TEMP/Study> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Study" ;
+    skos:definition "the root class of the data model" .
+
+<https://example.org/TEMP/Subject> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Subject" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://example.org/TEMP/taxon> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://example.org/TEMP/birth_date> ],
+        <https://example.org/TEMP/MaterialEntity> ;
+    skos:altLabel "Organism",
+        "Person" .
+
+<https://example.org/TEMP/birth_date> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "birth_date" ;
+    rdfs:range linkml:String .
+
+<https://example.org/TEMP/has_parent_specimen> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has_parent_specimen" ;
+    rdfs:range linkml:String .
+
+<https://example.org/TEMP/has_source> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has_source" ;
+    rdfs:range linkml:String .
+
+<https://example.org/TEMP/source> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "source" ;
+    rdfs:range linkml:String .
+
+<https://example.org/TEMP/subjects> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "subjects" ;
+    rdfs:range linkml:String .
+
+<https://example.org/TEMP/taxon> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "taxon" ;
+    rdfs:range linkml:String .
+
+<https://example.org/TEMP/Condition> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Condition" ;
+    skos:altLabel "Disease",
+        "Phenotype" .
+
+<https://example.org/TEMP/Information> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Information" .
+
+<https://example.org/TEMP/MaterialEntity> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "MaterialEntity" ;
+    skos:altLabel "Substance" .
+
+<https://example.org/TEMP/ResearchSubject> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ResearchSubject" ;
+    skos:altLabel "Participant" ;
+    skos:definition "A Subject that has participated in at least on Study" .
+
+<https://example.org/TEMP/Specimen> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Specimen" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://example.org/TEMP/ResearchSubject> ;
+            owl:onProperty <https://example.org/TEMP/has_source> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://example.org/TEMP/Specimen> ;
+            owl:onProperty <https://example.org/TEMP/has_parent_specimen> ] ;
+    skos:altLabel "Sample" .
+
+<https://example.org/TEMP/has_input> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has_input" ;
+    rdfs:range linkml:String .
+
+<https://example.org/TEMP/has_output> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has_output" ;
+    rdfs:range linkml:String .
+
+<https://example.org/TEMP/is_about> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "is_about" ;
+    rdfs:range linkml:String .
+
+linkml:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" .
 
 linkml:ClassDefinition a owl:Class ;
     rdfs:label "class_definition" .

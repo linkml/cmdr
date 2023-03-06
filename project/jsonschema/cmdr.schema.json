@@ -1,9 +1,155 @@
 {
     "$defs": {
-        "Sample": {
+        "Condition": {
             "additionalProperties": false,
-            "description": "stuff",
-            "title": "Sample",
+            "description": "",
+            "title": "Condition",
+            "type": "object"
+        },
+        "Database": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "subjects": {
+                    "$ref": "#/$defs/Subject"
+                }
+            },
+            "title": "Database",
+            "type": "object"
+        },
+        "Diagnosis": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "is_about": {
+                    "$ref": "#/$defs/Condition"
+                },
+                "source": {
+                    "type": "string"
+                }
+            },
+            "title": "Diagnosis",
+            "type": "object"
+        },
+        "Document": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "is_about": {
+                    "type": "string"
+                }
+            },
+            "title": "Document",
+            "type": "object"
+        },
+        "Event": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Event",
+            "type": "object"
+        },
+        "Information": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Information",
+            "type": "object"
+        },
+        "MaterialEntity": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "MaterialEntity",
+            "type": "object"
+        },
+        "Measurment": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Measurment",
+            "type": "object"
+        },
+        "Observation": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Observation",
+            "type": "object"
+        },
+        "Process": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "has_input": {
+                    "type": "string"
+                },
+                "has_output": {
+                    "type": "string"
+                }
+            },
+            "title": "Process",
+            "type": "object"
+        },
+        "ResearchProject": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ResearchProject",
+            "type": "object"
+        },
+        "ResearchSubject": {
+            "additionalProperties": false,
+            "description": "A Subject that has participated in at least on Study",
+            "title": "ResearchSubject",
+            "type": "object"
+        },
+        "Sampling": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "has_input": {
+                    "type": "string"
+                },
+                "has_output": {
+                    "type": "string"
+                }
+            },
+            "title": "Sampling",
+            "type": "object"
+        },
+        "Site": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Site",
+            "type": "object"
+        },
+        "Specimen": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "has_parent_specimen": {
+                    "$ref": "#/$defs/Specimen"
+                },
+                "has_source": {
+                    "$ref": "#/$defs/ResearchSubject"
+                }
+            },
+            "title": "Specimen",
+            "type": "object"
+        },
+        "Study": {
+            "additionalProperties": false,
+            "description": "the root class of the data model",
+            "title": "Study",
+            "type": "object"
+        },
+        "Subject": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "birth_date": {
+                    "type": "string"
+                },
+                "taxon": {
+                    "type": "string"
+                }
+            },
+            "title": "Subject",
             "type": "object"
         }
     },
@@ -11,6 +157,11 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
+    "properties": {
+        "subjects": {
+            "$ref": "#/$defs/Subject"
+        }
+    },
     "title": "cmdr",
     "type": "object",
     "version": null

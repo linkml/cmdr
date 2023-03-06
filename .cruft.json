@@ -13,12 +13,12 @@
       "email": "my-name@my-org.org",
       "__author": "My Name <my-name@my-org.org>",
       "license": "MIT",
-      "main_schema_class": "Person",
+      "main_schema_class": "Subject",
       "create_python_classes": "Yes",
       "use_schemasheets": "Yes",
       "google_sheet_id": "1X6WhWZ-NE3637TuoZfKZWBziuXP6PN9ut1ix6bJMHaw",
-      "google_sheet_tabs": "personinfo enums",
-      "__google_sheet_module": "personinfo_enums",
+      "google_sheet_tabs": "class_slot_usage subsets",
+      "__google_sheet_module": "from_sheets",
       "github_token_for_pypi_deployment": "PYPI_PASSWORD",
       "_template": "https://github.com/linkml/linkml-project-cookiecutter"
     }
