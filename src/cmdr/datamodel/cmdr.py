@@ -1,5 +1,5 @@
 # Auto generated from cmdr.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-06T14:49:54
+# Generation date: 2023-03-06T15:00:38
 # Schema: cmdr
 #
 # id: https://w3id.org/linkml/cmdr
@@ -65,11 +65,32 @@ class Database(YAMLRoot):
     class_name: ClassVar[str] = "Database"
     class_model_uri: ClassVar[URIRef] = CMDR.Database
 
-    subjects: Optional[Union[dict, "Subject"]] = None
+    conditions: Optional[Union[Union[dict, Condition], List[Union[dict, Condition]]]] = empty_list()
+    diagnoses: Optional[Union[Union[dict, "Diagnosis"], List[Union[dict, "Diagnosis"]]]] = empty_list()
+    documents: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
+    observations: Optional[Union[Union[dict, "Observation"], List[Union[dict, "Observation"]]]] = empty_list()
+    subjects: Optional[Union[Union[dict, "Subject"], List[Union[dict, "Subject"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.subjects is not None and not isinstance(self.subjects, Subject):
-            self.subjects = Subject(**as_dict(self.subjects))
+        if not isinstance(self.conditions, list):
+            self.conditions = [self.conditions] if self.conditions is not None else []
+        self.conditions = [v if isinstance(v, Condition) else Condition(**as_dict(v)) for v in self.conditions]
+
+        if not isinstance(self.diagnoses, list):
+            self.diagnoses = [self.diagnoses] if self.diagnoses is not None else []
+        self.diagnoses = [v if isinstance(v, Diagnosis) else Diagnosis(**as_dict(v)) for v in self.diagnoses]
+
+        if not isinstance(self.documents, list):
+            self.documents = [self.documents] if self.documents is not None else []
+        self.documents = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.documents]
+
+        if not isinstance(self.observations, list):
+            self.observations = [self.observations] if self.observations is not None else []
+        self.observations = [v if isinstance(v, Observation) else Observation(**as_dict(v)) for v in self.observations]
+
+        if not isinstance(self.subjects, list):
+            self.subjects = [self.subjects] if self.subjects is not None else []
+        self.subjects = [v if isinstance(v, Subject) else Subject(**as_dict(v)) for v in self.subjects]
 
         super().__post_init__(**kwargs)
 
@@ -242,15 +263,15 @@ class Specimen(YAMLRoot):
     class_name: ClassVar[str] = "Specimen"
     class_model_uri: ClassVar[URIRef] = CMDR.Specimen
 
-    has_source: Optional[Union[dict, ResearchSubject]] = None
     has_parent_specimen: Optional[Union[dict, "Specimen"]] = None
+    has_source: Optional[Union[dict, ResearchSubject]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.has_source is not None and not isinstance(self.has_source, ResearchSubject):
-            self.has_source = ResearchSubject()
-
         if self.has_parent_specimen is not None and not isinstance(self.has_parent_specimen, Specimen):
             self.has_parent_specimen = Specimen(**as_dict(self.has_parent_specimen))
+
+        if self.has_source is not None and not isinstance(self.has_source, ResearchSubject):
+            self.has_source = ResearchSubject()
 
         super().__post_init__(**kwargs)
 
@@ -276,15 +297,15 @@ class Subject(MaterialEntity):
     class_name: ClassVar[str] = "Subject"
     class_model_uri: ClassVar[URIRef] = CMDR.Subject
 
-    taxon: Optional[str] = None
     birth_date: Optional[str] = None
+    taxon: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.taxon is not None and not isinstance(self.taxon, str):
-            self.taxon = str(self.taxon)
-
         if self.birth_date is not None and not isinstance(self.birth_date, str):
             self.birth_date = str(self.birth_date)
+
+        if self.taxon is not None and not isinstance(self.taxon, str):
+            self.taxon = str(self.taxon)
 
         super().__post_init__(**kwargs)
 
@@ -298,6 +319,15 @@ class slots:
 
 slots.birth_date = Slot(uri=TEMP.birth_date, name="birth_date", curie=TEMP.curie('birth_date'),
                    model_uri=CMDR.birth_date, domain=None, range=Optional[str])
+
+slots.conditions = Slot(uri=TEMP.conditions, name="conditions", curie=TEMP.curie('conditions'),
+                   model_uri=CMDR.conditions, domain=None, range=Optional[str])
+
+slots.diagnoses = Slot(uri=TEMP.diagnoses, name="diagnoses", curie=TEMP.curie('diagnoses'),
+                   model_uri=CMDR.diagnoses, domain=None, range=Optional[str])
+
+slots.documents = Slot(uri=TEMP.documents, name="documents", curie=TEMP.curie('documents'),
+                   model_uri=CMDR.documents, domain=None, range=Optional[str])
 
 slots.has_input = Slot(uri=TEMP.has_input, name="has_input", curie=TEMP.curie('has_input'),
                    model_uri=CMDR.has_input, domain=None, range=Optional[str])
@@ -314,6 +344,9 @@ slots.has_source = Slot(uri=TEMP.has_source, name="has_source", curie=TEMP.curie
 slots.is_about = Slot(uri=TEMP.is_about, name="is_about", curie=TEMP.curie('is_about'),
                    model_uri=CMDR.is_about, domain=None, range=Optional[str])
 
+slots.observations = Slot(uri=TEMP.observations, name="observations", curie=TEMP.curie('observations'),
+                   model_uri=CMDR.observations, domain=None, range=Optional[str])
+
 slots.source = Slot(uri=TEMP.source, name="source", curie=TEMP.curie('source'),
                    model_uri=CMDR.source, domain=None, range=Optional[str])
 
@@ -323,8 +356,20 @@ slots.subjects = Slot(uri=TEMP.subjects, name="subjects", curie=TEMP.curie('subj
 slots.taxon = Slot(uri=TEMP.taxon, name="taxon", curie=TEMP.curie('taxon'),
                    model_uri=CMDR.taxon, domain=None, range=Optional[str])
 
+slots.Database_conditions = Slot(uri=TEMP.conditions, name="Database_conditions", curie=TEMP.curie('conditions'),
+                   model_uri=CMDR.Database_conditions, domain=Database, range=Optional[Union[Union[dict, Condition], List[Union[dict, Condition]]]])
+
+slots.Database_diagnoses = Slot(uri=TEMP.diagnoses, name="Database_diagnoses", curie=TEMP.curie('diagnoses'),
+                   model_uri=CMDR.Database_diagnoses, domain=Database, range=Optional[Union[Union[dict, "Diagnosis"], List[Union[dict, "Diagnosis"]]]])
+
+slots.Database_documents = Slot(uri=TEMP.documents, name="Database_documents", curie=TEMP.curie('documents'),
+                   model_uri=CMDR.Database_documents, domain=Database, range=Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]])
+
+slots.Database_observations = Slot(uri=TEMP.observations, name="Database_observations", curie=TEMP.curie('observations'),
+                   model_uri=CMDR.Database_observations, domain=Database, range=Optional[Union[Union[dict, "Observation"], List[Union[dict, "Observation"]]]])
+
 slots.Database_subjects = Slot(uri=TEMP.subjects, name="Database_subjects", curie=TEMP.curie('subjects'),
-                   model_uri=CMDR.Database_subjects, domain=Database, range=Optional[Union[dict, "Subject"]])
+                   model_uri=CMDR.Database_subjects, domain=Database, range=Optional[Union[Union[dict, "Subject"], List[Union[dict, "Subject"]]]])
 
 slots.Diagnosis_is_about = Slot(uri=TEMP.is_about, name="Diagnosis_is_about", curie=TEMP.curie('is_about'),
                    model_uri=CMDR.Diagnosis_is_about, domain=Diagnosis, range=Optional[Union[dict, Condition]])

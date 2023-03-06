@@ -7,9 +7,31 @@ classes:
   Database:
     from_schema: TEMP
     slot_usage:
+      conditions:
+        inlined: true
+        multivalued: true
+        range: Condition
+      diagnoses:
+        inlined: true
+        multivalued: true
+        range: Diagnosis
+      documents:
+        inlined: true
+        multivalued: true
+        range: Document
+      observations:
+        inlined: true
+        multivalued: true
+        range: Observation
       subjects:
+        inlined: true
+        multivalued: true
         range: Subject
     slots:
+    - conditions
+    - diagnoses
+    - documents
+    - observations
     - subjects
     tree_root: true
   Diagnosis:
@@ -84,8 +106,8 @@ classes:
       has_source:
         range: ResearchSubject
     slots:
-    - has_source
     - has_parent_specimen
+    - has_source
   Study:
     description: the root class of the data model
     from_schema: TEMP
@@ -101,8 +123,8 @@ classes:
         - potential_phi
       taxon: {}
     slots:
-    - taxon
     - birth_date
+    - taxon
 default_prefix: TEMP
 default_range: string
 id: TEMP
@@ -115,6 +137,12 @@ prefixes:
 slots:
   birth_date:
     from_schema: TEMP
+  conditions:
+    from_schema: TEMP
+  diagnoses:
+    from_schema: TEMP
+  documents:
+    from_schema: TEMP
   has_input:
     from_schema: TEMP
   has_output:
@@ -124,6 +152,8 @@ slots:
   has_source:
     from_schema: TEMP
   is_about:
+    from_schema: TEMP
+  observations:
     from_schema: TEMP
   source:
     from_schema: TEMP
