@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "e4f447783b959314e631108468f2dc41ca399805",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "cmdr",
+      "__project_slug": "cmdr",
+      "github_org": "linkml",
+      "__source_path": "src/cmdr/schema/cmdr.yaml",
+      "project_description": "Core Model for Data Research (Tentative)",
+      "full_name": "My Name",
+      "email": "my-name@my-org.org",
+      "__author": "My Name <my-name@my-org.org>",
+      "license": "MIT",
+      "main_schema_class": "Person",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "Yes",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}

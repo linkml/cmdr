@@ -1,0 +1,22 @@
+id: https://w3id.org/linkml/cmdr
+name: cmdr
+title: cmdr
+description: |-
+  Core Model for Data Research (Tentative)
+license: MIT
+see_also:
+  - https://linkml.github.io/cmdr
+
+prefixes:
+  cmdr: https://w3id.org/linkml/cmdr/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/
+  schema: http://schema.org/
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  example: https://example.org/
+default_prefix: cmdr
+default_range: string
+
+imports:
+  - linkml:types
+  - personinfo_enums
