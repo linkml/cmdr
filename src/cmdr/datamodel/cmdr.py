@@ -1,5 +1,5 @@
 # Auto generated from cmdr.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-06T15:00:38
+# Generation date: 2023-03-06T15:11:04
 # Schema: cmdr
 #
 # id: https://w3id.org/linkml/cmdr
@@ -57,13 +57,13 @@ class Condition(YAMLRoot):
 
 
 @dataclass
-class Database(YAMLRoot):
+class Container(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Database
-    class_class_curie: ClassVar[str] = "TEMP:Database"
-    class_name: ClassVar[str] = "Database"
-    class_model_uri: ClassVar[URIRef] = CMDR.Database
+    class_class_uri: ClassVar[URIRef] = TEMP.Container
+    class_class_curie: ClassVar[str] = "TEMP:Container"
+    class_name: ClassVar[str] = "Container"
+    class_model_uri: ClassVar[URIRef] = CMDR.Container
 
     conditions: Optional[Union[Union[dict, Condition], List[Union[dict, Condition]]]] = empty_list()
     diagnoses: Optional[Union[Union[dict, "Diagnosis"], List[Union[dict, "Diagnosis"]]]] = empty_list()
@@ -162,6 +162,15 @@ class MaterialEntity(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = CMDR.MaterialEntity
 
 
+class MaterialProcessing(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TEMP.MaterialProcessing
+    class_class_curie: ClassVar[str] = "TEMP:MaterialProcessing"
+    class_name: ClassVar[str] = "MaterialProcessing"
+    class_model_uri: ClassVar[URIRef] = CMDR.MaterialProcessing
+
+
 class Measurment(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -202,6 +211,24 @@ class Process(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+class ProcessedMaterial(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TEMP.ProcessedMaterial
+    class_class_curie: ClassVar[str] = "TEMP:ProcessedMaterial"
+    class_name: ClassVar[str] = "ProcessedMaterial"
+    class_model_uri: ClassVar[URIRef] = CMDR.ProcessedMaterial
+
+
+class ProcessedSpecimen(ProcessedMaterial):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TEMP.ProcessedSpecimen
+    class_class_curie: ClassVar[str] = "TEMP:ProcessedSpecimen"
+    class_name: ClassVar[str] = "ProcessedSpecimen"
+    class_model_uri: ClassVar[URIRef] = CMDR.ProcessedSpecimen
+
+
 class ResearchProject(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -221,6 +248,15 @@ class ResearchSubject(YAMLRoot):
     class_class_curie: ClassVar[str] = "TEMP:ResearchSubject"
     class_name: ClassVar[str] = "ResearchSubject"
     class_model_uri: ClassVar[URIRef] = CMDR.ResearchSubject
+
+
+class SampleCreationProcess(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TEMP.SampleCreationProcess
+    class_class_curie: ClassVar[str] = "TEMP:SampleCreationProcess"
+    class_name: ClassVar[str] = "SampleCreationProcess"
+    class_model_uri: ClassVar[URIRef] = CMDR.SampleCreationProcess
 
 
 @dataclass
@@ -356,20 +392,20 @@ slots.subjects = Slot(uri=TEMP.subjects, name="subjects", curie=TEMP.curie('subj
 slots.taxon = Slot(uri=TEMP.taxon, name="taxon", curie=TEMP.curie('taxon'),
                    model_uri=CMDR.taxon, domain=None, range=Optional[str])
 
-slots.Database_conditions = Slot(uri=TEMP.conditions, name="Database_conditions", curie=TEMP.curie('conditions'),
-                   model_uri=CMDR.Database_conditions, domain=Database, range=Optional[Union[Union[dict, Condition], List[Union[dict, Condition]]]])
+slots.Container_conditions = Slot(uri=TEMP.conditions, name="Container_conditions", curie=TEMP.curie('conditions'),
+                   model_uri=CMDR.Container_conditions, domain=Container, range=Optional[Union[Union[dict, Condition], List[Union[dict, Condition]]]])
 
-slots.Database_diagnoses = Slot(uri=TEMP.diagnoses, name="Database_diagnoses", curie=TEMP.curie('diagnoses'),
-                   model_uri=CMDR.Database_diagnoses, domain=Database, range=Optional[Union[Union[dict, "Diagnosis"], List[Union[dict, "Diagnosis"]]]])
+slots.Container_diagnoses = Slot(uri=TEMP.diagnoses, name="Container_diagnoses", curie=TEMP.curie('diagnoses'),
+                   model_uri=CMDR.Container_diagnoses, domain=Container, range=Optional[Union[Union[dict, "Diagnosis"], List[Union[dict, "Diagnosis"]]]])
 
-slots.Database_documents = Slot(uri=TEMP.documents, name="Database_documents", curie=TEMP.curie('documents'),
-                   model_uri=CMDR.Database_documents, domain=Database, range=Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]])
+slots.Container_documents = Slot(uri=TEMP.documents, name="Container_documents", curie=TEMP.curie('documents'),
+                   model_uri=CMDR.Container_documents, domain=Container, range=Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]])
 
-slots.Database_observations = Slot(uri=TEMP.observations, name="Database_observations", curie=TEMP.curie('observations'),
-                   model_uri=CMDR.Database_observations, domain=Database, range=Optional[Union[Union[dict, "Observation"], List[Union[dict, "Observation"]]]])
+slots.Container_observations = Slot(uri=TEMP.observations, name="Container_observations", curie=TEMP.curie('observations'),
+                   model_uri=CMDR.Container_observations, domain=Container, range=Optional[Union[Union[dict, "Observation"], List[Union[dict, "Observation"]]]])
 
-slots.Database_subjects = Slot(uri=TEMP.subjects, name="Database_subjects", curie=TEMP.curie('subjects'),
-                   model_uri=CMDR.Database_subjects, domain=Database, range=Optional[Union[Union[dict, "Subject"], List[Union[dict, "Subject"]]]])
+slots.Container_subjects = Slot(uri=TEMP.subjects, name="Container_subjects", curie=TEMP.curie('subjects'),
+                   model_uri=CMDR.Container_subjects, domain=Container, range=Optional[Union[Union[dict, "Subject"], List[Union[dict, "Subject"]]]])
 
 slots.Diagnosis_is_about = Slot(uri=TEMP.is_about, name="Diagnosis_is_about", curie=TEMP.curie('is_about'),
                    model_uri=CMDR.Diagnosis_is_about, domain=Diagnosis, range=Optional[Union[dict, Condition]])

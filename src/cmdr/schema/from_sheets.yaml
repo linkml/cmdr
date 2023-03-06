@@ -4,7 +4,7 @@ classes:
     - Disease
     - Phenotype
     from_schema: TEMP
-  Database:
+  Container:
     from_schema: TEMP
     slot_usage:
       conditions:
@@ -60,6 +60,8 @@ classes:
     aliases:
     - Substance
     from_schema: TEMP
+  MaterialProcessing:
+    from_schema: TEMP
   Measurment:
     from_schema: TEMP
     in_subset:
@@ -76,12 +78,19 @@ classes:
     slots:
     - has_input
     - has_output
+  ProcessedMaterial:
+    from_schema: TEMP
+  ProcessedSpecimen:
+    from_schema: TEMP
+    is_a: ProcessedMaterial
   ResearchProject:
     from_schema: TEMP
   ResearchSubject:
     aliases:
     - Participant
     description: A Subject that has participated in at least on Study
+    from_schema: TEMP
+  SampleCreationProcess:
     from_schema: TEMP
   Sampling:
     aliases:
@@ -102,6 +111,7 @@ classes:
     from_schema: TEMP
     slot_usage:
       has_parent_specimen:
+        is_a: MaterialEntity
         range: Specimen
       has_source:
         range: ResearchSubject
