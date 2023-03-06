@@ -3,9 +3,11 @@ classes:
     from_schema: TEMP
     slot_usage:
       materials:
+        inlined: true
         multivalued: true
         range: MaterialEntity
       processes:
+        inlined: true
         multivalued: true
         range: Process
     slots:
@@ -26,6 +28,7 @@ classes:
         range: uriorcurie
     slots:
     - id
+    - name
   MaterialProcessing:
     class_uri: OBI:0000094
     description: A planned process which results in physical changes in a specified
@@ -86,6 +89,8 @@ slots:
   id:
     from_schema: TEMP
   materials:
+    from_schema: TEMP
+  name:
     from_schema: TEMP
   processes:
     from_schema: TEMP

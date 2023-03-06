@@ -1,5 +1,5 @@
 # Auto generated from cmdr.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-06T15:43:32
+# Generation date: 2023-03-06T15:50:57
 # Schema: cmdr
 #
 # id: https://w3id.org/linkml/cmdr
@@ -71,17 +71,13 @@ class Container(YAMLRoot):
     class_name: ClassVar[str] = "Container"
     class_model_uri: ClassVar[URIRef] = CMDR.Container
 
-    processes: Optional[Union[Union[str, ProcessId], List[Union[str, ProcessId]]]] = empty_list()
-    materials: Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]] = empty_list()
+    processes: Optional[Union[List[Union[str, ProcessId]], Dict[Union[str, ProcessId], Union[dict, "Process"]]]] = empty_dict()
+    materials: Optional[Union[Dict[Union[str, MaterialEntityId], Union[dict, "MaterialEntity"]], List[Union[dict, "MaterialEntity"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if not isinstance(self.processes, list):
-            self.processes = [self.processes] if self.processes is not None else []
-        self.processes = [v if isinstance(v, ProcessId) else ProcessId(v) for v in self.processes]
+        self._normalize_inlined_as_dict(slot_name="processes", slot_type=Process, key_name="id", keyed=True)
 
-        if not isinstance(self.materials, list):
-            self.materials = [self.materials] if self.materials is not None else []
-        self.materials = [v if isinstance(v, MaterialEntityId) else MaterialEntityId(v) for v in self.materials]
+        self._normalize_inlined_as_dict(slot_name="materials", slot_type=MaterialEntity, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -99,12 +95,16 @@ class MaterialEntity(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = CMDR.MaterialEntity
 
     id: Union[str, MaterialEntityId] = None
+    name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MaterialEntityId):
             self.id = MaterialEntityId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         super().__post_init__(**kwargs)
 
@@ -213,14 +213,17 @@ slots.id = Slot(uri=TEMP.id, name="id", curie=TEMP.curie('id'),
 slots.materials = Slot(uri=TEMP.materials, name="materials", curie=TEMP.curie('materials'),
                    model_uri=CMDR.materials, domain=None, range=Optional[str])
 
+slots.name = Slot(uri=TEMP.name, name="name", curie=TEMP.curie('name'),
+                   model_uri=CMDR.name, domain=None, range=Optional[str])
+
 slots.processes = Slot(uri=TEMP.processes, name="processes", curie=TEMP.curie('processes'),
                    model_uri=CMDR.processes, domain=None, range=Optional[str])
 
 slots.Container_materials = Slot(uri=TEMP.materials, name="Container_materials", curie=TEMP.curie('materials'),
-                   model_uri=CMDR.Container_materials, domain=Container, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
+                   model_uri=CMDR.Container_materials, domain=Container, range=Optional[Union[Dict[Union[str, MaterialEntityId], Union[dict, "MaterialEntity"]], List[Union[dict, "MaterialEntity"]]]])
 
 slots.Container_processes = Slot(uri=TEMP.processes, name="Container_processes", curie=TEMP.curie('processes'),
-                   model_uri=CMDR.Container_processes, domain=Container, range=Optional[Union[Union[str, ProcessId], List[Union[str, ProcessId]]]])
+                   model_uri=CMDR.Container_processes, domain=Container, range=Optional[Union[List[Union[str, ProcessId]], Dict[Union[str, ProcessId], Union[dict, "Process"]]]])
 
 slots.MaterialEntity_id = Slot(uri=TEMP.id, name="MaterialEntity_id", curie=TEMP.curie('id'),
                    model_uri=CMDR.MaterialEntity_id, domain=MaterialEntity, range=Union[str, MaterialEntityId])

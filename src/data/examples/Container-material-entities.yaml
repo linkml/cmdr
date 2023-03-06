@@ -1,3 +1,5 @@
 materials:
   - id: "omicsrus:123"
-  - id: "omicsrus:123"
+    name: "water"
+  - id: "omicsrus:456"
+    name: "soil"
