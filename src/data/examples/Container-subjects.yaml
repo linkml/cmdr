@@ -3,3 +3,7 @@ subjects:
     birth_date: xyz
   - taxon: abc2
     birth_date: xyz
+materials:
+  - date_collected: xyz
+    id: 12345
+
