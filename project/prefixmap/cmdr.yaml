@@ -1,18 +1,12 @@
 {
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
+   "TEMP": "https://example.org/TEMP/",
    "biolink": "https://w3id.org/biolink/",
-   "famrel": "http://example.org/famrel/",
+   "cmdr": "https://w3id.org/linkml/cmdr/",
+   "example": "https://example.org/",
    "linkml": "https://w3id.org/linkml/",
-   "my_datamodel": "https://w3id.org/my_org/my_datamodel",
-   "prov": "http://www.w3.org/ns/prov#",
    "schema": "http://schema.org/",
-   "Address": {
-      "@id": "schema:PostalAddress"
-   },
-   "Organization": {
-      "@id": "schema:Organization"
-   },
-   "Person": {
-      "@id": "schema:Person"
+   "Sample": {
+      "@id": "TEMP:Sample"
    }
 }

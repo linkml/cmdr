@@ -1,19 +1,20 @@
 {
-  "name": "my_datamodel",
-  "description": "Enter a detailed description of your project here",
-  "title": "My Datamodel",
+  "name": "cmdr",
+  "description": "Core Model for Data Research (Tentative)",
+  "title": "cmdr",
   "see_also": [
-    "https://example.org/"
+    "https://linkml.github.io/cmdr"
   ],
-  "id": "https://w3id.org/my_org/my_datamodel",
+  "id": "https://w3id.org/linkml/cmdr",
   "imports": [
-    "linkml:types"
+    "linkml:types",
+    "personinfo_enums"
   ],
-  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "license": "MIT",
   "prefixes": [
     {
-      "prefix_prefix": "my_datamodel",
-      "prefix_reference": "https://w3id.org/my_org/my_datamodel"
+      "prefix_prefix": "cmdr",
+      "prefix_reference": "https://w3id.org/linkml/cmdr/"
     },
     {
       "prefix_prefix": "linkml",
@@ -32,14 +33,11 @@
       "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
     },
     {
-      "prefix_prefix": "famrel",
-      "prefix_reference": "http://example.org/famrel/"
+      "prefix_prefix": "example",
+      "prefix_reference": "https://example.org/"
     }
   ],
-  "default_curi_maps": [
-    "semweb_context"
-  ],
-  "default_prefix": "my_datamodel",
+  "default_prefix": "cmdr",
   "default_range": "string",
   "types": [
     {
@@ -48,6 +46,9 @@
       "description": "A character string",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "@type": "TypeDefinition"
@@ -58,6 +59,9 @@
       "description": "An integer",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
       "base": "int",
       "uri": "http://www.w3.org/2001/XMLSchema#integer",
       "@type": "TypeDefinition"
@@ -68,6 +72,9 @@
       "description": "A binary (true or false) value",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
       "base": "Bool",
       "uri": "http://www.w3.org/2001/XMLSchema#boolean",
       "repr": "bool",
@@ -79,6 +86,9 @@
       "description": "A real number that conforms to the xsd:float specification",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
       "base": "float",
       "uri": "http://www.w3.org/2001/XMLSchema#float",
       "@type": "TypeDefinition"
@@ -89,6 +99,9 @@
       "description": "A real number that conforms to the xsd:double specification",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
       "base": "float",
       "uri": "http://www.w3.org/2001/XMLSchema#double",
       "@type": "TypeDefinition"
@@ -99,6 +112,9 @@
       "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
       "base": "Decimal",
       "uri": "http://www.w3.org/2001/XMLSchema#decimal",
       "@type": "TypeDefinition"
@@ -112,6 +128,9 @@
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
       "base": "XSDTime",
       "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
       "repr": "str",
@@ -126,6 +145,9 @@
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
       "base": "XSDDate",
       "uri": "http://www.w3.org/2001/XMLSchema#date",
       "repr": "str",
@@ -137,6 +159,9 @@
       "description": "The combination of a date and time",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
       "base": "XSDDateTime",
       "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
       "repr": "str",
@@ -165,11 +190,34 @@
       "@type": "TypeDefinition"
     },
     {
-      "name": "uri",
-      "definition_uri": "https://w3id.org/linkml/Uri",
-      "description": "a complete URI",
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
       "base": "URI",
       "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
       "repr": "str",
@@ -212,613 +260,29 @@
       "@type": "TypeDefinition"
     }
   ],
-  "enums": [
-    {
-      "name": "PersonStatus",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelPersonStatus",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "permissible_values": [
-        {
-          "text": "ALIVE",
-          "description": "the person is living",
-          "meaning": "PATO:0001421"
-        },
-        {
-          "text": "DEAD",
-          "description": "the person is deceased",
-          "meaning": "PATO:0001422"
-        },
-        {
-          "text": "UNKNOWN",
-          "description": "the vital status is not known",
-          "todos": [
-            "map this to an ontology"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "FamilialRelationshipType",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelFamilialRelationshipType",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "permissible_values": [
-        {
-          "text": "SIBLING_OF",
-          "meaning": "famrel:01"
-        },
-        {
-          "text": "PARENT_OF",
-          "meaning": "famrel:02"
-        },
-        {
-          "text": "CHILD_OF",
-          "meaning": "famrel:01"
-        }
-      ]
-    }
-  ],
-  "slots": [
-    {
-      "name": "id",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelid",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://schema.org/identifier"
-      ],
-      "slot_uri": "http://schema.org/identifier",
-      "identifier": true,
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "name",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelname",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://schema.org/name"
-      ],
-      "slot_uri": "http://schema.org/name",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "description",
-      "definition_uri": "https://w3id.org/my_org/my_datamodeldescription",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://schema.org/description"
-      ],
-      "slot_uri": "http://schema.org/description",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "image",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelimage",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://schema.org/image"
-      ],
-      "slot_uri": "http://schema.org/image",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "primary_email",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelprimary_email",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "slot_uri": "http://schema.org/email",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "birth_date",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelbirth_date",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://schema.org/birthDate"
-      ],
-      "slot_uri": "http://schema.org/birthDate",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "employed_at",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelemployed_at",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelemployed_at",
-      "range": "Organization",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "is_current",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelis_current",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelis_current",
-      "range": "boolean",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "has_familial_relationships",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelhas_familial_relationships",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelhas_familial_relationships",
-      "multivalued": true,
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "FamilialRelationship",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "current_address",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelcurrent_address",
-      "description": "The address at which a person currently lives",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelcurrent_address",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "Address",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "age_in_years",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelage_in_years",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelage_in_years",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "integer",
-      "minimum_value": 0,
-      "maximum_value": 999,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "related_to",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelrelated_to",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelrelated_to",
-      "owner": "Relationship",
-      "domain_of": [
-        "Relationship"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "type",
-      "definition_uri": "https://w3id.org/my_org/my_datamodeltype",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodeltype",
-      "owner": "Relationship",
-      "domain_of": [
-        "Relationship"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "street",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelstreet",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelstreet",
-      "owner": "Address",
-      "domain_of": [
-        "Address"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "city",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelcity",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelcity",
-      "owner": "Address",
-      "domain_of": [
-        "Address"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "mission_statement",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelmission_statement",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelmission_statement",
-      "owner": "Organization",
-      "domain_of": [
-        "Organization"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "founding_date",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelfounding_date",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelfounding_date",
-      "owner": "Organization",
-      "domain_of": [
-        "Organization"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "postal_code",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelpostal_code",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelpostal_code",
-      "owner": "Address",
-      "domain_of": [
-        "Address"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "started_at_time",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelstarted_at_time",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://www.w3.org/ns/prov#startedAtTime"
-      ],
-      "slot_uri": "http://www.w3.org/ns/prov#startedAtTime",
-      "owner": "Relationship",
-      "domain_of": [
-        "Relationship"
-      ],
-      "range": "date",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "ended_at_time",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelended_at_time",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://www.w3.org/ns/prov#endedAtTime"
-      ],
-      "slot_uri": "http://www.w3.org/ns/prov#endedAtTime",
-      "owner": "Relationship",
-      "domain_of": [
-        "Relationship"
-      ],
-      "range": "date",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "registry__persons",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelpersons",
-      "multivalued": true,
-      "alias": "persons",
-      "owner": "Registry",
-      "domain_of": [
-        "Registry"
-      ],
-      "range": "Person",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "registry__organizations",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelorganizations",
-      "multivalued": true,
-      "alias": "organizations",
-      "owner": "Registry",
-      "domain_of": [
-        "Registry"
-      ],
-      "range": "Organization",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "hasAliases__aliases",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "exact_mappings": [
-        "http://schema.org/alternateName"
-      ],
-      "slot_uri": "https://w3id.org/my_org/my_datamodelaliases",
-      "multivalued": true,
-      "alias": "aliases",
-      "owner": "HasAliases",
-      "domain_of": [
-        "HasAliases"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "related_to",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelrelated_to",
-      "range": "Person",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Person_primary_email",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelprimary_email",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "is_a": "primary_email",
-      "domain": "Person",
-      "slot_uri": "http://schema.org/email",
-      "alias": "primary_email",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "primary_email",
-      "range": "string",
-      "pattern": "^\\S+@[\\S+\\.]+\\S+",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "FamilialRelationship_type",
-      "definition_uri": "https://w3id.org/my_org/my_datamodeltype",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "is_a": "type",
-      "domain": "FamilialRelationship",
-      "slot_uri": "https://w3id.org/my_org/my_datamodeltype",
-      "alias": "type",
-      "owner": "FamilialRelationship",
-      "domain_of": [
-        "FamilialRelationship"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "type",
-      "range": "FamilialRelationshipType",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "FamilialRelationship_related_to",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "is_a": "related_to",
-      "domain": "FamilialRelationship",
-      "slot_uri": "https://w3id.org/my_org/my_datamodelrelated_to",
-      "alias": "related to",
-      "owner": "FamilialRelationship",
-      "domain_of": [
-        "FamilialRelationship"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "related to",
-      "range": "Person",
-      "required": true,
-      "@type": "SlotDefinition"
-    }
-  ],
   "classes": [
     {
-      "name": "Registry",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelRegistry",
-      "description": "Top level data container",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slots": [
-        "registry__persons",
-        "registry__organizations"
-      ],
+      "name": "Sample",
+      "definition_uri": "https://example.org/TEMP/Sample",
+      "description": "stuff",
+      "from_schema": "TEMP",
       "slot_usage": {},
-      "attributes": [
-        {
-          "name": "persons",
-          "multivalued": true,
-          "range": "Person",
-          "inlined": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "organizations",
-          "multivalued": true,
-          "range": "Organization",
-          "inlined": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        }
-      ],
-      "class_uri": "https://w3id.org/my_org/my_datamodelRegistry",
-      "tree_root": true,
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "NamedThing",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelNamedThing",
-      "description": "A generic grouping for any identifiable entity",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "close_mappings": [
-        "schema:Thing"
-      ],
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "image"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/my_org/my_datamodelNamedThing",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Person",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelPerson",
-      "description": "A person (alive, dead, undead, or fictional).",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "schema:Person"
-      ],
-      "is_a": "NamedThing",
-      "mixins": [
-        "HasAliases"
-      ],
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "image",
-        "Person_primary_email",
-        "birth_date",
-        "age_in_years",
-        "current_address",
-        "has_familial_relationships",
-        "hasAliases__aliases"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://schema.org/Person",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "HasAliases",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelHasAliases",
-      "description": "A mixin applied to any class that can have aliases/alternateNames",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mixin": true,
-      "slots": [
-        "hasAliases__aliases"
-      ],
-      "slot_usage": {},
-      "attributes": [
-        {
-          "name": "aliases",
-          "exact_mappings": [
-            "schema:alternateName"
-          ],
-          "multivalued": true,
-          "@type": "SlotDefinition"
-        }
-      ],
-      "class_uri": "https://w3id.org/my_org/my_datamodelHasAliases",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Organization",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelOrganization",
-      "description": "An organization such as a company or university",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "schema:Organization"
-      ],
-      "is_a": "NamedThing",
-      "mixins": [
-        "HasAliases"
-      ],
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "image",
-        "mission_statement",
-        "founding_date",
-        "hasAliases__aliases"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://schema.org/Organization",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Address",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelAddress",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "mappings": [
-        "schema:PostalAddress"
-      ],
-      "slots": [
-        "street",
-        "city",
-        "postal_code"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://schema.org/PostalAddress",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Relationship",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelRelationship",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "slots": [
-        "started_at_time",
-        "ended_at_time",
-        "related_to",
-        "type"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/my_org/my_datamodelRelationship",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "FamilialRelationship",
-      "definition_uri": "https://w3id.org/my_org/my_datamodelFamilialRelationship",
-      "from_schema": "https://w3id.org/my_org/my_datamodel",
-      "is_a": "Relationship",
-      "slots": [
-        "started_at_time",
-        "ended_at_time",
-        "related_to",
-        "FamilialRelationship_type",
-        "FamilialRelationship_related_to"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/my_org/my_datamodelFamilialRelationship",
+      "class_uri": "https://example.org/TEMP/Sample",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "cmdr.yaml",
-  "source_file_date": "2022-09-06T10:00:58",
-  "source_file_size": 3771,
-  "generation_date": "2022-09-06T10:01:45",
+  "source_file_date": "2023-03-06T14:04:18",
+  "source_file_size": 490,
+  "generation_date": "2023-03-06T14:13:55",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cmdr.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
+    "personinfo_enums.context.jsonld",
     {
-      "@base": "https://w3id.org/my_org/my_datamodel"
+      "@base": "https://w3id.org/linkml/cmdr/"
     }
   ]
 }
