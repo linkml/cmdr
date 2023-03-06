@@ -1,140 +1,68 @@
 classes:
-  Condition:
-    aliases:
-    - Disease
-    - Phenotype
-    from_schema: TEMP
   Container:
     from_schema: TEMP
     slot_usage:
-      conditions:
-        inlined: true
+      materials:
         multivalued: true
-        range: Condition
-      diagnoses:
-        inlined: true
+        range: MaterialEntity
+      processes:
         multivalued: true
-        range: Diagnosis
-      documents:
-        inlined: true
-        multivalued: true
-        range: Document
-      observations:
-        inlined: true
-        multivalued: true
-        range: Observation
-      subjects:
-        inlined: true
-        multivalued: true
-        range: Subject
+        range: Process
     slots:
-    - conditions
-    - diagnoses
-    - documents
-    - observations
-    - subjects
-    tree_root: true
-  Diagnosis:
-    from_schema: TEMP
-    in_subset:
-    - temporal_data
-    is_a: Information
-    slot_usage:
-      is_about:
-        range: Condition
-      source: {}
-    slots:
-    - is_about
-    - source
-  Document:
-    from_schema: TEMP
-    slot_usage:
-      is_about: {}
-    slots:
-    - is_about
-  Event:
-    from_schema: TEMP
-  Information:
-    from_schema: TEMP
+    - processes
+    - materials
   MaterialEntity:
     aliases:
     - Substance
-    from_schema: TEMP
-  MaterialProcessing:
-    from_schema: TEMP
-  Measurment:
-    from_schema: TEMP
-    in_subset:
-    - temporal_data
-  Observation:
-    from_schema: TEMP
-    in_subset:
-    - temporal_data
-  Process:
-    from_schema: TEMP
-    slot_usage:
-      has_input: {}
-      has_output: {}
-    slots:
-    - has_input
-    - has_output
-  ProcessedMaterial:
-    from_schema: TEMP
-  ProcessedSpecimen:
-    from_schema: TEMP
-    is_a: ProcessedMaterial
-  ResearchProject:
-    from_schema: TEMP
-  ResearchSubject:
-    aliases:
-    - Participant
-    description: A Subject that has participated in at least on Study
-    from_schema: TEMP
-  SampleCreationProcess:
-    from_schema: TEMP
-  Sampling:
-    aliases:
-    - SpecimenCreation
-    - SampleCollection
-    from_schema: TEMP
-    slot_usage:
-      has_input: {}
-      has_output: {}
-    slots:
-    - has_input
-    - has_output
-  Site:
-    from_schema: TEMP
-  Specimen:
-    aliases:
+    - Specimen
     - Sample
+    - Biospecimen
+    - Biosample
+    description: Physical entity that is an input our output of a process
     from_schema: TEMP
     slot_usage:
-      has_parent_specimen:
-        is_a: MaterialEntity
-        range: Specimen
-      has_source:
-        range: ResearchSubject
+      id:
+        identifier: true
+        range: uriorcurie
     slots:
-    - has_parent_specimen
-    - has_source
-  Study:
-    description: the root class of the data model
+    - id
+  MaterialProcessing:
+    class_uri: OBI:0000094
+    description: A planned process which results in physical changes in a specified
+      input material
     from_schema: TEMP
+    is_a: Process
+  Process:
+    abstract: true
+    from_schema: TEMP
+    slot_usage:
+      id:
+        identifier: true
+        range: uriorcurie
+    slots:
+    - id
+  SpecimenCollectionProcess:
+    aliases:
+    - MaterialCollectionProcess
+    class_uri: OBI:0000659
+    description: A planned process with the objective of collecting a specimen
+    from_schema: TEMP
+    is_a: Process
+    slot_usage:
+      has_input:
+        multivalued: true
+        range: MaterialEntity
+      has_output:
+        multivalued: true
+        range: MaterialEntity
+    slots:
+    - has_input
+    - has_output
   Subject:
     aliases:
-    - Person
-    - Organism
+    - Site
+    - Participant
     from_schema: TEMP
-    is_a: MaterialEntity
-    slot_usage:
-      birth_date:
-        in_subset:
-        - potential_phi
-      taxon: {}
-    slots:
-    - birth_date
-    - taxon
 default_prefix: TEMP
 default_range: string
 id: TEMP
@@ -142,34 +70,24 @@ imports:
 - linkml:types
 name: TEMP
 prefixes:
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  RO: http://purl.obolibrary.org/obo/RO_
   TEMP: https://example.org/TEMP/
+  cmdr: https://w3id.org/linkml/cmdr/
   linkml: https://w3id.org/linkml/
+  omicsrus: https://example.org/omicsrus/
+  sdo: http://schema.org/
+  wikidata: http://www.wikidata.org/entity/
 slots:
-  birth_date:
-    from_schema: TEMP
-  conditions:
-    from_schema: TEMP
-  diagnoses:
-    from_schema: TEMP
-  documents:
-    from_schema: TEMP
   has_input:
     from_schema: TEMP
   has_output:
     from_schema: TEMP
-  has_parent_specimen:
+  id:
     from_schema: TEMP
-  has_source:
+  materials:
     from_schema: TEMP
-  is_about:
-    from_schema: TEMP
-  observations:
-    from_schema: TEMP
-  source:
-    from_schema: TEMP
-  subjects:
-    from_schema: TEMP
-  taxon:
+  processes:
     from_schema: TEMP
 subsets:
   potential_phi:

@@ -1,5 +1,5 @@
 # Auto generated from cmdr.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-06T15:11:04
+# Generation date: 2023-03-06T15:43:32
 # Schema: cmdr
 #
 # id: https://w3id.org/linkml/cmdr
@@ -22,7 +22,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import String
+from linkml_runtime.linkml_model.types import String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import URIorCURIE
 
 metamodel_version = "1.7.0"
 version = None
@@ -31,6 +32,7 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
+OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 TEMP = CurieNamespace('TEMP', 'https://example.org/TEMP/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/')
@@ -44,16 +46,20 @@ DEFAULT_ = CMDR
 # Types
 
 # Class references
+class MaterialEntityId(URIorCURIE):
+    pass
 
 
+class ProcessId(URIorCURIE):
+    pass
 
-class Condition(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Condition
-    class_class_curie: ClassVar[str] = "TEMP:Condition"
-    class_name: ClassVar[str] = "Condition"
-    class_model_uri: ClassVar[URIRef] = CMDR.Condition
+class MaterialProcessingId(ProcessId):
+    pass
+
+
+class SpecimenCollectionProcessId(ProcessId):
+    pass
 
 
 @dataclass
@@ -65,95 +71,26 @@ class Container(YAMLRoot):
     class_name: ClassVar[str] = "Container"
     class_model_uri: ClassVar[URIRef] = CMDR.Container
 
-    conditions: Optional[Union[Union[dict, Condition], List[Union[dict, Condition]]]] = empty_list()
-    diagnoses: Optional[Union[Union[dict, "Diagnosis"], List[Union[dict, "Diagnosis"]]]] = empty_list()
-    documents: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
-    observations: Optional[Union[Union[dict, "Observation"], List[Union[dict, "Observation"]]]] = empty_list()
-    subjects: Optional[Union[Union[dict, "Subject"], List[Union[dict, "Subject"]]]] = empty_list()
+    processes: Optional[Union[Union[str, ProcessId], List[Union[str, ProcessId]]]] = empty_list()
+    materials: Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if not isinstance(self.conditions, list):
-            self.conditions = [self.conditions] if self.conditions is not None else []
-        self.conditions = [v if isinstance(v, Condition) else Condition(**as_dict(v)) for v in self.conditions]
+        if not isinstance(self.processes, list):
+            self.processes = [self.processes] if self.processes is not None else []
+        self.processes = [v if isinstance(v, ProcessId) else ProcessId(v) for v in self.processes]
 
-        if not isinstance(self.diagnoses, list):
-            self.diagnoses = [self.diagnoses] if self.diagnoses is not None else []
-        self.diagnoses = [v if isinstance(v, Diagnosis) else Diagnosis(**as_dict(v)) for v in self.diagnoses]
-
-        if not isinstance(self.documents, list):
-            self.documents = [self.documents] if self.documents is not None else []
-        self.documents = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.documents]
-
-        if not isinstance(self.observations, list):
-            self.observations = [self.observations] if self.observations is not None else []
-        self.observations = [v if isinstance(v, Observation) else Observation(**as_dict(v)) for v in self.observations]
-
-        if not isinstance(self.subjects, list):
-            self.subjects = [self.subjects] if self.subjects is not None else []
-        self.subjects = [v if isinstance(v, Subject) else Subject(**as_dict(v)) for v in self.subjects]
+        if not isinstance(self.materials, list):
+            self.materials = [self.materials] if self.materials is not None else []
+        self.materials = [v if isinstance(v, MaterialEntityId) else MaterialEntityId(v) for v in self.materials]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Document(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.Document
-    class_class_curie: ClassVar[str] = "TEMP:Document"
-    class_name: ClassVar[str] = "Document"
-    class_model_uri: ClassVar[URIRef] = CMDR.Document
-
-    is_about: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.is_about is not None and not isinstance(self.is_about, str):
-            self.is_about = str(self.is_about)
-
-        super().__post_init__(**kwargs)
-
-
-class Event(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.Event
-    class_class_curie: ClassVar[str] = "TEMP:Event"
-    class_name: ClassVar[str] = "Event"
-    class_model_uri: ClassVar[URIRef] = CMDR.Event
-
-
-class Information(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.Information
-    class_class_curie: ClassVar[str] = "TEMP:Information"
-    class_name: ClassVar[str] = "Information"
-    class_model_uri: ClassVar[URIRef] = CMDR.Information
-
-
-@dataclass
-class Diagnosis(Information):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.Diagnosis
-    class_class_curie: ClassVar[str] = "TEMP:Diagnosis"
-    class_name: ClassVar[str] = "Diagnosis"
-    class_model_uri: ClassVar[URIRef] = CMDR.Diagnosis
-
-    is_about: Optional[Union[dict, Condition]] = None
-    source: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.is_about is not None and not isinstance(self.is_about, Condition):
-            self.is_about = Condition()
-
-        if self.source is not None and not isinstance(self.source, str):
-            self.source = str(self.source)
-
-        super().__post_init__(**kwargs)
-
-
 class MaterialEntity(YAMLRoot):
+    """
+    Physical entity that is an input our output of a process
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = TEMP.MaterialEntity
@@ -161,32 +98,15 @@ class MaterialEntity(YAMLRoot):
     class_name: ClassVar[str] = "MaterialEntity"
     class_model_uri: ClassVar[URIRef] = CMDR.MaterialEntity
 
+    id: Union[str, MaterialEntityId] = None
 
-class MaterialProcessing(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MaterialEntityId):
+            self.id = MaterialEntityId(self.id)
 
-    class_class_uri: ClassVar[URIRef] = TEMP.MaterialProcessing
-    class_class_curie: ClassVar[str] = "TEMP:MaterialProcessing"
-    class_name: ClassVar[str] = "MaterialProcessing"
-    class_model_uri: ClassVar[URIRef] = CMDR.MaterialProcessing
-
-
-class Measurment(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.Measurment
-    class_class_curie: ClassVar[str] = "TEMP:Measurment"
-    class_name: ClassVar[str] = "Measurment"
-    class_model_uri: ClassVar[URIRef] = CMDR.Measurment
-
-
-class Observation(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.Observation
-    class_class_curie: ClassVar[str] = "TEMP:Observation"
-    class_name: ClassVar[str] = "Observation"
-    class_model_uri: ClassVar[URIRef] = CMDR.Observation
+        super().__post_init__(**kwargs)
 
 
 @dataclass
@@ -198,152 +118,80 @@ class Process(YAMLRoot):
     class_name: ClassVar[str] = "Process"
     class_model_uri: ClassVar[URIRef] = CMDR.Process
 
-    has_input: Optional[str] = None
-    has_output: Optional[str] = None
+    id: Union[str, ProcessId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.has_input is not None and not isinstance(self.has_input, str):
-            self.has_input = str(self.has_input)
-
-        if self.has_output is not None and not isinstance(self.has_output, str):
-            self.has_output = str(self.has_output)
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProcessId):
+            self.id = ProcessId(self.id)
 
         super().__post_init__(**kwargs)
 
 
-class ProcessedMaterial(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.ProcessedMaterial
-    class_class_curie: ClassVar[str] = "TEMP:ProcessedMaterial"
-    class_name: ClassVar[str] = "ProcessedMaterial"
-    class_model_uri: ClassVar[URIRef] = CMDR.ProcessedMaterial
-
-
-class ProcessedSpecimen(ProcessedMaterial):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.ProcessedSpecimen
-    class_class_curie: ClassVar[str] = "TEMP:ProcessedSpecimen"
-    class_name: ClassVar[str] = "ProcessedSpecimen"
-    class_model_uri: ClassVar[URIRef] = CMDR.ProcessedSpecimen
-
-
-class ResearchProject(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.ResearchProject
-    class_class_curie: ClassVar[str] = "TEMP:ResearchProject"
-    class_name: ClassVar[str] = "ResearchProject"
-    class_model_uri: ClassVar[URIRef] = CMDR.ResearchProject
-
-
-class ResearchSubject(YAMLRoot):
-    """
-    A Subject that has participated in at least on Study
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.ResearchSubject
-    class_class_curie: ClassVar[str] = "TEMP:ResearchSubject"
-    class_name: ClassVar[str] = "ResearchSubject"
-    class_model_uri: ClassVar[URIRef] = CMDR.ResearchSubject
-
-
-class SampleCreationProcess(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.SampleCreationProcess
-    class_class_curie: ClassVar[str] = "TEMP:SampleCreationProcess"
-    class_name: ClassVar[str] = "SampleCreationProcess"
-    class_model_uri: ClassVar[URIRef] = CMDR.SampleCreationProcess
-
-
 @dataclass
-class Sampling(YAMLRoot):
+class MaterialProcessing(Process):
+    """
+    A planned process which results in physical changes in a specified input material
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Sampling
-    class_class_curie: ClassVar[str] = "TEMP:Sampling"
-    class_name: ClassVar[str] = "Sampling"
-    class_model_uri: ClassVar[URIRef] = CMDR.Sampling
+    class_class_uri: ClassVar[URIRef] = OBI["0000094"]
+    class_class_curie: ClassVar[str] = "OBI:0000094"
+    class_name: ClassVar[str] = "MaterialProcessing"
+    class_model_uri: ClassVar[URIRef] = CMDR.MaterialProcessing
 
-    has_input: Optional[str] = None
-    has_output: Optional[str] = None
+    id: Union[str, MaterialProcessingId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.has_input is not None and not isinstance(self.has_input, str):
-            self.has_input = str(self.has_input)
-
-        if self.has_output is not None and not isinstance(self.has_output, str):
-            self.has_output = str(self.has_output)
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MaterialProcessingId):
+            self.id = MaterialProcessingId(self.id)
 
         super().__post_init__(**kwargs)
 
 
-class Site(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.Site
-    class_class_curie: ClassVar[str] = "TEMP:Site"
-    class_name: ClassVar[str] = "Site"
-    class_model_uri: ClassVar[URIRef] = CMDR.Site
-
-
 @dataclass
-class Specimen(YAMLRoot):
+class SpecimenCollectionProcess(Process):
+    """
+    A planned process with the objective of collecting a specimen
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Specimen
-    class_class_curie: ClassVar[str] = "TEMP:Specimen"
-    class_name: ClassVar[str] = "Specimen"
-    class_model_uri: ClassVar[URIRef] = CMDR.Specimen
+    class_class_uri: ClassVar[URIRef] = OBI["0000659"]
+    class_class_curie: ClassVar[str] = "OBI:0000659"
+    class_name: ClassVar[str] = "SpecimenCollectionProcess"
+    class_model_uri: ClassVar[URIRef] = CMDR.SpecimenCollectionProcess
 
-    has_parent_specimen: Optional[Union[dict, "Specimen"]] = None
-    has_source: Optional[Union[dict, ResearchSubject]] = None
+    id: Union[str, SpecimenCollectionProcessId] = None
+    has_input: Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.has_parent_specimen is not None and not isinstance(self.has_parent_specimen, Specimen):
-            self.has_parent_specimen = Specimen(**as_dict(self.has_parent_specimen))
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SpecimenCollectionProcessId):
+            self.id = SpecimenCollectionProcessId(self.id)
 
-        if self.has_source is not None and not isinstance(self.has_source, ResearchSubject):
-            self.has_source = ResearchSubject()
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, MaterialEntityId) else MaterialEntityId(v) for v in self.has_input]
+
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, MaterialEntityId) else MaterialEntityId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
 
 
-class Study(YAMLRoot):
-    """
-    the root class of the data model
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.Study
-    class_class_curie: ClassVar[str] = "TEMP:Study"
-    class_name: ClassVar[str] = "Study"
-    class_model_uri: ClassVar[URIRef] = CMDR.Study
-
-
-@dataclass
-class Subject(MaterialEntity):
+class Subject(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = TEMP.Subject
     class_class_curie: ClassVar[str] = "TEMP:Subject"
     class_name: ClassVar[str] = "Subject"
     class_model_uri: ClassVar[URIRef] = CMDR.Subject
-
-    birth_date: Optional[str] = None
-    taxon: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.birth_date is not None and not isinstance(self.birth_date, str):
-            self.birth_date = str(self.birth_date)
-
-        if self.taxon is not None and not isinstance(self.taxon, str):
-            self.taxon = str(self.taxon)
-
-        super().__post_init__(**kwargs)
 
 
 # Enumerations
@@ -353,89 +201,35 @@ class Subject(MaterialEntity):
 class slots:
     pass
 
-slots.birth_date = Slot(uri=TEMP.birth_date, name="birth_date", curie=TEMP.curie('birth_date'),
-                   model_uri=CMDR.birth_date, domain=None, range=Optional[str])
-
-slots.conditions = Slot(uri=TEMP.conditions, name="conditions", curie=TEMP.curie('conditions'),
-                   model_uri=CMDR.conditions, domain=None, range=Optional[str])
-
-slots.diagnoses = Slot(uri=TEMP.diagnoses, name="diagnoses", curie=TEMP.curie('diagnoses'),
-                   model_uri=CMDR.diagnoses, domain=None, range=Optional[str])
-
-slots.documents = Slot(uri=TEMP.documents, name="documents", curie=TEMP.curie('documents'),
-                   model_uri=CMDR.documents, domain=None, range=Optional[str])
-
 slots.has_input = Slot(uri=TEMP.has_input, name="has_input", curie=TEMP.curie('has_input'),
                    model_uri=CMDR.has_input, domain=None, range=Optional[str])
 
 slots.has_output = Slot(uri=TEMP.has_output, name="has_output", curie=TEMP.curie('has_output'),
                    model_uri=CMDR.has_output, domain=None, range=Optional[str])
 
-slots.has_parent_specimen = Slot(uri=TEMP.has_parent_specimen, name="has_parent_specimen", curie=TEMP.curie('has_parent_specimen'),
-                   model_uri=CMDR.has_parent_specimen, domain=None, range=Optional[str])
+slots.id = Slot(uri=TEMP.id, name="id", curie=TEMP.curie('id'),
+                   model_uri=CMDR.id, domain=None, range=Optional[str])
 
-slots.has_source = Slot(uri=TEMP.has_source, name="has_source", curie=TEMP.curie('has_source'),
-                   model_uri=CMDR.has_source, domain=None, range=Optional[str])
+slots.materials = Slot(uri=TEMP.materials, name="materials", curie=TEMP.curie('materials'),
+                   model_uri=CMDR.materials, domain=None, range=Optional[str])
 
-slots.is_about = Slot(uri=TEMP.is_about, name="is_about", curie=TEMP.curie('is_about'),
-                   model_uri=CMDR.is_about, domain=None, range=Optional[str])
+slots.processes = Slot(uri=TEMP.processes, name="processes", curie=TEMP.curie('processes'),
+                   model_uri=CMDR.processes, domain=None, range=Optional[str])
 
-slots.observations = Slot(uri=TEMP.observations, name="observations", curie=TEMP.curie('observations'),
-                   model_uri=CMDR.observations, domain=None, range=Optional[str])
+slots.Container_materials = Slot(uri=TEMP.materials, name="Container_materials", curie=TEMP.curie('materials'),
+                   model_uri=CMDR.Container_materials, domain=Container, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
 
-slots.source = Slot(uri=TEMP.source, name="source", curie=TEMP.curie('source'),
-                   model_uri=CMDR.source, domain=None, range=Optional[str])
+slots.Container_processes = Slot(uri=TEMP.processes, name="Container_processes", curie=TEMP.curie('processes'),
+                   model_uri=CMDR.Container_processes, domain=Container, range=Optional[Union[Union[str, ProcessId], List[Union[str, ProcessId]]]])
 
-slots.subjects = Slot(uri=TEMP.subjects, name="subjects", curie=TEMP.curie('subjects'),
-                   model_uri=CMDR.subjects, domain=None, range=Optional[str])
+slots.MaterialEntity_id = Slot(uri=TEMP.id, name="MaterialEntity_id", curie=TEMP.curie('id'),
+                   model_uri=CMDR.MaterialEntity_id, domain=MaterialEntity, range=Union[str, MaterialEntityId])
 
-slots.taxon = Slot(uri=TEMP.taxon, name="taxon", curie=TEMP.curie('taxon'),
-                   model_uri=CMDR.taxon, domain=None, range=Optional[str])
+slots.Process_id = Slot(uri=TEMP.id, name="Process_id", curie=TEMP.curie('id'),
+                   model_uri=CMDR.Process_id, domain=Process, range=Union[str, ProcessId])
 
-slots.Container_conditions = Slot(uri=TEMP.conditions, name="Container_conditions", curie=TEMP.curie('conditions'),
-                   model_uri=CMDR.Container_conditions, domain=Container, range=Optional[Union[Union[dict, Condition], List[Union[dict, Condition]]]])
+slots.SpecimenCollectionProcess_has_input = Slot(uri=TEMP.has_input, name="SpecimenCollectionProcess_has_input", curie=TEMP.curie('has_input'),
+                   model_uri=CMDR.SpecimenCollectionProcess_has_input, domain=SpecimenCollectionProcess, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
 
-slots.Container_diagnoses = Slot(uri=TEMP.diagnoses, name="Container_diagnoses", curie=TEMP.curie('diagnoses'),
-                   model_uri=CMDR.Container_diagnoses, domain=Container, range=Optional[Union[Union[dict, "Diagnosis"], List[Union[dict, "Diagnosis"]]]])
-
-slots.Container_documents = Slot(uri=TEMP.documents, name="Container_documents", curie=TEMP.curie('documents'),
-                   model_uri=CMDR.Container_documents, domain=Container, range=Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]])
-
-slots.Container_observations = Slot(uri=TEMP.observations, name="Container_observations", curie=TEMP.curie('observations'),
-                   model_uri=CMDR.Container_observations, domain=Container, range=Optional[Union[Union[dict, "Observation"], List[Union[dict, "Observation"]]]])
-
-slots.Container_subjects = Slot(uri=TEMP.subjects, name="Container_subjects", curie=TEMP.curie('subjects'),
-                   model_uri=CMDR.Container_subjects, domain=Container, range=Optional[Union[Union[dict, "Subject"], List[Union[dict, "Subject"]]]])
-
-slots.Diagnosis_is_about = Slot(uri=TEMP.is_about, name="Diagnosis_is_about", curie=TEMP.curie('is_about'),
-                   model_uri=CMDR.Diagnosis_is_about, domain=Diagnosis, range=Optional[Union[dict, Condition]])
-
-slots.Diagnosis_source = Slot(uri=TEMP.source, name="Diagnosis_source", curie=TEMP.curie('source'),
-                   model_uri=CMDR.Diagnosis_source, domain=Diagnosis, range=Optional[str])
-
-slots.Document_is_about = Slot(uri=TEMP.is_about, name="Document_is_about", curie=TEMP.curie('is_about'),
-                   model_uri=CMDR.Document_is_about, domain=Document, range=Optional[str])
-
-slots.Process_has_input = Slot(uri=TEMP.has_input, name="Process_has_input", curie=TEMP.curie('has_input'),
-                   model_uri=CMDR.Process_has_input, domain=Process, range=Optional[str])
-
-slots.Process_has_output = Slot(uri=TEMP.has_output, name="Process_has_output", curie=TEMP.curie('has_output'),
-                   model_uri=CMDR.Process_has_output, domain=Process, range=Optional[str])
-
-slots.Sampling_has_input = Slot(uri=TEMP.has_input, name="Sampling_has_input", curie=TEMP.curie('has_input'),
-                   model_uri=CMDR.Sampling_has_input, domain=Sampling, range=Optional[str])
-
-slots.Sampling_has_output = Slot(uri=TEMP.has_output, name="Sampling_has_output", curie=TEMP.curie('has_output'),
-                   model_uri=CMDR.Sampling_has_output, domain=Sampling, range=Optional[str])
-
-slots.Specimen_has_parent_specimen = Slot(uri=TEMP.has_parent_specimen, name="Specimen_has_parent_specimen", curie=TEMP.curie('has_parent_specimen'),
-                   model_uri=CMDR.Specimen_has_parent_specimen, domain=Specimen, range=Optional[Union[dict, "Specimen"]])
-
-slots.Specimen_has_source = Slot(uri=TEMP.has_source, name="Specimen_has_source", curie=TEMP.curie('has_source'),
-                   model_uri=CMDR.Specimen_has_source, domain=Specimen, range=Optional[Union[dict, ResearchSubject]])
-
-slots.Subject_birth_date = Slot(uri=TEMP.birth_date, name="Subject_birth_date", curie=TEMP.curie('birth_date'),
-                   model_uri=CMDR.Subject_birth_date, domain=Subject, range=Optional[str])
-
-slots.Subject_taxon = Slot(uri=TEMP.taxon, name="Subject_taxon", curie=TEMP.curie('taxon'),
-                   model_uri=CMDR.Subject_taxon, domain=Subject, range=Optional[str])
+slots.SpecimenCollectionProcess_has_output = Slot(uri=TEMP.has_output, name="SpecimenCollectionProcess_has_output", curie=TEMP.curie('has_output'),
+                   model_uri=CMDR.SpecimenCollectionProcess_has_output, domain=SpecimenCollectionProcess, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
