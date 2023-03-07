@@ -1,9 +1,12 @@
-id: my-mappings
-title: my mappings
+id: cmdr_to_include
+title: Transformation from Common Model for Data Research to Include
 prefixes:
-  foo: foo
-source_schema: s1
-target_schema: s2
+  cmdr2inc: http://example.org/cmdr2inc/
+
+# annotative, not directive
+source_schema: cmdr
+target_schema: include
+
 class_derivations:
   Container:
     populated_from: Container
