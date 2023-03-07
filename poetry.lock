@@ -1104,6 +1104,21 @@ rdflib = ">=6.0.0"
 requests = "*"
 
 [[package]]
+name = "linkml-transformer"
+version = "0.1.1"
+description = ""
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "linkml_transformer-0.1.1-py3-none-any.whl", hash = "sha256:99a6a2606ed3c56c06e85f9bcd32c7da14f221bd5a3da521638a5c1b7f99da7d"},
+    {file = "linkml_transformer-0.1.1.tar.gz", hash = "sha256:ba60489eb928fa3d0221a494785de0d6d9f3ec1c28d27a10bccc4eed92c11d59"},
+]
+
+[package.dependencies]
+linkml-runtime = ">=1.4.5,<2.0.0"
+
+[[package]]
 name = "markdown"
 version = "3.3.7"
 description = "Python implementation of Markdown."
@@ -2870,4 +2885,4 @@ docs = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "32e403a34ade40a8de1a4fd9c81f737d9017d91d8a7ebc1683c46eef166111b8"
+content-hash = "32683a331e68010727cdd05c331c7a99d5274ea123ccc22f30db1cff598bd125"

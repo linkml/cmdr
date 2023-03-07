@@ -1,5 +1,5 @@
 # Auto generated from cmdr.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-07T11:15:11
+# Generation date: 2023-03-07T15:19:05
 # Schema: cmdr
 #
 # id: https://w3id.org/linkml/cmdr
@@ -85,7 +85,7 @@ class Container(YAMLRoot):
 
     materials: Optional[Union[Dict[Union[str, MaterialEntityId], Union[dict, "MaterialEntity"]], List[Union[dict, "MaterialEntity"]]]] = empty_dict()
     participations: Optional[Union[Dict[Union[str, ParticipationId], Union[dict, "Participation"]], List[Union[dict, "Participation"]]]] = empty_dict()
-    processes: Optional[Union[List[Union[str, ProcessId]], Dict[Union[str, ProcessId], Union[dict, "Process"]]]] = empty_dict()
+    processes: Optional[Union[Dict[Union[str, ProcessId], Union[dict, "Process"]], List[Union[dict, "Process"]]]] = empty_dict()
     investigations: Optional[Union[Dict[Union[str, InvestigationId], Union[dict, "Investigation"]], List[Union[dict, "Investigation"]]]] = empty_dict()
     subjects: Optional[Union[Dict[Union[str, SubjectId], Union[dict, "Subject"]], List[Union[dict, "Subject"]]]] = empty_dict()
 
@@ -185,9 +185,9 @@ class Participation(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = CMDR.Participation
 
     id: Union[str, ParticipationId] = None
-    includes: Optional[Union[str, SubjectId]] = None
     name: Optional[str] = None
     involved_in: Optional[Union[Union[str, InvestigationId], List[Union[str, InvestigationId]]]] = empty_list()
+    includes: Optional[Union[str, SubjectId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -195,15 +195,15 @@ class Participation(YAMLRoot):
         if not isinstance(self.id, ParticipationId):
             self.id = ParticipationId(self.id)
 
-        if self.includes is not None and not isinstance(self.includes, SubjectId):
-            self.includes = SubjectId(self.includes)
-
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
         if not isinstance(self.involved_in, list):
             self.involved_in = [self.involved_in] if self.involved_in is not None else []
         self.involved_in = [v if isinstance(v, InvestigationId) else InvestigationId(v) for v in self.involved_in]
+
+        if self.includes is not None and not isinstance(self.includes, SubjectId):
+            self.includes = SubjectId(self.includes)
 
         super().__post_init__(**kwargs)
 
@@ -218,12 +218,26 @@ class Process(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = CMDR.Process
 
     id: Union[str, ProcessId] = None
+    name: Optional[str] = None
+    has_input: Optional[Union[str, List[str]]] = empty_list()
+    has_output: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProcessId):
             self.id = ProcessId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, str) else str(v) for v in self.has_input]
+
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, str) else str(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
 
@@ -291,15 +305,6 @@ class Quantity(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-class QuantityValue(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = TEMP.QuantityValue
-    class_class_curie: ClassVar[str] = "TEMP:QuantityValue"
-    class_name: ClassVar[str] = "QuantityValue"
-    class_model_uri: ClassVar[URIRef] = CMDR.QuantityValue
-
-
 @dataclass
 class SpecimenCollectionProcess(Process):
     """
@@ -313,8 +318,8 @@ class SpecimenCollectionProcess(Process):
     class_model_uri: ClassVar[URIRef] = CMDR.SpecimenCollectionProcess
 
     id: Union[str, SpecimenCollectionProcessId] = None
-    has_input: Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]] = empty_list()
+    has_input: Optional[str] = None
+    has_output: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -322,9 +327,15 @@ class SpecimenCollectionProcess(Process):
         if not isinstance(self.id, SpecimenCollectionProcessId):
             self.id = SpecimenCollectionProcessId(self.id)
 
+        if self.has_input is not None and not isinstance(self.has_input, str):
+            self.has_input = str(self.has_input)
+
+        if self.has_output is not None and not isinstance(self.has_output, str):
+            self.has_output = str(self.has_output)
+
         if not isinstance(self.has_input, list):
             self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, MaterialEntityId) else MaterialEntityId(v) for v in self.has_input]
+        self.has_input = [v if isinstance(v, SubjectId) else SubjectId(v) for v in self.has_input]
 
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
@@ -434,7 +445,7 @@ slots.Container_participations = Slot(uri=TEMP.participations, name="Container_p
                    model_uri=CMDR.Container_participations, domain=Container, range=Optional[Union[Dict[Union[str, ParticipationId], Union[dict, "Participation"]], List[Union[dict, "Participation"]]]])
 
 slots.Container_processes = Slot(uri=TEMP.processes, name="Container_processes", curie=TEMP.curie('processes'),
-                   model_uri=CMDR.Container_processes, domain=Container, range=Optional[Union[List[Union[str, ProcessId]], Dict[Union[str, ProcessId], Union[dict, "Process"]]]])
+                   model_uri=CMDR.Container_processes, domain=Container, range=Optional[Union[Dict[Union[str, ProcessId], Union[dict, "Process"]], List[Union[dict, "Process"]]]])
 
 slots.Container_subjects = Slot(uri=TEMP.subjects, name="Container_subjects", curie=TEMP.curie('subjects'),
                    model_uri=CMDR.Container_subjects, domain=Container, range=Optional[Union[Dict[Union[str, SubjectId], Union[dict, "Subject"]], List[Union[dict, "Subject"]]]])
@@ -475,6 +486,12 @@ slots.Participation_includes = Slot(uri=TEMP.includes, name="Participation_inclu
 slots.Participation_involved_in = Slot(uri=TEMP.involved_in, name="Participation_involved_in", curie=TEMP.curie('involved_in'),
                    model_uri=CMDR.Participation_involved_in, domain=Participation, range=Optional[Union[Union[str, InvestigationId], List[Union[str, InvestigationId]]]])
 
+slots.Process_has_input = Slot(uri=TEMP.has_input, name="Process_has_input", curie=TEMP.curie('has_input'),
+                   model_uri=CMDR.Process_has_input, domain=Process, range=Optional[Union[str, List[str]]])
+
+slots.Process_has_output = Slot(uri=TEMP.has_output, name="Process_has_output", curie=TEMP.curie('has_output'),
+                   model_uri=CMDR.Process_has_output, domain=Process, range=Optional[Union[str, List[str]]])
+
 slots.Process_id = Slot(uri=TEMP.id, name="Process_id", curie=TEMP.curie('id'),
                    model_uri=CMDR.Process_id, domain=Process, range=Union[str, ProcessId])
 
@@ -491,7 +508,7 @@ slots.Quantity_has_unit = Slot(uri=TEMP.has_unit, name="Quantity_has_unit", curi
                    model_uri=CMDR.Quantity_has_unit, domain=Quantity, range=Optional[str])
 
 slots.SpecimenCollectionProcess_has_input = Slot(uri=TEMP.has_input, name="SpecimenCollectionProcess_has_input", curie=TEMP.curie('has_input'),
-                   model_uri=CMDR.SpecimenCollectionProcess_has_input, domain=SpecimenCollectionProcess, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
+                   model_uri=CMDR.SpecimenCollectionProcess_has_input, domain=SpecimenCollectionProcess, range=Optional[Union[Union[str, SubjectId], List[Union[str, SubjectId]]]])
 
 slots.SpecimenCollectionProcess_has_output = Slot(uri=TEMP.has_output, name="SpecimenCollectionProcess_has_output", curie=TEMP.curie('has_output'),
                    model_uri=CMDR.SpecimenCollectionProcess_has_output, domain=SpecimenCollectionProcess, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])

@@ -34,6 +34,9 @@ classes:
     - investigations
     - subjects
   Investigation:
+    aliases:
+    - Study
+    - Proposal
     from_schema: TEMP
     slot_usage:
       id:
@@ -104,10 +107,10 @@ classes:
         multivalued: true
         range: Investigation
     slots:
-    - includes
     - id
     - name
     - involved_in
+    - includes
   Process:
     abstract: true
     from_schema: TEMP
