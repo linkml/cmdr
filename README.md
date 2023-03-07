@@ -16,6 +16,8 @@ Core Model for Data Research (Tentative)
 * [datamodel](src/cmdr/datamodel) -- Generated python datamodel
 * [tests](tests/) - python tests
 
+We've added some [HTML visualizastions of data instances](https://htmlpreview.github.io/?https://github.com/linkml/cmdr/blob/master/examples/Container-material-entities.html)!
+
 ## Developer Documentation
 
 <details>
