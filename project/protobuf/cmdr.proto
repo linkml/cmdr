@@ -1,33 +1,48 @@
-message Database
+message Container
  {
-  subject subjects = 0
+ repeated  materialEntity materials = 0
+ repeated  participation participations = 0
+ repeated  process processes = 0
+ repeated  investigation investigations = 0
+ repeated  subject subjects = 0
  }
-message Diagnosis
+message Investigation
  {
-  condition isAbout = 0
-  string source = 0
+  uriorcurie id = 0
+  string name = 0
+  investigation partOf = 0
  }
-message Document
+// Physical entity that is an input our output of a process
+message MaterialEntity
  {
-  string isAbout = 0
+  uriorcurie id = 0
+  string name = 0
+ repeated  investigation usedIn = 0
+  subject source = 0
  }
-message Process
+// A planned process which results in physical changes in a specified input material
+message MaterialProcessing
  {
-  string hasInput = 0
-  string hasOutput = 0
+  uriorcurie id = 0
+ repeated  materialEntity hasInput = 0
+ repeated  materialEntity hasOutput = 0
  }
-message Sampling
+message Participation
  {
-  string hasInput = 0
-  string hasOutput = 0
+  subject includes = 0
+  uriorcurie id = 0
+  string name = 0
+ repeated  investigation involvedIn = 0
  }
-message Specimen
+// A planned process with the objective of collecting a specimen
+message SpecimenCollectionProcess
  {
-  researchSubject hasSource = 0
-  specimen hasParentSpecimen = 0
+  uriorcurie id = 0
+ repeated  materialEntity hasInput = 0
+ repeated  materialEntity hasOutput = 0
  }
 message Subject
  {
-  string taxon = 0
-  string birthDate = 0
+  uriorcurie id = 0
+  string name = 0
  }

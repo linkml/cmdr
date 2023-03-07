@@ -1,80 +1,57 @@
-type Condition
+type Container
   {
+    materials: [MaterialEntity]
+    participations: [Participation]
+    processes: [Process]
+    investigations: [Investigation]
+    subjects: [Subject]
   }
 
-type Database
+type Investigation
   {
-    subjects: Subject
-  }
-
-type Diagnosis
-  {
-    isAbout: Condition
-    source: String
-  }
-
-type Document
-  {
-    isAbout: String
-  }
-
-type Event
-  {
-  }
-
-type Information
-  {
+    id: Uriorcurie!
+    name: String
+    partOf: Investigation
   }
 
 type MaterialEntity
   {
+    id: Uriorcurie!
+    name: String
+    usedIn: [Investigation]
+    source: Subject
   }
 
-type Measurment
+type MaterialProcessing
   {
+    id: Uriorcurie!
+    hasInput: [MaterialEntity]
+    hasOutput: [MaterialEntity]
   }
 
-type Observation
+type Participation
   {
+    includes: Subject
+    id: Uriorcurie!
+    name: String
+    involvedIn: [Investigation]
   }
 
-type Process
+interface Process
   {
-    hasInput: String
-    hasOutput: String
+    id: Uriorcurie!
   }
 
-type ResearchProject
+type SpecimenCollectionProcess
   {
-  }
-
-type ResearchSubject
-  {
-  }
-
-type Sampling
-  {
-    hasInput: String
-    hasOutput: String
-  }
-
-type Site
-  {
-  }
-
-type Specimen
-  {
-    hasSource: ResearchSubject
-    hasParentSpecimen: Specimen
-  }
-
-type Study
-  {
+    id: Uriorcurie!
+    hasInput: [MaterialEntity]
+    hasOutput: [MaterialEntity]
   }
 
 type Subject
   {
-    taxon: String
-    birthDate: String
+    id: Uriorcurie!
+    name: String
   }
 

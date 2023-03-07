@@ -1,4 +1,5 @@
 {
+   "OBI": "http://purl.obolibrary.org/obo/OBI_",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
    "TEMP": "https://example.org/TEMP/",
    "biolink": "https://w3id.org/biolink/",
@@ -6,53 +7,26 @@
    "example": "https://example.org/",
    "linkml": "https://w3id.org/linkml/",
    "schema": "http://schema.org/",
-   "Condition": {
-      "@id": "TEMP:Condition"
+   "Container": {
+      "@id": "TEMP:Container"
    },
-   "Database": {
-      "@id": "TEMP:Database"
-   },
-   "Diagnosis": {
-      "@id": "TEMP:Diagnosis"
-   },
-   "Document": {
-      "@id": "TEMP:Document"
-   },
-   "Event": {
-      "@id": "TEMP:Event"
-   },
-   "Information": {
-      "@id": "TEMP:Information"
+   "Investigation": {
+      "@id": "TEMP:Investigation"
    },
    "MaterialEntity": {
       "@id": "TEMP:MaterialEntity"
    },
-   "Measurment": {
-      "@id": "TEMP:Measurment"
+   "MaterialProcessing": {
+      "@id": "OBI:0000094"
    },
-   "Observation": {
-      "@id": "TEMP:Observation"
+   "Participation": {
+      "@id": "TEMP:Participation"
    },
    "Process": {
       "@id": "TEMP:Process"
    },
-   "ResearchProject": {
-      "@id": "TEMP:ResearchProject"
-   },
-   "ResearchSubject": {
-      "@id": "TEMP:ResearchSubject"
-   },
-   "Sampling": {
-      "@id": "TEMP:Sampling"
-   },
-   "Site": {
-      "@id": "TEMP:Site"
-   },
-   "Specimen": {
-      "@id": "TEMP:Specimen"
-   },
-   "Study": {
-      "@id": "TEMP:Study"
+   "SpecimenCollectionProcess": {
+      "@id": "OBI:0000659"
    },
    "Subject": {
       "@id": "TEMP:Subject"

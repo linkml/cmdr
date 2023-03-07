@@ -8,7 +8,7 @@
   "id": "https://w3id.org/linkml/cmdr",
   "imports": [
     "linkml:types",
-    "conservative"
+    "from_sheets"
   ],
   "license": "MIT",
   "prefixes": [
@@ -276,26 +276,14 @@
   ],
   "slots": [
     {
-      "name": "birth_date",
-      "definition_uri": "https://example.org/TEMP/birth_date",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/birth_date",
-      "owner": "Subject",
-      "domain_of": [
-        "Subject"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "has_input",
       "definition_uri": "https://example.org/TEMP/has_input",
       "from_schema": "TEMP",
       "slot_uri": "https://example.org/TEMP/has_input",
-      "owner": "Sampling",
+      "owner": "SpecimenCollectionProcess",
       "domain_of": [
-        "Process",
-        "Sampling"
+        "MaterialProcessing",
+        "SpecimenCollectionProcess"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -305,47 +293,125 @@
       "definition_uri": "https://example.org/TEMP/has_output",
       "from_schema": "TEMP",
       "slot_uri": "https://example.org/TEMP/has_output",
-      "owner": "Sampling",
+      "owner": "SpecimenCollectionProcess",
       "domain_of": [
+        "MaterialProcessing",
+        "SpecimenCollectionProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "id",
+      "definition_uri": "https://example.org/TEMP/id",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/id",
+      "owner": "Subject",
+      "domain_of": [
+        "Investigation",
+        "MaterialEntity",
+        "Participation",
         "Process",
-        "Sampling"
+        "Subject"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "has_parent_specimen",
-      "definition_uri": "https://example.org/TEMP/has_parent_specimen",
+      "name": "includes",
+      "definition_uri": "https://example.org/TEMP/includes",
       "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/has_parent_specimen",
-      "owner": "Specimen",
+      "slot_uri": "https://example.org/TEMP/includes",
+      "owner": "Participation",
       "domain_of": [
-        "Specimen"
+        "Participation"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "has_source",
-      "definition_uri": "https://example.org/TEMP/has_source",
+      "name": "investigations",
+      "definition_uri": "https://example.org/TEMP/investigations",
       "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/has_source",
-      "owner": "Specimen",
+      "slot_uri": "https://example.org/TEMP/investigations",
+      "owner": "Container",
       "domain_of": [
-        "Specimen"
+        "Container"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "is_about",
-      "definition_uri": "https://example.org/TEMP/is_about",
+      "name": "involved_in",
+      "definition_uri": "https://example.org/TEMP/involved_in",
       "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/is_about",
-      "owner": "Document",
+      "slot_uri": "https://example.org/TEMP/involved_in",
+      "owner": "Participation",
       "domain_of": [
-        "Diagnosis",
-        "Document"
+        "Participation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "materials",
+      "definition_uri": "https://example.org/TEMP/materials",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/materials",
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://example.org/TEMP/name",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/name",
+      "owner": "Subject",
+      "domain_of": [
+        "Investigation",
+        "MaterialEntity",
+        "Participation",
+        "Subject"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "part_of",
+      "definition_uri": "https://example.org/TEMP/part_of",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/part_of",
+      "owner": "Investigation",
+      "domain_of": [
+        "Investigation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "participations",
+      "definition_uri": "https://example.org/TEMP/participations",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/participations",
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "processes",
+      "definition_uri": "https://example.org/TEMP/processes",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/processes",
+      "owner": "Container",
+      "domain_of": [
+        "Container"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -355,9 +421,9 @@
       "definition_uri": "https://example.org/TEMP/source",
       "from_schema": "TEMP",
       "slot_uri": "https://example.org/TEMP/source",
-      "owner": "Diagnosis",
+      "owner": "MaterialEntity",
       "domain_of": [
-        "Diagnosis"
+        "MaterialEntity"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -367,416 +433,497 @@
       "definition_uri": "https://example.org/TEMP/subjects",
       "from_schema": "TEMP",
       "slot_uri": "https://example.org/TEMP/subjects",
-      "owner": "Database",
+      "owner": "Container",
       "domain_of": [
-        "Database"
+        "Container"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "taxon",
-      "definition_uri": "https://example.org/TEMP/taxon",
+      "name": "used_in",
+      "definition_uri": "https://example.org/TEMP/used_in",
       "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/taxon",
-      "owner": "Subject",
+      "slot_uri": "https://example.org/TEMP/used_in",
+      "owner": "MaterialEntity",
       "domain_of": [
-        "Subject"
+        "MaterialEntity"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "Database_subjects",
+      "name": "Container_investigations",
+      "definition_uri": "https://example.org/TEMP/investigations",
+      "from_schema": "TEMP",
+      "is_a": "investigations",
+      "domain": "Container",
+      "slot_uri": "https://example.org/TEMP/investigations",
+      "multivalued": true,
+      "alias": "investigations",
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "investigations",
+      "range": "Investigation",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Container_materials",
+      "definition_uri": "https://example.org/TEMP/materials",
+      "from_schema": "TEMP",
+      "is_a": "materials",
+      "domain": "Container",
+      "slot_uri": "https://example.org/TEMP/materials",
+      "multivalued": true,
+      "alias": "materials",
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "materials",
+      "range": "MaterialEntity",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Container_participations",
+      "definition_uri": "https://example.org/TEMP/participations",
+      "from_schema": "TEMP",
+      "is_a": "participations",
+      "domain": "Container",
+      "slot_uri": "https://example.org/TEMP/participations",
+      "multivalued": true,
+      "alias": "participations",
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "participations",
+      "range": "Participation",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Container_processes",
+      "definition_uri": "https://example.org/TEMP/processes",
+      "from_schema": "TEMP",
+      "is_a": "processes",
+      "domain": "Container",
+      "slot_uri": "https://example.org/TEMP/processes",
+      "multivalued": true,
+      "alias": "processes",
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "processes",
+      "range": "Process",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Container_subjects",
       "definition_uri": "https://example.org/TEMP/subjects",
       "from_schema": "TEMP",
       "is_a": "subjects",
-      "domain": "Database",
+      "domain": "Container",
       "slot_uri": "https://example.org/TEMP/subjects",
+      "multivalued": true,
       "alias": "subjects",
-      "owner": "Database",
+      "owner": "Container",
       "domain_of": [
-        "Database"
+        "Container"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "subjects",
       "range": "Subject",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Diagnosis_is_about",
-      "definition_uri": "https://example.org/TEMP/is_about",
+      "name": "Investigation_id",
+      "definition_uri": "https://example.org/TEMP/id",
       "from_schema": "TEMP",
-      "is_a": "is_about",
-      "domain": "Diagnosis",
-      "slot_uri": "https://example.org/TEMP/is_about",
-      "alias": "is_about",
-      "owner": "Diagnosis",
+      "is_a": "id",
+      "domain": "Investigation",
+      "slot_uri": "https://example.org/TEMP/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "Investigation",
       "domain_of": [
-        "Diagnosis"
+        "Investigation"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "is_about",
-      "range": "Condition",
-      "inlined": true,
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Diagnosis_source",
+      "name": "Investigation_part_of",
+      "definition_uri": "https://example.org/TEMP/part_of",
+      "from_schema": "TEMP",
+      "is_a": "part_of",
+      "domain": "Investigation",
+      "slot_uri": "https://example.org/TEMP/part_of",
+      "alias": "part_of",
+      "owner": "Investigation",
+      "domain_of": [
+        "Investigation"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "part_of",
+      "range": "Investigation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "MaterialEntity_id",
+      "definition_uri": "https://example.org/TEMP/id",
+      "from_schema": "TEMP",
+      "is_a": "id",
+      "domain": "MaterialEntity",
+      "slot_uri": "https://example.org/TEMP/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "MaterialEntity",
+      "domain_of": [
+        "MaterialEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "MaterialEntity_source",
       "definition_uri": "https://example.org/TEMP/source",
+      "comments": [
+        "this is a shortcut. to be expanded later."
+      ],
       "from_schema": "TEMP",
       "is_a": "source",
-      "domain": "Diagnosis",
+      "domain": "MaterialEntity",
       "slot_uri": "https://example.org/TEMP/source",
       "alias": "source",
-      "owner": "Diagnosis",
+      "owner": "MaterialEntity",
       "domain_of": [
-        "Diagnosis"
+        "MaterialEntity"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "source",
-      "range": "string",
+      "range": "Subject",
       "@type": "SlotDefinition"
     },
     {
-      "name": "Document_is_about",
-      "definition_uri": "https://example.org/TEMP/is_about",
+      "name": "MaterialEntity_used_in",
+      "definition_uri": "https://example.org/TEMP/used_in",
       "from_schema": "TEMP",
-      "is_a": "is_about",
-      "domain": "Document",
-      "slot_uri": "https://example.org/TEMP/is_about",
-      "alias": "is_about",
-      "owner": "Document",
+      "is_a": "used_in",
+      "domain": "MaterialEntity",
+      "slot_uri": "https://example.org/TEMP/used_in",
+      "multivalued": true,
+      "alias": "used_in",
+      "owner": "MaterialEntity",
       "domain_of": [
-        "Document"
+        "MaterialEntity"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "is_about",
-      "range": "string",
+      "usage_slot_name": "used_in",
+      "range": "Investigation",
       "@type": "SlotDefinition"
     },
     {
-      "name": "Process_has_input",
+      "name": "MaterialProcessing_has_input",
       "definition_uri": "https://example.org/TEMP/has_input",
       "from_schema": "TEMP",
       "is_a": "has_input",
-      "domain": "Process",
+      "domain": "MaterialProcessing",
       "slot_uri": "https://example.org/TEMP/has_input",
+      "multivalued": true,
       "alias": "has_input",
+      "owner": "MaterialProcessing",
+      "domain_of": [
+        "MaterialProcessing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_input",
+      "range": "MaterialEntity",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "MaterialProcessing_has_output",
+      "definition_uri": "https://example.org/TEMP/has_output",
+      "from_schema": "TEMP",
+      "is_a": "has_output",
+      "domain": "MaterialProcessing",
+      "slot_uri": "https://example.org/TEMP/has_output",
+      "multivalued": true,
+      "alias": "has_output",
+      "owner": "MaterialProcessing",
+      "domain_of": [
+        "MaterialProcessing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_output",
+      "range": "MaterialEntity",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Participation_id",
+      "definition_uri": "https://example.org/TEMP/id",
+      "from_schema": "TEMP",
+      "is_a": "id",
+      "domain": "Participation",
+      "slot_uri": "https://example.org/TEMP/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "Participation",
+      "domain_of": [
+        "Participation"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Participation_includes",
+      "definition_uri": "https://example.org/TEMP/includes",
+      "from_schema": "TEMP",
+      "is_a": "includes",
+      "domain": "Participation",
+      "slot_uri": "https://example.org/TEMP/includes",
+      "alias": "includes",
+      "owner": "Participation",
+      "domain_of": [
+        "Participation"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "includes",
+      "range": "Subject",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Participation_involved_in",
+      "definition_uri": "https://example.org/TEMP/involved_in",
+      "from_schema": "TEMP",
+      "is_a": "involved_in",
+      "domain": "Participation",
+      "slot_uri": "https://example.org/TEMP/involved_in",
+      "multivalued": true,
+      "alias": "involved_in",
+      "owner": "Participation",
+      "domain_of": [
+        "Participation"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "involved_in",
+      "range": "Investigation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Process_id",
+      "definition_uri": "https://example.org/TEMP/id",
+      "from_schema": "TEMP",
+      "is_a": "id",
+      "domain": "Process",
+      "slot_uri": "https://example.org/TEMP/id",
+      "identifier": true,
+      "alias": "id",
       "owner": "Process",
       "domain_of": [
         "Process"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "has_input",
-      "range": "string",
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Process_has_output",
-      "definition_uri": "https://example.org/TEMP/has_output",
-      "from_schema": "TEMP",
-      "is_a": "has_output",
-      "domain": "Process",
-      "slot_uri": "https://example.org/TEMP/has_output",
-      "alias": "has_output",
-      "owner": "Process",
-      "domain_of": [
-        "Process"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "has_output",
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Sampling_has_input",
+      "name": "SpecimenCollectionProcess_has_input",
       "definition_uri": "https://example.org/TEMP/has_input",
       "from_schema": "TEMP",
       "is_a": "has_input",
-      "domain": "Sampling",
+      "domain": "SpecimenCollectionProcess",
       "slot_uri": "https://example.org/TEMP/has_input",
+      "multivalued": true,
       "alias": "has_input",
-      "owner": "Sampling",
+      "owner": "SpecimenCollectionProcess",
       "domain_of": [
-        "Sampling"
+        "SpecimenCollectionProcess"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "has_input",
-      "range": "string",
+      "range": "MaterialEntity",
       "@type": "SlotDefinition"
     },
     {
-      "name": "Sampling_has_output",
+      "name": "SpecimenCollectionProcess_has_output",
       "definition_uri": "https://example.org/TEMP/has_output",
       "from_schema": "TEMP",
       "is_a": "has_output",
-      "domain": "Sampling",
+      "domain": "SpecimenCollectionProcess",
       "slot_uri": "https://example.org/TEMP/has_output",
+      "multivalued": true,
       "alias": "has_output",
-      "owner": "Sampling",
+      "owner": "SpecimenCollectionProcess",
       "domain_of": [
-        "Sampling"
+        "SpecimenCollectionProcess"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "has_output",
-      "range": "string",
+      "range": "MaterialEntity",
       "@type": "SlotDefinition"
     },
     {
-      "name": "Specimen_has_parent_specimen",
-      "definition_uri": "https://example.org/TEMP/has_parent_specimen",
+      "name": "Subject_id",
+      "definition_uri": "https://example.org/TEMP/id",
       "from_schema": "TEMP",
-      "is_a": "has_parent_specimen",
-      "domain": "Specimen",
-      "slot_uri": "https://example.org/TEMP/has_parent_specimen",
-      "alias": "has_parent_specimen",
-      "owner": "Specimen",
-      "domain_of": [
-        "Specimen"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "has_parent_specimen",
-      "range": "Specimen",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Specimen_has_source",
-      "definition_uri": "https://example.org/TEMP/has_source",
-      "from_schema": "TEMP",
-      "is_a": "has_source",
-      "domain": "Specimen",
-      "slot_uri": "https://example.org/TEMP/has_source",
-      "alias": "has_source",
-      "owner": "Specimen",
-      "domain_of": [
-        "Specimen"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "has_source",
-      "range": "ResearchSubject",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Subject_birth_date",
-      "definition_uri": "https://example.org/TEMP/birth_date",
-      "in_subset": [
-        "potential_phi"
-      ],
-      "from_schema": "TEMP",
-      "is_a": "birth_date",
+      "is_a": "id",
       "domain": "Subject",
-      "slot_uri": "https://example.org/TEMP/birth_date",
-      "alias": "birth_date",
+      "slot_uri": "https://example.org/TEMP/id",
+      "identifier": true,
+      "alias": "id",
       "owner": "Subject",
       "domain_of": [
         "Subject"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "birth_date",
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Subject_taxon",
-      "definition_uri": "https://example.org/TEMP/taxon",
-      "from_schema": "TEMP",
-      "is_a": "taxon",
-      "domain": "Subject",
-      "slot_uri": "https://example.org/TEMP/taxon",
-      "alias": "taxon",
-      "owner": "Subject",
-      "domain_of": [
-        "Subject"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "taxon",
-      "range": "string",
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "Condition",
-      "definition_uri": "https://example.org/TEMP/Condition",
-      "from_schema": "TEMP",
-      "aliases": [
-        "Disease",
-        "Phenotype"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Condition",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Database",
-      "definition_uri": "https://example.org/TEMP/Database",
+      "name": "Container",
+      "definition_uri": "https://example.org/TEMP/Container",
       "from_schema": "TEMP",
       "slots": [
-        "Database_subjects"
+        "Container_materials",
+        "Container_participations",
+        "Container_processes",
+        "Container_investigations",
+        "Container_subjects"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Database",
-      "tree_root": true,
+      "class_uri": "https://example.org/TEMP/Container",
       "@type": "ClassDefinition"
     },
     {
-      "name": "Diagnosis",
-      "definition_uri": "https://example.org/TEMP/Diagnosis",
-      "in_subset": [
-        "temporal_data"
-      ],
-      "from_schema": "TEMP",
-      "is_a": "Information",
-      "slots": [
-        "Diagnosis_is_about",
-        "Diagnosis_source"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Diagnosis",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Document",
-      "definition_uri": "https://example.org/TEMP/Document",
+      "name": "Investigation",
+      "definition_uri": "https://example.org/TEMP/Investigation",
       "from_schema": "TEMP",
       "slots": [
-        "Document_is_about"
+        "Investigation_id",
+        "name",
+        "Investigation_part_of"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Document",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Event",
-      "definition_uri": "https://example.org/TEMP/Event",
-      "from_schema": "TEMP",
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Event",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Information",
-      "definition_uri": "https://example.org/TEMP/Information",
-      "from_schema": "TEMP",
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Information",
+      "class_uri": "https://example.org/TEMP/Investigation",
       "@type": "ClassDefinition"
     },
     {
       "name": "MaterialEntity",
       "definition_uri": "https://example.org/TEMP/MaterialEntity",
+      "description": "Physical entity that is an input our output of a process",
       "from_schema": "TEMP",
       "aliases": [
-        "Substance"
+        "Substance",
+        "Specimen",
+        "Sample",
+        "Biospecimen",
+        "Biosample"
+      ],
+      "slots": [
+        "MaterialEntity_id",
+        "name",
+        "MaterialEntity_used_in",
+        "MaterialEntity_source"
       ],
       "slot_usage": {},
       "class_uri": "https://example.org/TEMP/MaterialEntity",
       "@type": "ClassDefinition"
     },
     {
-      "name": "Measurment",
-      "definition_uri": "https://example.org/TEMP/Measurment",
-      "in_subset": [
-        "temporal_data"
-      ],
+      "name": "MaterialProcessing",
+      "definition_uri": "https://example.org/TEMP/MaterialProcessing",
+      "description": "A planned process which results in physical changes in a specified input material",
       "from_schema": "TEMP",
+      "mappings": [
+        "OBI:0000094"
+      ],
+      "is_a": "Process",
+      "slots": [
+        "Process_id",
+        "MaterialProcessing_has_input",
+        "MaterialProcessing_has_output"
+      ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Measurment",
+      "class_uri": "http://purl.obolibrary.org/obo/OBI_0000094",
       "@type": "ClassDefinition"
     },
     {
-      "name": "Observation",
-      "definition_uri": "https://example.org/TEMP/Observation",
-      "in_subset": [
-        "temporal_data"
-      ],
+      "name": "Participation",
+      "definition_uri": "https://example.org/TEMP/Participation",
       "from_schema": "TEMP",
+      "slots": [
+        "Participation_includes",
+        "Participation_id",
+        "name",
+        "Participation_involved_in"
+      ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Observation",
+      "class_uri": "https://example.org/TEMP/Participation",
       "@type": "ClassDefinition"
     },
     {
       "name": "Process",
       "definition_uri": "https://example.org/TEMP/Process",
       "from_schema": "TEMP",
+      "abstract": true,
       "slots": [
-        "Process_has_input",
-        "Process_has_output"
+        "Process_id"
       ],
       "slot_usage": {},
       "class_uri": "https://example.org/TEMP/Process",
       "@type": "ClassDefinition"
     },
     {
-      "name": "ResearchProject",
-      "definition_uri": "https://example.org/TEMP/ResearchProject",
-      "from_schema": "TEMP",
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/ResearchProject",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "ResearchSubject",
-      "definition_uri": "https://example.org/TEMP/ResearchSubject",
-      "description": "A Subject that has participated in at least on Study",
+      "name": "SpecimenCollectionProcess",
+      "definition_uri": "https://example.org/TEMP/SpecimenCollectionProcess",
+      "description": "A planned process with the objective of collecting a specimen",
       "from_schema": "TEMP",
       "aliases": [
-        "Participant"
+        "MaterialCollectionProcess"
       ],
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/ResearchSubject",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Sampling",
-      "definition_uri": "https://example.org/TEMP/Sampling",
-      "from_schema": "TEMP",
-      "aliases": [
-        "SpecimenCreation",
-        "SampleCollection"
+      "mappings": [
+        "OBI:0000659"
       ],
+      "is_a": "Process",
       "slots": [
-        "Sampling_has_input",
-        "Sampling_has_output"
+        "Process_id",
+        "SpecimenCollectionProcess_has_input",
+        "SpecimenCollectionProcess_has_output"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Sampling",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Site",
-      "definition_uri": "https://example.org/TEMP/Site",
-      "from_schema": "TEMP",
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Site",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Specimen",
-      "definition_uri": "https://example.org/TEMP/Specimen",
-      "from_schema": "TEMP",
-      "aliases": [
-        "Sample"
-      ],
-      "slots": [
-        "Specimen_has_source",
-        "Specimen_has_parent_specimen"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Specimen",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Study",
-      "definition_uri": "https://example.org/TEMP/Study",
-      "description": "the root class of the data model",
-      "from_schema": "TEMP",
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Study",
+      "class_uri": "http://purl.obolibrary.org/obo/OBI_0000659",
       "@type": "ClassDefinition"
     },
     {
@@ -784,13 +931,12 @@
       "definition_uri": "https://example.org/TEMP/Subject",
       "from_schema": "TEMP",
       "aliases": [
-        "Person",
-        "Organism"
+        "Site",
+        "Participant"
       ],
-      "is_a": "MaterialEntity",
       "slots": [
-        "Subject_taxon",
-        "Subject_birth_date"
+        "Subject_id",
+        "name"
       ],
       "slot_usage": {},
       "class_uri": "https://example.org/TEMP/Subject",
@@ -799,14 +945,14 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "cmdr.yaml",
-  "source_file_date": "2023-03-06T14:28:28",
-  "source_file_size": 486,
-  "generation_date": "2023-03-06T14:49:43",
+  "source_file_date": "2023-03-06T15:00:10",
+  "source_file_size": 485,
+  "generation_date": "2023-03-06T17:07:51",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cmdr.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
-    "conservative.context.jsonld",
+    "from_sheets.context.jsonld",
     {
       "@base": "https://w3id.org/linkml/cmdr/"
     }

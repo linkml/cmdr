@@ -37,123 +37,76 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
-TEMP:Condition CLOSED {
-    (  $TEMP:Condition_tes rdf:type . * ;
-       rdf:type [ TEMP:Condition ] ?
-    )
-}
-
-TEMP:Database CLOSED {
-    (  $TEMP:Database_tes TEMP:subjects @TEMP:Subject ? ;
-       rdf:type [ TEMP:Database ] ?
-    )
-}
-
-TEMP:Diagnosis CLOSED {
-    (  $TEMP:Diagnosis_tes (  &TEMP:Information_tes ;
-          rdf:type [ TEMP:Information ] ? ;
-          TEMP:is_about @TEMP:Condition ? ;
-          TEMP:source @linkml:String ?
+TEMP:Container CLOSED {
+    (  $TEMP:Container_tes (  TEMP:materials @TEMP:MaterialEntity * ;
+          TEMP:participations @TEMP:Participation * ;
+          TEMP:processes @TEMP:Process * ;
+          TEMP:investigations @TEMP:Investigation * ;
+          TEMP:subjects @TEMP:Subject *
        ) ;
-       rdf:type [ TEMP:Diagnosis ] ?
+       rdf:type [ TEMP:Container ] ?
     )
 }
 
-TEMP:Document CLOSED {
-    (  $TEMP:Document_tes TEMP:is_about @linkml:String ? ;
-       rdf:type [ TEMP:Document ] ?
+TEMP:Investigation CLOSED {
+    (  $TEMP:Investigation_tes (  TEMP:name @linkml:String ? ;
+          TEMP:part_of @TEMP:Investigation ?
+       ) ;
+       rdf:type [ TEMP:Investigation ]
     )
 }
 
-TEMP:Event CLOSED {
-    (  $TEMP:Event_tes rdf:type . * ;
-       rdf:type [ TEMP:Event ] ?
+TEMP:MaterialEntity CLOSED {
+    (  $TEMP:MaterialEntity_tes (  TEMP:name @linkml:String ? ;
+          TEMP:used_in @TEMP:Investigation * ;
+          TEMP:source @TEMP:Subject ?
+       ) ;
+       rdf:type [ TEMP:MaterialEntity ]
     )
 }
 
-TEMP:Information  (
-    CLOSED {
-       (  $TEMP:Information_tes rdf:type . * ;
-          rdf:type [ TEMP:Information ] ?
-       )
-    } OR @TEMP:Diagnosis
+TEMP:MaterialProcessing CLOSED {
+    (  $TEMP:MaterialProcessing_tes (  &TEMP:Process_tes ;
+          rdf:type [ TEMP:Process ] ? ;
+          TEMP:has_input @TEMP:MaterialEntity * ;
+          TEMP:has_output @TEMP:MaterialEntity *
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000094> ]
+    )
+}
+
+TEMP:Participation CLOSED {
+    (  $TEMP:Participation_tes (  TEMP:includes @TEMP:Subject ? ;
+          TEMP:name @linkml:String ? ;
+          TEMP:involved_in @TEMP:Investigation *
+       ) ;
+       rdf:type [ TEMP:Participation ]
+    )
+}
+
+TEMP:Process  (
+    @TEMP:MaterialProcessing OR @TEMP:SpecimenCollectionProcess
 )
 
-TEMP:MaterialEntity  (
-    CLOSED {
-       (  $TEMP:MaterialEntity_tes rdf:type . * ;
-          rdf:type [ TEMP:MaterialEntity ] ?
-       )
-    } OR @TEMP:Subject
-)
-
-TEMP:Measurment CLOSED {
-    (  $TEMP:Measurment_tes rdf:type . * ;
-       rdf:type [ TEMP:Measurment ] ?
+TEMP:Process_struct {
+    (  $TEMP:Process_tes rdf:type . * ;
+       rdf:type [ TEMP:Process ]
     )
 }
 
-TEMP:Observation CLOSED {
-    (  $TEMP:Observation_tes rdf:type . * ;
-       rdf:type [ TEMP:Observation ] ?
-    )
-}
-
-TEMP:Process CLOSED {
-    (  $TEMP:Process_tes (  TEMP:has_input @linkml:String ? ;
-          TEMP:has_output @linkml:String ?
+TEMP:SpecimenCollectionProcess CLOSED {
+    (  $TEMP:SpecimenCollectionProcess_tes (  &TEMP:Process_tes ;
+          rdf:type [ TEMP:Process ] ? ;
+          TEMP:has_input @TEMP:MaterialEntity * ;
+          TEMP:has_output @TEMP:MaterialEntity *
        ) ;
-       rdf:type [ TEMP:Process ] ?
-    )
-}
-
-TEMP:ResearchProject CLOSED {
-    (  $TEMP:ResearchProject_tes rdf:type . * ;
-       rdf:type [ TEMP:ResearchProject ] ?
-    )
-}
-
-TEMP:ResearchSubject CLOSED {
-    (  $TEMP:ResearchSubject_tes rdf:type . * ;
-       rdf:type [ TEMP:ResearchSubject ] ?
-    )
-}
-
-TEMP:Sampling CLOSED {
-    (  $TEMP:Sampling_tes (  TEMP:has_input @linkml:String ? ;
-          TEMP:has_output @linkml:String ?
-       ) ;
-       rdf:type [ TEMP:Sampling ] ?
-    )
-}
-
-TEMP:Site CLOSED {
-    (  $TEMP:Site_tes rdf:type . * ;
-       rdf:type [ TEMP:Site ] ?
-    )
-}
-
-TEMP:Specimen CLOSED {
-    (  $TEMP:Specimen_tes (  TEMP:has_source @TEMP:ResearchSubject ? ;
-          TEMP:has_parent_specimen @TEMP:Specimen ?
-       ) ;
-       rdf:type [ TEMP:Specimen ] ?
-    )
-}
-
-TEMP:Study CLOSED {
-    (  $TEMP:Study_tes rdf:type . * ;
-       rdf:type [ TEMP:Study ] ?
+       rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000659> ]
     )
 }
 
 TEMP:Subject CLOSED {
-    (  $TEMP:Subject_tes (  &TEMP:MaterialEntity_tes ;
-          rdf:type [ TEMP:MaterialEntity ] ? ;
-          TEMP:taxon @linkml:String ? ;
-          TEMP:birth_date @linkml:String ?
-       ) ;
-       rdf:type [ TEMP:Subject ] ?
+    (  $TEMP:Subject_tes TEMP:name @linkml:String ? ;
+       rdf:type [ TEMP:Subject ]
     )
 }
 

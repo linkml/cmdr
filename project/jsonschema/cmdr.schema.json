@@ -1,154 +1,181 @@
 {
     "$defs": {
-        "Condition": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "Condition",
-            "type": "object"
-        },
-        "Database": {
+        "Container": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "subjects": {
-                    "$ref": "#/$defs/Subject"
-                }
-            },
-            "title": "Database",
-            "type": "object"
-        },
-        "Diagnosis": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "is_about": {
-                    "$ref": "#/$defs/Condition"
+                "investigations": {
+                    "items": {
+                        "$ref": "#/$defs/Investigation"
+                    },
+                    "type": "array"
                 },
-                "source": {
-                    "type": "string"
+                "materials": {
+                    "items": {
+                        "$ref": "#/$defs/MaterialEntity"
+                    },
+                    "type": "array"
+                },
+                "participations": {
+                    "items": {
+                        "$ref": "#/$defs/Participation"
+                    },
+                    "type": "array"
+                },
+                "processes": {
+                    "items": {
+                        "$ref": "#/$defs/Process"
+                    },
+                    "type": "array"
+                },
+                "subjects": {
+                    "items": {
+                        "$ref": "#/$defs/Subject"
+                    },
+                    "type": "array"
                 }
             },
-            "title": "Diagnosis",
+            "title": "Container",
             "type": "object"
         },
-        "Document": {
+        "Investigation": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "is_about": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "part_of": {
                     "type": "string"
                 }
             },
-            "title": "Document",
-            "type": "object"
-        },
-        "Event": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "Event",
-            "type": "object"
-        },
-        "Information": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "Information",
+            "required": [
+                "id"
+            ],
+            "title": "Investigation",
             "type": "object"
         },
         "MaterialEntity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Physical entity that is an input our output of a process",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "used_in": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "MaterialEntity",
             "type": "object"
         },
-        "Measurment": {
+        "MaterialProcessing": {
             "additionalProperties": false,
-            "description": "",
-            "title": "Measurment",
-            "type": "object"
-        },
-        "Observation": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "Observation",
-            "type": "object"
-        },
-        "Process": {
-            "additionalProperties": false,
-            "description": "",
+            "description": "A planned process which results in physical changes in a specified input material",
             "properties": {
                 "has_input": {
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "has_output": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
                     "type": "string"
                 }
             },
-            "title": "Process",
+            "required": [
+                "id"
+            ],
+            "title": "MaterialProcessing",
             "type": "object"
         },
-        "ResearchProject": {
+        "Participation": {
             "additionalProperties": false,
             "description": "",
-            "title": "ResearchProject",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "includes": {
+                    "type": "string"
+                },
+                "involved_in": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Participation",
             "type": "object"
         },
-        "ResearchSubject": {
+        "SpecimenCollectionProcess": {
             "additionalProperties": false,
-            "description": "A Subject that has participated in at least on Study",
-            "title": "ResearchSubject",
-            "type": "object"
-        },
-        "Sampling": {
-            "additionalProperties": false,
-            "description": "",
+            "description": "A planned process with the objective of collecting a specimen",
             "properties": {
                 "has_input": {
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "has_output": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
                     "type": "string"
                 }
             },
-            "title": "Sampling",
-            "type": "object"
-        },
-        "Site": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "Site",
-            "type": "object"
-        },
-        "Specimen": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "has_parent_specimen": {
-                    "$ref": "#/$defs/Specimen"
-                },
-                "has_source": {
-                    "$ref": "#/$defs/ResearchSubject"
-                }
-            },
-            "title": "Specimen",
-            "type": "object"
-        },
-        "Study": {
-            "additionalProperties": false,
-            "description": "the root class of the data model",
-            "title": "Study",
+            "required": [
+                "id"
+            ],
+            "title": "SpecimenCollectionProcess",
             "type": "object"
         },
         "Subject": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "birth_date": {
+                "id": {
                     "type": "string"
                 },
-                "taxon": {
+                "name": {
                     "type": "string"
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Subject",
             "type": "object"
         }
@@ -157,11 +184,6 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
-    "properties": {
-        "subjects": {
-            "$ref": "#/$defs/Subject"
-        }
-    },
     "title": "cmdr",
     "type": "object",
     "version": null
