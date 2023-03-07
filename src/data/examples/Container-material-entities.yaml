@@ -37,11 +37,11 @@ subjects:
     name: "subject one"
   - id: "omicsrus:su2"
     name: "subject two"
-processes:
-  - id: "omicsrus:mp1"
-    name: "Material Processing 1"
-    has_input: "omicsrus:m1"
-    has_output: "omicsrus:m1"
+#processes:
+#  - id: "omicsrus:mp1"
+#    name: "Material Processing 1"
+#    has_input: "omicsrus:m1"
+#    has_output: "omicsrus:m1"
 #  - id: "omicsrus:scp1"
 #    name: "Specimen Collection Process 1"
 #    has_input: "omicsrus:su1"
