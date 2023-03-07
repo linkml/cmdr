@@ -59,7 +59,9 @@ TEMP:Investigation CLOSED {
 TEMP:MaterialEntity CLOSED {
     (  $TEMP:MaterialEntity_tes (  TEMP:name @linkml:String ? ;
           TEMP:used_in @TEMP:Investigation * ;
-          TEMP:source @TEMP:Subject ?
+          TEMP:source @TEMP:Subject ? ;
+          TEMP:volume @TEMP:Quantity ? ;
+          TEMP:concentration @TEMP:Quantity ?
        ) ;
        rdf:type [ TEMP:MaterialEntity ]
     )
@@ -91,6 +93,22 @@ TEMP:Process  (
 TEMP:Process_struct {
     (  $TEMP:Process_tes rdf:type . * ;
        rdf:type [ TEMP:Process ]
+    )
+}
+
+TEMP:Quantity CLOSED {
+    (  $TEMP:Quantity_tes (  TEMP:has_raw_value @linkml:String ? ;
+          TEMP:has_numeric_value @linkml:Float ? ;
+          TEMP:has_unit @linkml:String ? ;
+          TEMP:comparator @linkml:String ?
+       ) ;
+       rdf:type [ TEMP:Quantity ] ?
+    )
+}
+
+TEMP:QuantityValue CLOSED {
+    (  $TEMP:QuantityValue_tes rdf:type . * ;
+       rdf:type [ TEMP:QuantityValue ] ?
     )
 }
 

@@ -6,23 +6,6 @@
     sh:closed true ;
     sh:description "A planned process which results in physical changes in a specified input material" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/id> ],
-        [ sh:class <https://example.org/TEMP/MaterialEntity> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://example.org/TEMP/has_output> ],
-        [ sh:class <https://example.org/TEMP/MaterialEntity> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path <https://example.org/TEMP/has_input> ] ;
-    sh:targetClass <http://purl.obolibrary.org/obo/OBI_0000094> .
-
-<http://purl.obolibrary.org/obo/OBI_0000659> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A planned process with the objective of collecting a specimen" ;
-    sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class <https://example.org/TEMP/MaterialEntity> ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
@@ -34,6 +17,23 @@
         [ sh:maxCount 1 ;
             sh:order 2 ;
             sh:path <https://example.org/TEMP/id> ] ;
+    sh:targetClass <http://purl.obolibrary.org/obo/OBI_0000094> .
+
+<http://purl.obolibrary.org/obo/OBI_0000659> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A planned process with the objective of collecting a specimen" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/id> ],
+        [ sh:class <https://example.org/TEMP/MaterialEntity> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/has_input> ],
+        [ sh:class <https://example.org/TEMP/MaterialEntity> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/has_output> ] ;
     sh:targetClass <http://purl.obolibrary.org/obo/OBI_0000659> .
 
 <https://example.org/TEMP/Container> a sh:NodeShape ;
@@ -43,23 +43,28 @@
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
             sh:path <https://example.org/TEMP/subjects> ],
-        [ sh:class <https://example.org/TEMP/Participation> ;
+        [ sh:class <https://example.org/TEMP/Investigation> ;
             sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://example.org/TEMP/participations> ],
-        [ sh:class <https://example.org/TEMP/Process> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/processes> ],
+            sh:order 3 ;
+            sh:path <https://example.org/TEMP/investigations> ],
         [ sh:class <https://example.org/TEMP/MaterialEntity> ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
             sh:path <https://example.org/TEMP/materials> ],
-        [ sh:class <https://example.org/TEMP/Investigation> ;
+        [ sh:class <https://example.org/TEMP/Process> ;
             sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path <https://example.org/TEMP/investigations> ] ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/processes> ],
+        [ sh:class <https://example.org/TEMP/Participation> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/participations> ] ;
     sh:targetClass <https://example.org/TEMP/Container> .
+
+<https://example.org/TEMP/QuantityValue> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/QuantityValue> .
 
 <https://example.org/TEMP/Participation> a sh:NodeShape ;
     sh:closed true ;
@@ -72,13 +77,13 @@
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
             sh:path <https://example.org/TEMP/includes> ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/name> ],
         [ sh:class <https://example.org/TEMP/Investigation> ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path <https://example.org/TEMP/involved_in> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/name> ] ;
+            sh:path <https://example.org/TEMP/involved_in> ] ;
     sh:targetClass <https://example.org/TEMP/Participation> .
 
 <https://example.org/TEMP/Process> a sh:NodeShape ;
@@ -88,6 +93,23 @@
             sh:order 0 ;
             sh:path <https://example.org/TEMP/id> ] ;
     sh:targetClass <https://example.org/TEMP/Process> .
+
+<https://example.org/TEMP/Quantity> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/has_raw_value> ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/has_numeric_value> ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <https://example.org/TEMP/comparator> ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/has_unit> ] ;
+    sh:targetClass <https://example.org/TEMP/Quantity> .
 
 <https://example.org/TEMP/Subject> a sh:NodeShape ;
     sh:closed true ;
@@ -103,17 +125,17 @@
 <https://example.org/TEMP/Investigation> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
+    sh:property [ sh:class <https://example.org/TEMP/Investigation> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/part_of> ],
+        [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path <https://example.org/TEMP/name> ],
         [ sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path <https://example.org/TEMP/id> ],
-        [ sh:class <https://example.org/TEMP/Investigation> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/part_of> ] ;
+            sh:path <https://example.org/TEMP/id> ] ;
     sh:targetClass <https://example.org/TEMP/Investigation> .
 
 <https://example.org/TEMP/MaterialEntity> a sh:NodeShape ;
@@ -123,17 +145,27 @@
     sh:property [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path <https://example.org/TEMP/name> ],
-        [ sh:class <https://example.org/TEMP/Subject> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path <https://example.org/TEMP/source> ],
         [ sh:class <https://example.org/TEMP/Investigation> ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
             sh:path <https://example.org/TEMP/used_in> ],
+        [ sh:class <https://example.org/TEMP/Quantity> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path <https://example.org/TEMP/concentration> ],
+        [ sh:class <https://example.org/TEMP/Quantity> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path <https://example.org/TEMP/volume> ],
         [ sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path <https://example.org/TEMP/id> ] ;
+            sh:path <https://example.org/TEMP/id> ],
+        [ sh:class <https://example.org/TEMP/Subject> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path <https://example.org/TEMP/source> ] ;
     sh:targetClass <https://example.org/TEMP/MaterialEntity> .
 

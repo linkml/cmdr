@@ -62,6 +62,9 @@
             "additionalProperties": false,
             "description": "Physical entity that is an input our output of a process",
             "properties": {
+                "concentration": {
+                    "$ref": "#/$defs/Quantity"
+                },
                 "id": {
                     "type": "string"
                 },
@@ -76,6 +79,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "volume": {
+                    "$ref": "#/$defs/Quantity"
                 }
             },
             "required": [
@@ -134,6 +140,32 @@
                 "id"
             ],
             "title": "Participation",
+            "type": "object"
+        },
+        "Quantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "comparator": {
+                    "type": "string"
+                },
+                "has_numeric_value": {
+                    "type": "number"
+                },
+                "has_raw_value": {
+                    "type": "string"
+                },
+                "has_unit": {
+                    "type": "string"
+                }
+            },
+            "title": "Quantity",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "QuantityValue",
             "type": "object"
         },
         "SpecimenCollectionProcess": {

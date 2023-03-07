@@ -276,6 +276,30 @@
   ],
   "slots": [
     {
+      "name": "comparator",
+      "definition_uri": "https://example.org/TEMP/comparator",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/comparator",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "concentration",
+      "definition_uri": "https://example.org/TEMP/concentration",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/concentration",
+      "owner": "MaterialEntity",
+      "domain_of": [
+        "MaterialEntity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "has_input",
       "definition_uri": "https://example.org/TEMP/has_input",
       "from_schema": "TEMP",
@@ -289,6 +313,18 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "has_numeric_value",
+      "definition_uri": "https://example.org/TEMP/has_numeric_value",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/has_numeric_value",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "has_output",
       "definition_uri": "https://example.org/TEMP/has_output",
       "from_schema": "TEMP",
@@ -297,6 +333,30 @@
       "domain_of": [
         "MaterialProcessing",
         "SpecimenCollectionProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_raw_value",
+      "definition_uri": "https://example.org/TEMP/has_raw_value",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/has_raw_value",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_unit",
+      "definition_uri": "https://example.org/TEMP/has_unit",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/has_unit",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -453,6 +513,18 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "volume",
+      "definition_uri": "https://example.org/TEMP/volume",
+      "from_schema": "TEMP",
+      "slot_uri": "https://example.org/TEMP/volume",
+      "owner": "MaterialEntity",
+      "domain_of": [
+        "MaterialEntity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "Container_investigations",
       "definition_uri": "https://example.org/TEMP/investigations",
       "from_schema": "TEMP",
@@ -589,6 +661,24 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "MaterialEntity_concentration",
+      "definition_uri": "https://example.org/TEMP/concentration",
+      "from_schema": "TEMP",
+      "is_a": "concentration",
+      "domain": "MaterialEntity",
+      "slot_uri": "https://example.org/TEMP/concentration",
+      "alias": "concentration",
+      "owner": "MaterialEntity",
+      "domain_of": [
+        "MaterialEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "concentration",
+      "range": "Quantity",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "MaterialEntity_id",
       "definition_uri": "https://example.org/TEMP/id",
       "from_schema": "TEMP",
@@ -643,6 +733,24 @@
       "is_usage_slot": true,
       "usage_slot_name": "used_in",
       "range": "Investigation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "MaterialEntity_volume",
+      "definition_uri": "https://example.org/TEMP/volume",
+      "from_schema": "TEMP",
+      "is_a": "volume",
+      "domain": "MaterialEntity",
+      "slot_uri": "https://example.org/TEMP/volume",
+      "alias": "volume",
+      "owner": "MaterialEntity",
+      "domain_of": [
+        "MaterialEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "volume",
+      "range": "Quantity",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -755,6 +863,74 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "Quantity_comparator",
+      "definition_uri": "https://example.org/TEMP/comparator",
+      "from_schema": "TEMP",
+      "is_a": "comparator",
+      "domain": "Quantity",
+      "slot_uri": "https://example.org/TEMP/comparator",
+      "alias": "comparator",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "comparator",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Quantity_has_numeric_value",
+      "definition_uri": "https://example.org/TEMP/has_numeric_value",
+      "from_schema": "TEMP",
+      "is_a": "has_numeric_value",
+      "domain": "Quantity",
+      "slot_uri": "https://example.org/TEMP/has_numeric_value",
+      "alias": "has_numeric_value",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_numeric_value",
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Quantity_has_raw_value",
+      "definition_uri": "https://example.org/TEMP/has_raw_value",
+      "from_schema": "TEMP",
+      "is_a": "has_raw_value",
+      "domain": "Quantity",
+      "slot_uri": "https://example.org/TEMP/has_raw_value",
+      "alias": "has_raw_value",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_raw_value",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Quantity_has_unit",
+      "definition_uri": "https://example.org/TEMP/has_unit",
+      "from_schema": "TEMP",
+      "is_a": "has_unit",
+      "domain": "Quantity",
+      "slot_uri": "https://example.org/TEMP/has_unit",
+      "alias": "has_unit",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_unit",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "SpecimenCollectionProcess_has_input",
       "definition_uri": "https://example.org/TEMP/has_input",
       "from_schema": "TEMP",
@@ -855,7 +1031,9 @@
         "MaterialEntity_id",
         "name",
         "MaterialEntity_used_in",
-        "MaterialEntity_source"
+        "MaterialEntity_source",
+        "MaterialEntity_volume",
+        "MaterialEntity_concentration"
       ],
       "slot_usage": {},
       "class_uri": "https://example.org/TEMP/MaterialEntity",
@@ -906,6 +1084,28 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Quantity",
+      "definition_uri": "https://example.org/TEMP/Quantity",
+      "from_schema": "TEMP",
+      "slots": [
+        "Quantity_has_raw_value",
+        "Quantity_has_numeric_value",
+        "Quantity_has_unit",
+        "Quantity_comparator"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://example.org/TEMP/Quantity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantityValue",
+      "definition_uri": "https://example.org/TEMP/QuantityValue",
+      "from_schema": "TEMP",
+      "slot_usage": {},
+      "class_uri": "https://example.org/TEMP/QuantityValue",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "SpecimenCollectionProcess",
       "definition_uri": "https://example.org/TEMP/SpecimenCollectionProcess",
       "description": "A planned process with the objective of collecting a specimen",
@@ -947,7 +1147,7 @@
   "source_file": "cmdr.yaml",
   "source_file_date": "2023-03-06T15:00:10",
   "source_file_size": 485,
-  "generation_date": "2023-03-06T17:07:51",
+  "generation_date": "2023-03-07T11:15:03",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cmdr.context.jsonld",

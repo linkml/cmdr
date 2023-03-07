@@ -55,6 +55,8 @@ classes:
     description: Physical entity that is an input our output of a process
     from_schema: TEMP
     slot_usage:
+      concentration:
+        range: Quantity
       id:
         identifier: true
         range: uriorcurie
@@ -65,11 +67,15 @@ classes:
       used_in:
         multivalued: true
         range: Investigation
+      volume:
+        range: Quantity
     slots:
     - id
     - name
     - used_in
     - source
+    - volume
+    - concentration
   MaterialProcessing:
     class_uri: OBI:0000094
     description: A planned process which results in physical changes in a specified
@@ -111,6 +117,24 @@ classes:
         range: uriorcurie
     slots:
     - id
+  Quantity:
+    from_schema: TEMP
+    slot_usage:
+      comparator:
+        range: string
+      has_numeric_value:
+        range: float
+      has_raw_value:
+        range: string
+      has_unit:
+        range: string
+    slots:
+    - has_raw_value
+    - has_numeric_value
+    - has_unit
+    - comparator
+  QuantityValue:
+    from_schema: TEMP
   SpecimenCollectionProcess:
     aliases:
     - MaterialCollectionProcess
@@ -156,9 +180,19 @@ prefixes:
   sdo: http://schema.org/
   wikidata: http://www.wikidata.org/entity/
 slots:
+  comparator:
+    from_schema: TEMP
+  concentration:
+    from_schema: TEMP
   has_input:
     from_schema: TEMP
+  has_numeric_value:
+    from_schema: TEMP
   has_output:
+    from_schema: TEMP
+  has_raw_value:
+    from_schema: TEMP
+  has_unit:
     from_schema: TEMP
   id:
     from_schema: TEMP
@@ -183,6 +217,8 @@ slots:
   subjects:
     from_schema: TEMP
   used_in:
+    from_schema: TEMP
+  volume:
     from_schema: TEMP
 subsets:
   potential_phi:

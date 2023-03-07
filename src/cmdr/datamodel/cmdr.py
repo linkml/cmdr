@@ -1,5 +1,5 @@
 # Auto generated from cmdr.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-06T17:07:59
+# Generation date: 2023-03-07T11:15:11
 # Schema: cmdr
 #
 # id: https://w3id.org/linkml/cmdr
@@ -22,7 +22,7 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import String, Uriorcurie
+from linkml_runtime.linkml_model.types import Float, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import URIorCURIE
 
 metamodel_version = "1.7.0"
@@ -147,6 +147,8 @@ class MaterialEntity(YAMLRoot):
     name: Optional[str] = None
     used_in: Optional[Union[Union[str, InvestigationId], List[Union[str, InvestigationId]]]] = empty_list()
     source: Optional[Union[str, SubjectId]] = None
+    volume: Optional[Union[dict, "Quantity"]] = None
+    concentration: Optional[Union[dict, "Quantity"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -163,6 +165,12 @@ class MaterialEntity(YAMLRoot):
 
         if self.source is not None and not isinstance(self.source, SubjectId):
             self.source = SubjectId(self.source)
+
+        if self.volume is not None and not isinstance(self.volume, Quantity):
+            self.volume = Quantity(**as_dict(self.volume))
+
+        if self.concentration is not None and not isinstance(self.concentration, Quantity):
+            self.concentration = Quantity(**as_dict(self.concentration))
 
         super().__post_init__(**kwargs)
 
@@ -254,6 +262,45 @@ class MaterialProcessing(Process):
 
 
 @dataclass
+class Quantity(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TEMP.Quantity
+    class_class_curie: ClassVar[str] = "TEMP:Quantity"
+    class_name: ClassVar[str] = "Quantity"
+    class_model_uri: ClassVar[URIRef] = CMDR.Quantity
+
+    has_raw_value: Optional[str] = None
+    has_numeric_value: Optional[float] = None
+    has_unit: Optional[str] = None
+    comparator: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
+            self.has_raw_value = str(self.has_raw_value)
+
+        if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, float):
+            self.has_numeric_value = float(self.has_numeric_value)
+
+        if self.has_unit is not None and not isinstance(self.has_unit, str):
+            self.has_unit = str(self.has_unit)
+
+        if self.comparator is not None and not isinstance(self.comparator, str):
+            self.comparator = str(self.comparator)
+
+        super().__post_init__(**kwargs)
+
+
+class QuantityValue(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = TEMP.QuantityValue
+    class_class_curie: ClassVar[str] = "TEMP:QuantityValue"
+    class_name: ClassVar[str] = "QuantityValue"
+    class_model_uri: ClassVar[URIRef] = CMDR.QuantityValue
+
+
+@dataclass
 class SpecimenCollectionProcess(Process):
     """
     A planned process with the objective of collecting a specimen
@@ -317,11 +364,26 @@ class Subject(YAMLRoot):
 class slots:
     pass
 
+slots.comparator = Slot(uri=TEMP.comparator, name="comparator", curie=TEMP.curie('comparator'),
+                   model_uri=CMDR.comparator, domain=None, range=Optional[str])
+
+slots.concentration = Slot(uri=TEMP.concentration, name="concentration", curie=TEMP.curie('concentration'),
+                   model_uri=CMDR.concentration, domain=None, range=Optional[str])
+
 slots.has_input = Slot(uri=TEMP.has_input, name="has_input", curie=TEMP.curie('has_input'),
                    model_uri=CMDR.has_input, domain=None, range=Optional[str])
 
+slots.has_numeric_value = Slot(uri=TEMP.has_numeric_value, name="has_numeric_value", curie=TEMP.curie('has_numeric_value'),
+                   model_uri=CMDR.has_numeric_value, domain=None, range=Optional[str])
+
 slots.has_output = Slot(uri=TEMP.has_output, name="has_output", curie=TEMP.curie('has_output'),
                    model_uri=CMDR.has_output, domain=None, range=Optional[str])
+
+slots.has_raw_value = Slot(uri=TEMP.has_raw_value, name="has_raw_value", curie=TEMP.curie('has_raw_value'),
+                   model_uri=CMDR.has_raw_value, domain=None, range=Optional[str])
+
+slots.has_unit = Slot(uri=TEMP.has_unit, name="has_unit", curie=TEMP.curie('has_unit'),
+                   model_uri=CMDR.has_unit, domain=None, range=Optional[str])
 
 slots.id = Slot(uri=TEMP.id, name="id", curie=TEMP.curie('id'),
                    model_uri=CMDR.id, domain=None, range=Optional[str])
@@ -359,6 +421,9 @@ slots.subjects = Slot(uri=TEMP.subjects, name="subjects", curie=TEMP.curie('subj
 slots.used_in = Slot(uri=TEMP.used_in, name="used_in", curie=TEMP.curie('used_in'),
                    model_uri=CMDR.used_in, domain=None, range=Optional[str])
 
+slots.volume = Slot(uri=TEMP.volume, name="volume", curie=TEMP.curie('volume'),
+                   model_uri=CMDR.volume, domain=None, range=Optional[str])
+
 slots.Container_investigations = Slot(uri=TEMP.investigations, name="Container_investigations", curie=TEMP.curie('investigations'),
                    model_uri=CMDR.Container_investigations, domain=Container, range=Optional[Union[Dict[Union[str, InvestigationId], Union[dict, "Investigation"]], List[Union[dict, "Investigation"]]]])
 
@@ -380,6 +445,9 @@ slots.Investigation_id = Slot(uri=TEMP.id, name="Investigation_id", curie=TEMP.c
 slots.Investigation_part_of = Slot(uri=TEMP.part_of, name="Investigation_part_of", curie=TEMP.curie('part_of'),
                    model_uri=CMDR.Investigation_part_of, domain=Investigation, range=Optional[Union[str, InvestigationId]])
 
+slots.MaterialEntity_concentration = Slot(uri=TEMP.concentration, name="MaterialEntity_concentration", curie=TEMP.curie('concentration'),
+                   model_uri=CMDR.MaterialEntity_concentration, domain=MaterialEntity, range=Optional[Union[dict, "Quantity"]])
+
 slots.MaterialEntity_id = Slot(uri=TEMP.id, name="MaterialEntity_id", curie=TEMP.curie('id'),
                    model_uri=CMDR.MaterialEntity_id, domain=MaterialEntity, range=Union[str, MaterialEntityId])
 
@@ -388,6 +456,9 @@ slots.MaterialEntity_source = Slot(uri=TEMP.source, name="MaterialEntity_source"
 
 slots.MaterialEntity_used_in = Slot(uri=TEMP.used_in, name="MaterialEntity_used_in", curie=TEMP.curie('used_in'),
                    model_uri=CMDR.MaterialEntity_used_in, domain=MaterialEntity, range=Optional[Union[Union[str, InvestigationId], List[Union[str, InvestigationId]]]])
+
+slots.MaterialEntity_volume = Slot(uri=TEMP.volume, name="MaterialEntity_volume", curie=TEMP.curie('volume'),
+                   model_uri=CMDR.MaterialEntity_volume, domain=MaterialEntity, range=Optional[Union[dict, "Quantity"]])
 
 slots.MaterialProcessing_has_input = Slot(uri=TEMP.has_input, name="MaterialProcessing_has_input", curie=TEMP.curie('has_input'),
                    model_uri=CMDR.MaterialProcessing_has_input, domain=MaterialProcessing, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
@@ -406,6 +477,18 @@ slots.Participation_involved_in = Slot(uri=TEMP.involved_in, name="Participation
 
 slots.Process_id = Slot(uri=TEMP.id, name="Process_id", curie=TEMP.curie('id'),
                    model_uri=CMDR.Process_id, domain=Process, range=Union[str, ProcessId])
+
+slots.Quantity_comparator = Slot(uri=TEMP.comparator, name="Quantity_comparator", curie=TEMP.curie('comparator'),
+                   model_uri=CMDR.Quantity_comparator, domain=Quantity, range=Optional[str])
+
+slots.Quantity_has_numeric_value = Slot(uri=TEMP.has_numeric_value, name="Quantity_has_numeric_value", curie=TEMP.curie('has_numeric_value'),
+                   model_uri=CMDR.Quantity_has_numeric_value, domain=Quantity, range=Optional[float])
+
+slots.Quantity_has_raw_value = Slot(uri=TEMP.has_raw_value, name="Quantity_has_raw_value", curie=TEMP.curie('has_raw_value'),
+                   model_uri=CMDR.Quantity_has_raw_value, domain=Quantity, range=Optional[str])
+
+slots.Quantity_has_unit = Slot(uri=TEMP.has_unit, name="Quantity_has_unit", curie=TEMP.curie('has_unit'),
+                   model_uri=CMDR.Quantity_has_unit, domain=Quantity, range=Optional[str])
 
 slots.SpecimenCollectionProcess_has_input = Slot(uri=TEMP.has_input, name="SpecimenCollectionProcess_has_input", curie=TEMP.curie('has_input'),
                    model_uri=CMDR.SpecimenCollectionProcess_has_input, domain=SpecimenCollectionProcess, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])

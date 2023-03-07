@@ -1,0 +1,22 @@
+materials:
+  - id: "omicsrus:m1"
+    name: "water"
+  - id: "omicsrus:m2"
+    name: "soil"
+investigations:
+  - id: "omicsrus:st1"
+    name: "parent study"
+  - id: "omicsrus:st2"
+    name: "child study"
+    part_of: "omicsrus:st1"
+participations:
+  - id: "omicsrus:p1"
+    name: "participant one"
+    includes: "omicsrus:su1"
+  - id: "omicsrus:p2"
+    name: "participant two"
+subjects:
+  - id: "omicsrus:su1"
+    name: "subject one"
+  - id: "omicsrus:su2"
+    name: "subject two"

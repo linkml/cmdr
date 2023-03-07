@@ -20,6 +20,8 @@ type MaterialEntity
     name: String
     usedIn: [Investigation]
     source: Subject
+    volume: Quantity
+    concentration: Quantity
   }
 
 type MaterialProcessing
@@ -40,6 +42,18 @@ type Participation
 interface Process
   {
     id: Uriorcurie!
+  }
+
+type Quantity
+  {
+    hasRawValue: String
+    hasNumericValue: Float
+    hasUnit: String
+    comparator: String
+  }
+
+type QuantityValue
+  {
   }
 
 type SpecimenCollectionProcess

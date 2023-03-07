@@ -24,6 +24,14 @@ CREATE TABLE "MaterialProcessing" (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE "Quantity" (
+	has_raw_value TEXT, 
+	has_numeric_value FLOAT, 
+	has_unit TEXT, 
+	comparator TEXT, 
+	PRIMARY KEY (has_raw_value, has_numeric_value, has_unit, comparator)
+);
+
 CREATE TABLE "SpecimenCollectionProcess" (
 	id TEXT NOT NULL, 
 	has_input TEXT, 
@@ -42,6 +50,8 @@ CREATE TABLE "MaterialEntity" (
 	name TEXT, 
 	used_in TEXT, 
 	source TEXT, 
+	volume TEXT, 
+	concentration TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(source) REFERENCES "Subject" (id)
 );

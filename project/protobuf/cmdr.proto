@@ -19,6 +19,8 @@ message MaterialEntity
   string name = 0
  repeated  investigation usedIn = 0
   subject source = 0
+  quantity volume = 0
+  quantity concentration = 0
  }
 // A planned process which results in physical changes in a specified input material
 message MaterialProcessing
@@ -33,6 +35,13 @@ message Participation
   uriorcurie id = 0
   string name = 0
  repeated  investigation involvedIn = 0
+ }
+message Quantity
+ {
+  string hasRawValue = 0
+  float hasNumericValue = 0
+  string hasUnit = 0
+  string comparator = 0
  }
 // A planned process with the objective of collecting a specimen
 message SpecimenCollectionProcess
