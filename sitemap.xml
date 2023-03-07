@@ -11,17 +11,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/Condition/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/Container/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Database/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -46,37 +36,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/Diagnosis/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Document/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/Double/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/Event/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/Float/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Fruit/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Information/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -101,11 +66,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/Measurment/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/Ncname/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
@@ -117,16 +77,6 @@
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Objectidentifier/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Observation/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Participant/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -146,47 +96,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/ProcessedMaterial/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/ProcessedSpecimen/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/ResearchProject/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/ResearchSubject/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Sample/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/SampleCreationProcess/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Sampling/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Site/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Specimen/</loc>
+         <loc>https://linkml.github.io/cmdr/Quantity/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -197,11 +107,6 @@
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/String/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/Study/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -231,32 +136,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/about/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/birth_date/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/cmdr/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/conditions/</loc>
+         <loc>https://linkml.github.io/cmdr/comparator/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/diagnoses/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/documents/</loc>
+         <loc>https://linkml.github.io/cmdr/concentration/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -266,22 +156,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://linkml.github.io/cmdr/has_numeric_value/</loc>
+         <lastmod>2023-03-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://linkml.github.io/cmdr/has_output/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/has_parent_specimen/</loc>
+         <loc>https://linkml.github.io/cmdr/has_raw_value/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/has_source/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/has_subject/</loc>
+         <loc>https://linkml.github.io/cmdr/has_unit/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -306,11 +196,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/is_about/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/materials/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
@@ -321,32 +206,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/observations/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/part_of/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/participants/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/participates_in/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/participations/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/cmdr/particpants/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -361,22 +226,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/studies/</loc>
-         <lastmod>2023-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://linkml.github.io/cmdr/subjects/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/taxon/</loc>
+         <loc>https://linkml.github.io/cmdr/used_in/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/used_in/</loc>
+         <loc>https://linkml.github.io/cmdr/volume/</loc>
          <lastmod>2023-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>

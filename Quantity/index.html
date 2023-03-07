@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://linkml.github.io/cmdr/Site/" rel="canonical"/>
+<link href="https://linkml.github.io/cmdr/Quantity/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: Site - cmdr</title>
+<title>Class: Quantity - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-site">
+<a class="md-skip" href="#class-quantity">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Site
+              Class: Quantity
             
           </span>
 </div>
@@ -123,7 +123,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../about/">
+<a class="md-nav__link" href="../about.md">
         About
       </a>
 </li>
@@ -144,6 +144,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
   </a>
 </li>
 <li class="md-nav__item">
@@ -191,13 +196,21 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/linkml/cmdr/edit/master/docs/Site.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/linkml/cmdr/edit/master/docs/Quantity.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-site">Class: Site</h1>
-<p>URI: <a href="https://w3id.org/linkml/cmdr/Site">cmdr:Site</a></p>
+<h1 id="class-quantity">Class: Quantity</h1>
+<p>URI: <a href="https://w3id.org/linkml/cmdr/Quantity">cmdr:Quantity</a></p>
 <div class="mermaid"> classDiagram
-    class Site
+    class Quantity
+      Quantity : comparator
+        Quantity &lt;.. string : comparator
+      Quantity : has_numeric_value
+        Quantity &lt;.. float : has_numeric_value
+      Quantity : has_raw_value
+        Quantity &lt;.. string : has_raw_value
+      Quantity : has_unit
+        Quantity &lt;.. string : has_unit
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -213,10 +226,53 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../has_raw_value/">has_raw_value</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_numeric_value/">has_numeric_value</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_unit/">has_unit</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../comparator/">comparator</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td><a href="../volume/">volume</a></td>
+<td>range</td>
+<td><a href="./">Quantity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td><a href="../concentration/">concentration</a></td>
+<td>range</td>
+<td><a href="./">Quantity</a></td>
 </tr>
 </tbody>
 </table>
@@ -236,11 +292,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cmdr:Site</td>
+<td>cmdr:Quantity</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cmdr:Site</td>
+<td>cmdr:Quantity</td>
 </tr>
 </tbody>
 </table>
@@ -248,17 +304,101 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Site
+<pre><code class="language-yaml">name: Quantity
 from_schema: https://w3id.org/linkml/cmdr
 rank: 1000
+slots:
+- has_raw_value
+- has_numeric_value
+- has_unit
+- comparator
+slot_usage:
+  comparator:
+    name: comparator
+    domain_of:
+    - Quantity
+    range: string
+  has_numeric_value:
+    name: has_numeric_value
+    domain_of:
+    - Quantity
+    range: float
+  has_raw_value:
+    name: has_raw_value
+    domain_of:
+    - Quantity
+    range: string
+  has_unit:
+    name: has_unit
+    domain_of:
+    - Quantity
+    range: string
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Site
+<pre><code class="language-yaml">name: Quantity
 from_schema: https://w3id.org/linkml/cmdr
 rank: 1000
+slot_usage:
+  comparator:
+    name: comparator
+    domain_of:
+    - Quantity
+    range: string
+  has_numeric_value:
+    name: has_numeric_value
+    domain_of:
+    - Quantity
+    range: float
+  has_raw_value:
+    name: has_raw_value
+    domain_of:
+    - Quantity
+    range: string
+  has_unit:
+    name: has_unit
+    domain_of:
+    - Quantity
+    range: string
+attributes:
+  has_raw_value:
+    name: has_raw_value
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: has_raw_value
+    owner: Quantity
+    domain_of:
+    - Quantity
+    range: string
+  has_numeric_value:
+    name: has_numeric_value
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: has_numeric_value
+    owner: Quantity
+    domain_of:
+    - Quantity
+    range: float
+  has_unit:
+    name: has_unit
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: has_unit
+    owner: Quantity
+    domain_of:
+    - Quantity
+    range: string
+  comparator:
+    name: comparator
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: comparator
+    owner: Quantity
+    domain_of:
+    - Quantity
+    range: string
 
 </code></pre>
 </details>

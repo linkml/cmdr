@@ -123,7 +123,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../about/">
+<a class="md-nav__link" href="../about.md">
         About
       </a>
 </li>
@@ -212,6 +212,8 @@
         MaterialProcessing &lt;.. MaterialEntity : has_output
       MaterialProcessing : id
         MaterialProcessing &lt;.. uriorcurie : id
+      MaterialProcessing : name
+        MaterialProcessing &lt;.. string : name
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -247,6 +249,12 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td></td>
+<td><a href="../Process/">Process</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
 <td><a href="../Process/">Process</a></td>
 </tr>
@@ -295,6 +303,7 @@ slot_usage:
     multivalued: true
     domain_of:
     - MaterialProcessing
+    - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
   has_output:
@@ -302,6 +311,7 @@ slot_usage:
     multivalued: true
     domain_of:
     - MaterialProcessing
+    - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
 class_uri: OBI:0000094
@@ -322,6 +332,7 @@ slot_usage:
     multivalued: true
     domain_of:
     - MaterialProcessing
+    - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
   has_output:
@@ -329,6 +340,7 @@ slot_usage:
     multivalued: true
     domain_of:
     - MaterialProcessing
+    - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
 attributes:
@@ -341,6 +353,7 @@ attributes:
     owner: MaterialProcessing
     domain_of:
     - MaterialProcessing
+    - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
   has_output:
@@ -352,6 +365,7 @@ attributes:
     owner: MaterialProcessing
     domain_of:
     - MaterialProcessing
+    - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
   id:
@@ -368,6 +382,19 @@ attributes:
     - Process
     - Subject
     range: uriorcurie
+  name:
+    name: name
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: name
+    owner: MaterialProcessing
+    domain_of:
+    - Investigation
+    - MaterialEntity
+    - Participation
+    - Process
+    - Subject
+    range: string
 class_uri: OBI:0000094
 
 </code></pre>
