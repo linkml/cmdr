@@ -112,11 +112,18 @@ classes:
     abstract: true
     from_schema: TEMP
     slot_usage:
+      has_input:
+        multivalued: true
+      has_output:
+        multivalued: true
       id:
         identifier: true
         range: uriorcurie
     slots:
     - id
+    - name
+    - has_input
+    - has_output
   Quantity:
     from_schema: TEMP
     slot_usage:
@@ -133,8 +140,6 @@ classes:
     - has_numeric_value
     - has_unit
     - comparator
-  QuantityValue:
-    from_schema: TEMP
   SpecimenCollectionProcess:
     aliases:
     - MaterialCollectionProcess
@@ -145,7 +150,7 @@ classes:
     slot_usage:
       has_input:
         multivalued: true
-        range: MaterialEntity
+        range: Subject
       has_output:
         multivalued: true
         range: MaterialEntity
