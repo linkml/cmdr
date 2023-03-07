@@ -184,6 +184,9 @@ clean:
 # TODO: fold this into cookiecutter
 EXAMPLES_SRC = src/data/examples
 examples/%.html: $(EXAMPLES_SRC)/%.yaml
-	$(RUN) linkml-render -r Container -s $(SOURCE_SCHEMA_PATH) $< -o $@
+	$(RUN) linkml-render -r Container -s $(SOURCE_SCHEMA_PATH)  -c render.yaml $< -o $@
+
+examples/%.md: $(EXAMPLES_SRC)/%.yaml
+	$(RUN) linkml-render -r Container -s $(SOURCE_SCHEMA_PATH) -c render.yaml $< -t markdown -o $@
 
 include project.Makefile
