@@ -105,7 +105,7 @@ gen-project: $(PYMODEL) compile-sheets
 	$(RUN) gen-project ${GEN_PARGS} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
 
-test: test-schema test-python
+test: test-schema test-python examples/output
 test-schema:
 	$(RUN) gen-project ${GEN_PARGS} -d tmp $(SOURCE_SCHEMA_PATH)
 
@@ -127,6 +127,16 @@ examples/%.json: src/data/examples/%.yaml
 	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
 examples/%.ttl: src/data/examples/%.yaml
 	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
+
+examples/output: src/cmdr/schema/cmdr.yaml
+	mkdir -p $@
+	$(RUN) linkml-run-examples \
+		--output-formats json \
+		--output-formats yaml \
+		--counter-example-input-directory src/data/examples/invalid \
+		--input-directory src/data/examples/valid \
+		--output-directory $@ \
+		--schema $< > $@/README.md
 
 # Test documentation locally
 serve: mkd-serve
