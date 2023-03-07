@@ -3,10 +3,11 @@
 CREATE TABLE "Container" (
 	materials TEXT, 
 	participations TEXT, 
-	processes TEXT, 
+	material_processings TEXT, 
+	specimen_collection_processes TEXT, 
 	investigations TEXT, 
 	subjects TEXT, 
-	PRIMARY KEY (materials, participations, processes, investigations, subjects)
+	PRIMARY KEY (materials, participations, material_processings, specimen_collection_processes, investigations, subjects)
 );
 
 CREATE TABLE "Investigation" (
@@ -19,6 +20,7 @@ CREATE TABLE "Investigation" (
 
 CREATE TABLE "MaterialProcessing" (
 	id TEXT NOT NULL, 
+	name TEXT, 
 	has_input TEXT, 
 	has_output TEXT, 
 	PRIMARY KEY (id)
@@ -34,6 +36,7 @@ CREATE TABLE "Quantity" (
 
 CREATE TABLE "SpecimenCollectionProcess" (
 	id TEXT NOT NULL, 
+	name TEXT, 
 	has_input TEXT, 
 	has_output TEXT, 
 	PRIMARY KEY (id)
@@ -57,10 +60,10 @@ CREATE TABLE "MaterialEntity" (
 );
 
 CREATE TABLE "Participation" (
-	includes TEXT, 
 	id TEXT NOT NULL, 
 	name TEXT, 
 	involved_in TEXT, 
+	includes TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(includes) REFERENCES "Subject" (id)
 );
