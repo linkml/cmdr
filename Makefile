@@ -171,4 +171,9 @@ clean:
 	rm -rf tmp
 	rm -fr docs/*
 
+# TODO: fold this into cookiecutter
+EXAMPLES_SRC = src/data/examples
+examples/%.html: $(EXAMPLES_SRC)/%.yaml
+	$(RUN) linkml-render -r Container -s $(SOURCE_SCHEMA_PATH) $< -o $@
+
 include project.Makefile
