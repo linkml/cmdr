@@ -2,25 +2,49 @@ classes:
   Container:
     from_schema: TEMP
     slot_usage:
+      investigations:
+        inlined: true
+        inlined_as_list: true
+        multivalued: true
+        range: Investigation
       materials:
         inlined: true
         inlined_as_list: true
         multivalued: true
         range: MaterialEntity
+      participations:
+        inlined: true
+        inlined_as_list: true
+        multivalued: true
+        range: Participation
       processes:
         inlined: true
         inlined_as_list: true
         multivalued: true
         range: Process
-      studies:
+      subjects:
         inlined: true
         inlined_as_list: true
         multivalued: true
-        range: Study
+        range: Subject
     slots:
-    - processes
     - materials
-    - studies
+    - participations
+    - processes
+    - investigations
+    - subjects
+  Investigation:
+    from_schema: TEMP
+    slot_usage:
+      id:
+        identifier: true
+        range: uriorcurie
+      part_of:
+        range: Investigation
+    slots:
+    - id
+    - name
+    - part_of
   MaterialEntity:
     aliases:
     - Substance
@@ -34,15 +58,50 @@ classes:
       id:
         identifier: true
         range: uriorcurie
+      source:
+        comments:
+        - this is a shortcut. to be expanded later.
+        range: Subject
+      used_in:
+        multivalued: true
+        range: Investigation
     slots:
     - id
     - name
+    - used_in
+    - source
   MaterialProcessing:
     class_uri: OBI:0000094
     description: A planned process which results in physical changes in a specified
       input material
     from_schema: TEMP
     is_a: Process
+    slot_usage:
+      has_input:
+        multivalued: true
+        range: MaterialEntity
+      has_output:
+        multivalued: true
+        range: MaterialEntity
+    slots:
+    - has_input
+    - has_output
+  Participation:
+    from_schema: TEMP
+    slot_usage:
+      id:
+        identifier: true
+        range: uriorcurie
+      includes:
+        range: Subject
+      involved_in:
+        multivalued: true
+        range: Investigation
+    slots:
+    - includes
+    - id
+    - name
+    - involved_in
   Process:
     abstract: true
     from_schema: TEMP
@@ -69,23 +128,18 @@ classes:
     slots:
     - has_input
     - has_output
-  Study:
-    from_schema: TEMP
-    slot_usage:
-      id:
-        identifier: true
-        range: uriorcurie
-      part_of:
-        range: Study
-    slots:
-    - id
-    - name
-    - part_of
   Subject:
     aliases:
     - Site
     - Participant
     from_schema: TEMP
+    slot_usage:
+      id:
+        identifier: true
+        range: uriorcurie
+    slots:
+    - id
+    - name
 default_prefix: TEMP
 default_range: string
 id: TEMP
@@ -108,15 +162,27 @@ slots:
     from_schema: TEMP
   id:
     from_schema: TEMP
+  includes:
+    from_schema: TEMP
+  investigations:
+    from_schema: TEMP
+  involved_in:
+    from_schema: TEMP
   materials:
     from_schema: TEMP
   name:
     from_schema: TEMP
   part_of:
     from_schema: TEMP
+  participations:
+    from_schema: TEMP
   processes:
     from_schema: TEMP
-  studies:
+  source:
+    from_schema: TEMP
+  subjects:
+    from_schema: TEMP
+  used_in:
     from_schema: TEMP
 subsets:
   potential_phi:
