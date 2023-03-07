@@ -226,12 +226,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../includes/">includes</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../id/">id</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
@@ -245,6 +239,12 @@
 </tr>
 <tr>
 <td><a href="../involved_in/">involved_in</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../includes/">includes</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
@@ -302,10 +302,10 @@
 from_schema: https://w3id.org/linkml/cmdr
 rank: 1000
 slots:
-- includes
 - id
 - name
 - involved_in
+- includes
 slot_usage:
   id:
     name: id
@@ -359,15 +359,6 @@ slot_usage:
     - Participation
     range: Investigation
 attributes:
-  includes:
-    name: includes
-    from_schema: https://w3id.org/linkml/cmdr
-    rank: 1000
-    alias: includes
-    owner: Participation
-    domain_of:
-    - Participation
-    range: Subject
   id:
     name: id
     from_schema: https://w3id.org/linkml/cmdr
@@ -405,6 +396,15 @@ attributes:
     domain_of:
     - Participation
     range: Investigation
+  includes:
+    name: includes
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: includes
+    owner: Participation
+    domain_of:
+    - Participation
+    range: Subject
 
 </code></pre>
 </details>
