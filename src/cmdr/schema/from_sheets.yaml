@@ -4,15 +4,23 @@ classes:
     slot_usage:
       materials:
         inlined: true
+        inlined_as_list: true
         multivalued: true
         range: MaterialEntity
       processes:
         inlined: true
+        inlined_as_list: true
         multivalued: true
         range: Process
+      studies:
+        inlined: true
+        inlined_as_list: true
+        multivalued: true
+        range: Study
     slots:
     - processes
     - materials
+    - studies
   MaterialEntity:
     aliases:
     - Substance
@@ -61,6 +69,18 @@ classes:
     slots:
     - has_input
     - has_output
+  Study:
+    from_schema: TEMP
+    slot_usage:
+      id:
+        identifier: true
+        range: uriorcurie
+      part_of:
+        range: Study
+    slots:
+    - id
+    - name
+    - part_of
   Subject:
     aliases:
     - Site
@@ -92,7 +112,11 @@ slots:
     from_schema: TEMP
   name:
     from_schema: TEMP
+  part_of:
+    from_schema: TEMP
   processes:
+    from_schema: TEMP
+  studies:
     from_schema: TEMP
 subsets:
   potential_phi:

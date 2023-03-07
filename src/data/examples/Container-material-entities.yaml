@@ -3,3 +3,9 @@ materials:
     name: "water"
   - id: "omicsrus:456"
     name: "soil"
+studies:
+  - id: "omicsrus:1212"
+    name: "parent study"
+  - id: "omicsrus:2323"
+    name: "child study"
+    part_of: "omicsrus:1212"
