@@ -52,7 +52,10 @@ classes:
     aliases:
     - Study
     - Proposal
+    description: General information about the Investigation
     from_schema: TEMP
+    see_also:
+    - include:Study
     slot_usage:
       id:
         identifier: true
