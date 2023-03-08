@@ -2,6 +2,8 @@
 
 Core Model for Data Research (Tentative)
 
+_Currently most influenced by the Include schema, https://github.com/include-dcc/include_linkml_
+
 ## Website
 
 * [https://linkml.github.io/cmdr](https://linkml.github.io/cmdr)
