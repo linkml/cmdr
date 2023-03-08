@@ -10,6 +10,12 @@
                     },
                     "type": "array"
                 },
+                "material_processings": {
+                    "items": {
+                        "$ref": "#/$defs/MaterialProcessing"
+                    },
+                    "type": "array"
+                },
                 "materials": {
                     "items": {
                         "$ref": "#/$defs/MaterialEntity"
@@ -22,9 +28,9 @@
                     },
                     "type": "array"
                 },
-                "processes": {
+                "specimen_collection_processes": {
                     "items": {
-                        "$ref": "#/$defs/Process"
+                        "$ref": "#/$defs/SpecimenCollectionProcess"
                     },
                     "type": "array"
                 },
@@ -38,9 +44,15 @@
             "title": "Container",
             "type": "object"
         },
+        "DataObject": {
+            "additionalProperties": false,
+            "description": "A DataFile Associated with a Subject or Investigation or MaterialEntity",
+            "title": "DataObject",
+            "type": "object"
+        },
         "Investigation": {
             "additionalProperties": false,
-            "description": "",
+            "description": "General information about the Investigation",
             "properties": {
                 "id": {
                     "type": "string"
@@ -60,7 +72,7 @@
         },
         "MaterialEntity": {
             "additionalProperties": false,
-            "description": "Physical entity that is an input our output of a process",
+            "description": "Physical entity that is an input our output of a process from a Subject",
             "properties": {
                 "concentration": {
                     "$ref": "#/$defs/Quantity"
@@ -108,6 +120,9 @@
                 },
                 "id": {
                     "type": "string"
+                },
+                "name": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -118,7 +133,7 @@
         },
         "Participation": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Subject/Study participation information",
             "properties": {
                 "id": {
                     "type": "string"
@@ -162,12 +177,6 @@
             "title": "Quantity",
             "type": "object"
         },
-        "QuantityValue": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "QuantityValue",
-            "type": "object"
-        },
         "SpecimenCollectionProcess": {
             "additionalProperties": false,
             "description": "A planned process with the objective of collecting a specimen",
@@ -186,6 +195,9 @@
                 },
                 "id": {
                     "type": "string"
+                },
+                "name": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -196,7 +208,7 @@
         },
         "Subject": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Demographic and clinical information about the subject",
             "properties": {
                 "id": {
                     "type": "string"
@@ -216,6 +228,44 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
+    "properties": {
+        "investigations": {
+            "items": {
+                "$ref": "#/$defs/Investigation"
+            },
+            "type": "array"
+        },
+        "material_processings": {
+            "items": {
+                "$ref": "#/$defs/MaterialProcessing"
+            },
+            "type": "array"
+        },
+        "materials": {
+            "items": {
+                "$ref": "#/$defs/MaterialEntity"
+            },
+            "type": "array"
+        },
+        "participations": {
+            "items": {
+                "$ref": "#/$defs/Participation"
+            },
+            "type": "array"
+        },
+        "specimen_collection_processes": {
+            "items": {
+                "$ref": "#/$defs/SpecimenCollectionProcess"
+            },
+            "type": "array"
+        },
+        "subjects": {
+            "items": {
+                "$ref": "#/$defs/Subject"
+            },
+            "type": "array"
+        }
+    },
     "title": "cmdr",
     "type": "object",
     "version": null

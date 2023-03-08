@@ -1,0 +1,7 @@
+biospecimens:
+- id: omicsrus:m1
+  name: water
+- id: omicsrus:m2
+  name: soil
+- id: omicsrus:m3
+  name: blood

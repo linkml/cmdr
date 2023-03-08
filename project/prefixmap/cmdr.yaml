@@ -10,6 +10,9 @@
    "Container": {
       "@id": "TEMP:Container"
    },
+   "DataObject": {
+      "@id": "TEMP:DataObject"
+   },
    "Investigation": {
       "@id": "TEMP:Investigation"
    },
@@ -27,9 +30,6 @@
    },
    "Quantity": {
       "@id": "TEMP:Quantity"
-   },
-   "QuantityValue": {
-      "@id": "TEMP:QuantityValue"
    },
    "SpecimenCollectionProcess": {
       "@id": "OBI:0000659"

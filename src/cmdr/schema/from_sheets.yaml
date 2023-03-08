@@ -7,6 +7,11 @@ classes:
         inlined_as_list: true
         multivalued: true
         range: Investigation
+      material_processings:
+        inlined: true
+        inlined_as_list: true
+        multivalued: true
+        range: MaterialProcessing
       materials:
         inlined: true
         inlined_as_list: true
@@ -17,11 +22,11 @@ classes:
         inlined_as_list: true
         multivalued: true
         range: Participation
-      processes:
+      specimen_collection_processes:
         inlined: true
         inlined_as_list: true
         multivalued: true
-        range: Process
+        range: SpecimenCollectionProcess
       subjects:
         inlined: true
         inlined_as_list: true
@@ -30,14 +35,28 @@ classes:
     slots:
     - materials
     - participations
-    - processes
+    - material_processings
+    - specimen_collection_processes
     - investigations
     - subjects
+    tree_root: true
+  DataObject:
+    aliases:
+    - File
+    - Data
+    - DataFile
+    description: A DataFile Associated with a Subject or Investigation or MaterialEntity
+    from_schema: TEMP
+    see_also:
+    - include:DataFile
   Investigation:
     aliases:
     - Study
     - Proposal
+    description: General information about the Investigation
     from_schema: TEMP
+    see_also:
+    - include:Study
     slot_usage:
       id:
         identifier: true
@@ -55,8 +74,10 @@ classes:
     - Sample
     - Biospecimen
     - Biosample
-    description: Physical entity that is an input our output of a process
+    description: Physical entity that is an input our output of a process from a Subject
     from_schema: TEMP
+    see_also:
+    - include:Biospecimen
     slot_usage:
       concentration:
         range: Quantity
@@ -96,7 +117,10 @@ classes:
     - has_input
     - has_output
   Participation:
+    description: Subject/Study participation information
     from_schema: TEMP
+    see_also:
+    - include:Participant
     slot_usage:
       id:
         identifier: true
@@ -113,6 +137,7 @@ classes:
     - includes
   Process:
     abstract: true
+    description: A planned process resulting in a material or data
     from_schema: TEMP
     slot_usage:
       has_input:
@@ -164,7 +189,10 @@ classes:
     aliases:
     - Site
     - Participant
+    description: Demographic and clinical information about the subject
     from_schema: TEMP
+    see_also:
+    - include:Participant
     slot_usage:
       id:
         identifier: true
@@ -210,6 +238,8 @@ slots:
     from_schema: TEMP
   involved_in:
     from_schema: TEMP
+  material_processings:
+    from_schema: TEMP
   materials:
     from_schema: TEMP
   name:
@@ -218,9 +248,9 @@ slots:
     from_schema: TEMP
   participations:
     from_schema: TEMP
-  processes:
-    from_schema: TEMP
   source:
+    from_schema: TEMP
+  specimen_collection_processes:
     from_schema: TEMP
   subjects:
     from_schema: TEMP
