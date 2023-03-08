@@ -40,11 +40,18 @@ linkml:Nodeidentifier NONLITERAL
 TEMP:Container CLOSED {
     (  $TEMP:Container_tes (  TEMP:materials @TEMP:MaterialEntity * ;
           TEMP:participations @TEMP:Participation * ;
-          TEMP:processes @TEMP:Process * ;
+          TEMP:material_processings @TEMP:MaterialProcessing * ;
+          TEMP:specimen_collection_processes @TEMP:SpecimenCollectionProcess * ;
           TEMP:investigations @TEMP:Investigation * ;
           TEMP:subjects @TEMP:Subject *
        ) ;
        rdf:type [ TEMP:Container ] ?
+    )
+}
+
+TEMP:DataObject CLOSED {
+    (  $TEMP:DataObject_tes rdf:type . * ;
+       rdf:type [ TEMP:DataObject ] ?
     )
 }
 
@@ -78,9 +85,9 @@ TEMP:MaterialProcessing CLOSED {
 }
 
 TEMP:Participation CLOSED {
-    (  $TEMP:Participation_tes (  TEMP:includes @TEMP:Subject ? ;
-          TEMP:name @linkml:String ? ;
-          TEMP:involved_in @TEMP:Investigation *
+    (  $TEMP:Participation_tes (  TEMP:name @linkml:String ? ;
+          TEMP:involved_in @TEMP:Investigation * ;
+          TEMP:includes @TEMP:Subject ?
        ) ;
        rdf:type [ TEMP:Participation ]
     )
@@ -91,7 +98,10 @@ TEMP:Process  (
 )
 
 TEMP:Process_struct {
-    (  $TEMP:Process_tes rdf:type . * ;
+    (  $TEMP:Process_tes (  TEMP:name @linkml:String ? ;
+          TEMP:has_input @linkml:String * ;
+          TEMP:has_output @linkml:String *
+       ) ;
        rdf:type [ TEMP:Process ]
     )
 }
@@ -106,17 +116,11 @@ TEMP:Quantity CLOSED {
     )
 }
 
-TEMP:QuantityValue CLOSED {
-    (  $TEMP:QuantityValue_tes rdf:type . * ;
-       rdf:type [ TEMP:QuantityValue ] ?
-    )
-}
-
 TEMP:SpecimenCollectionProcess CLOSED {
     (  $TEMP:SpecimenCollectionProcess_tes (  &TEMP:Process_tes ;
           rdf:type [ TEMP:Process ] ? ;
-          TEMP:has_input @TEMP:MaterialEntity * ;
-          TEMP:has_output @TEMP:MaterialEntity *
+          TEMP:has_input @linkml:String ? ;
+          TEMP:has_output @linkml:String ?
        ) ;
        rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000659> ]
     )

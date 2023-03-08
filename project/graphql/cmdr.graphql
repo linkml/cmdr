@@ -2,9 +2,14 @@ type Container
   {
     materials: [MaterialEntity]
     participations: [Participation]
-    processes: [Process]
+    materialProcessings: [MaterialProcessing]
+    specimenCollectionProcesses: [SpecimenCollectionProcess]
     investigations: [Investigation]
     subjects: [Subject]
+  }
+
+type DataObject
+  {
   }
 
 type Investigation
@@ -27,21 +32,25 @@ type MaterialEntity
 type MaterialProcessing
   {
     id: Uriorcurie!
+    name: String
     hasInput: [MaterialEntity]
     hasOutput: [MaterialEntity]
   }
 
 type Participation
   {
-    includes: Subject
     id: Uriorcurie!
     name: String
     involvedIn: [Investigation]
+    includes: Subject
   }
 
 interface Process
   {
     id: Uriorcurie!
+    name: String
+    hasInput: [String]
+    hasOutput: [String]
   }
 
 type Quantity
@@ -52,15 +61,12 @@ type Quantity
     comparator: String
   }
 
-type QuantityValue
-  {
-  }
-
 type SpecimenCollectionProcess
   {
     id: Uriorcurie!
-    hasInput: [MaterialEntity]
-    hasOutput: [MaterialEntity]
+    name: String
+    hasInput: String
+    hasOutput: String
   }
 
 type Subject

@@ -1,8 +1,22 @@
 materials:
   - id: "omicsrus:m1"
     name: "water"
+    volume:
+      has_raw_value: "33.3 mL"
+      has_numeric_value: 33.3
+      has_unit: "mL"
   - id: "omicsrus:m2"
     name: "soil"
+    volume:
+      has_raw_value: "100.2 mL"
+      has_numeric_value: 100.2
+      has_unit: "mL"
+  - id: "omicsrus:m3"
+    name: "blood"
+    volume:
+      has_raw_value: "1.2 L"
+      has_numeric_value: 1.2
+      has_unit: "L"
 investigations:
   - id: "omicsrus:st1"
     name: "parent study"
@@ -13,10 +27,23 @@ participations:
   - id: "omicsrus:p1"
     name: "participant one"
     includes: "omicsrus:su1"
+    involved_in: "omicsrus:st1"
   - id: "omicsrus:p2"
     name: "participant two"
+    includes: "omicsrus:su2"
+    involved_in: "omicsrus:st2"
 subjects:
   - id: "omicsrus:su1"
     name: "subject one"
   - id: "omicsrus:su2"
     name: "subject two"
+material_processings:
+  - id: "omicsrus:mp1"
+    name: "Material Processing 1"
+    has_input: "omicsrus:m1"
+    has_output: "omicsrus:m1"
+specimen_collection_processes:
+  - id: "omicsrus:scp1"
+    name: "Specimen Collection Process 1"
+    has_input: "omicsrus:su1"
+    has_output: "omicsrus:m3"

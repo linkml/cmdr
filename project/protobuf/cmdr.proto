@@ -2,17 +2,19 @@ message Container
  {
  repeated  materialEntity materials = 0
  repeated  participation participations = 0
- repeated  process processes = 0
+ repeated  materialProcessing materialProcessings = 0
+ repeated  specimenCollectionProcess specimenCollectionProcesses = 0
  repeated  investigation investigations = 0
  repeated  subject subjects = 0
  }
+// General information about the Investigation
 message Investigation
  {
   uriorcurie id = 0
   string name = 0
   investigation partOf = 0
  }
-// Physical entity that is an input our output of a process
+// Physical entity that is an input our output of a process from a Subject
 message MaterialEntity
  {
   uriorcurie id = 0
@@ -26,15 +28,17 @@ message MaterialEntity
 message MaterialProcessing
  {
   uriorcurie id = 0
+  string name = 0
  repeated  materialEntity hasInput = 0
  repeated  materialEntity hasOutput = 0
  }
+// Subject/Study participation information
 message Participation
  {
-  subject includes = 0
   uriorcurie id = 0
   string name = 0
  repeated  investigation involvedIn = 0
+  subject includes = 0
  }
 message Quantity
  {
@@ -47,9 +51,11 @@ message Quantity
 message SpecimenCollectionProcess
  {
   uriorcurie id = 0
- repeated  materialEntity hasInput = 0
- repeated  materialEntity hasOutput = 0
+  string name = 0
+  string hasInput = 0
+  string hasOutput = 0
  }
+// Demographic and clinical information about the subject
 message Subject
  {
   uriorcurie id = 0

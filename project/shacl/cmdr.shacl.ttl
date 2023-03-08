@@ -2,6 +2,57 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<https://example.org/TEMP/Container> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://example.org/TEMP/Subject> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path <https://example.org/TEMP/subjects> ],
+        [ sh:class <https://example.org/TEMP/MaterialEntity> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/materials> ],
+        [ sh:class <https://example.org/TEMP/Investigation> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path <https://example.org/TEMP/investigations> ],
+        [ sh:class <http://purl.obolibrary.org/obo/OBI_0000659> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path <https://example.org/TEMP/specimen_collection_processes> ],
+        [ sh:class <http://purl.obolibrary.org/obo/OBI_0000094> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/material_processings> ],
+        [ sh:class <https://example.org/TEMP/Participation> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/participations> ] ;
+    sh:targetClass <https://example.org/TEMP/Container> .
+
+<https://example.org/TEMP/DataObject> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A DataFile Associated with a Subject or Investigation or MaterialEntity" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <https://example.org/TEMP/DataObject> .
+
+<https://example.org/TEMP/Process> a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A planned process resulting in a material or data" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/name> ],
+        [ sh:order 3 ;
+            sh:path <https://example.org/TEMP/has_output> ],
+        [ sh:order 2 ;
+            sh:path <https://example.org/TEMP/has_input> ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/id> ] ;
+    sh:targetClass <https://example.org/TEMP/Process> .
+
 <http://purl.obolibrary.org/obo/OBI_0000094> a sh:NodeShape ;
     sh:closed true ;
     sh:description "A planned process which results in physical changes in a specified input material" ;
@@ -10,13 +61,16 @@
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
             sh:path <https://example.org/TEMP/has_input> ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/id> ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <https://example.org/TEMP/name> ],
         [ sh:class <https://example.org/TEMP/MaterialEntity> ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
-            sh:path <https://example.org/TEMP/has_output> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/id> ] ;
+            sh:path <https://example.org/TEMP/has_output> ] ;
     sh:targetClass <http://purl.obolibrary.org/obo/OBI_0000094> .
 
 <http://purl.obolibrary.org/obo/OBI_0000659> a sh:NodeShape ;
@@ -26,123 +80,92 @@
     sh:property [ sh:maxCount 1 ;
             sh:order 2 ;
             sh:path <https://example.org/TEMP/id> ],
-        [ sh:class <https://example.org/TEMP/MaterialEntity> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path <https://example.org/TEMP/has_input> ],
-        [ sh:class <https://example.org/TEMP/MaterialEntity> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://example.org/TEMP/has_output> ] ;
-    sh:targetClass <http://purl.obolibrary.org/obo/OBI_0000659> .
-
-<https://example.org/TEMP/Container> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://example.org/TEMP/Subject> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path <https://example.org/TEMP/subjects> ],
-        [ sh:class <https://example.org/TEMP/Investigation> ;
-            sh:nodeKind sh:IRI ;
+        [ sh:maxCount 1 ;
             sh:order 3 ;
-            sh:path <https://example.org/TEMP/investigations> ],
+            sh:path <https://example.org/TEMP/name> ],
         [ sh:class <https://example.org/TEMP/MaterialEntity> ;
             sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path <https://example.org/TEMP/materials> ],
-        [ sh:class <https://example.org/TEMP/Process> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/processes> ],
-        [ sh:class <https://example.org/TEMP/Participation> ;
-            sh:nodeKind sh:IRI ;
             sh:order 1 ;
-            sh:path <https://example.org/TEMP/participations> ] ;
-    sh:targetClass <https://example.org/TEMP/Container> .
-
-<https://example.org/TEMP/QuantityValue> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass <https://example.org/TEMP/QuantityValue> .
+            sh:path <https://example.org/TEMP/has_output> ],
+        [ sh:class <https://example.org/TEMP/Subject> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/has_input> ] ;
+    sh:targetClass <http://purl.obolibrary.org/obo/OBI_0000659> .
 
 <https://example.org/TEMP/Participation> a sh:NodeShape ;
     sh:closed true ;
+    sh:description "Subject/Study participation information" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:order 1 ;
+            sh:order 0 ;
             sh:path <https://example.org/TEMP/id> ],
+        [ sh:class <https://example.org/TEMP/Investigation> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/involved_in> ],
         [ sh:class <https://example.org/TEMP/Subject> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 0 ;
+            sh:order 3 ;
             sh:path <https://example.org/TEMP/includes> ],
         [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/name> ],
-        [ sh:class <https://example.org/TEMP/Investigation> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path <https://example.org/TEMP/involved_in> ] ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/name> ] ;
     sh:targetClass <https://example.org/TEMP/Participation> .
-
-<https://example.org/TEMP/Process> a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://example.org/TEMP/id> ] ;
-    sh:targetClass <https://example.org/TEMP/Process> .
 
 <https://example.org/TEMP/Quantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://example.org/TEMP/has_raw_value> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://example.org/TEMP/has_numeric_value> ],
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/has_unit> ],
         [ sh:maxCount 1 ;
             sh:order 3 ;
             sh:path <https://example.org/TEMP/comparator> ],
         [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/has_unit> ] ;
-    sh:targetClass <https://example.org/TEMP/Quantity> .
-
-<https://example.org/TEMP/Subject> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://example.org/TEMP/id> ],
-        [ sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://example.org/TEMP/name> ] ;
-    sh:targetClass <https://example.org/TEMP/Subject> .
+            sh:path <https://example.org/TEMP/has_numeric_value> ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/has_raw_value> ] ;
+    sh:targetClass <https://example.org/TEMP/Quantity> .
 
 <https://example.org/TEMP/Investigation> a sh:NodeShape ;
     sh:closed true ;
+    sh:description "General information about the Investigation" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://example.org/TEMP/Investigation> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path <https://example.org/TEMP/part_of> ],
-        [ sh:maxCount 1 ;
+    sh:property [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path <https://example.org/TEMP/name> ],
         [ sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path <https://example.org/TEMP/id> ] ;
+            sh:path <https://example.org/TEMP/id> ],
+        [ sh:class <https://example.org/TEMP/Investigation> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path <https://example.org/TEMP/part_of> ] ;
     sh:targetClass <https://example.org/TEMP/Investigation> .
 
 <https://example.org/TEMP/MaterialEntity> a sh:NodeShape ;
     sh:closed true ;
-    sh:description "Physical entity that is an input our output of a process" ;
+    sh:description "Physical entity that is an input our output of a process from a Subject" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://example.org/TEMP/id> ],
+        [ sh:class <https://example.org/TEMP/Quantity> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path <https://example.org/TEMP/concentration> ],
+        [ sh:class <https://example.org/TEMP/Subject> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path <https://example.org/TEMP/source> ],
+        [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path <https://example.org/TEMP/name> ],
         [ sh:class <https://example.org/TEMP/Investigation> ;
@@ -152,20 +175,19 @@
         [ sh:class <https://example.org/TEMP/Quantity> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path <https://example.org/TEMP/concentration> ],
-        [ sh:class <https://example.org/TEMP/Quantity> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
-            sh:path <https://example.org/TEMP/volume> ],
+            sh:path <https://example.org/TEMP/volume> ] ;
+    sh:targetClass <https://example.org/TEMP/MaterialEntity> .
+
+<https://example.org/TEMP/Subject> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Demographic and clinical information about the subject" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://example.org/TEMP/name> ],
         [ sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path <https://example.org/TEMP/id> ],
-        [ sh:class <https://example.org/TEMP/Subject> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path <https://example.org/TEMP/source> ] ;
-    sh:targetClass <https://example.org/TEMP/MaterialEntity> .
+            sh:path <https://example.org/TEMP/id> ] ;
+    sh:targetClass <https://example.org/TEMP/Subject> .
 
