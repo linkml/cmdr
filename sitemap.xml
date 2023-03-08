@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://linkml.github.io/cmdr/DataObject/</loc>
+         <lastmod>2023-03-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://linkml.github.io/cmdr/Date/</loc>
          <lastmod>2023-03-08</lastmod>
          <changefreq>daily</changefreq>
@@ -196,6 +201,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://linkml.github.io/cmdr/material_processings/</loc>
+         <lastmod>2023-03-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://linkml.github.io/cmdr/materials/</loc>
          <lastmod>2023-03-08</lastmod>
          <changefreq>daily</changefreq>
@@ -216,12 +226,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/processes/</loc>
+         <loc>https://linkml.github.io/cmdr/source/</loc>
          <lastmod>2023-03-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/cmdr/source/</loc>
+         <loc>https://linkml.github.io/cmdr/specimen_collection_processes/</loc>
          <lastmod>2023-03-08</lastmod>
          <changefreq>daily</changefreq>
     </url>

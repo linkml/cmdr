@@ -200,12 +200,14 @@
     class Container
       Container : investigations
         Container &lt;.. Investigation : investigations
+      Container : material_processings
+        Container &lt;.. MaterialProcessing : material_processings
       Container : materials
         Container &lt;.. MaterialEntity : materials
       Container : participations
         Container &lt;.. Participation : participations
-      Container : processes
-        Container &lt;.. Process : processes
+      Container : specimen_collection_processes
+        Container &lt;.. SpecimenCollectionProcess : specimen_collection_processes
       Container : subjects
         Container &lt;.. Subject : subjects
 
@@ -235,7 +237,13 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../processes/">processes</a></td>
+<td><a href="../material_processings/">material_processings</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../specimen_collection_processes/">specimen_collection_processes</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
@@ -288,7 +296,8 @@ rank: 1000
 slots:
 - materials
 - participations
-- processes
+- material_processings
+- specimen_collection_processes
 - investigations
 - subjects
 slot_usage:
@@ -298,6 +307,14 @@ slot_usage:
     domain_of:
     - Container
     range: Investigation
+    inlined: true
+    inlined_as_list: true
+  material_processings:
+    name: material_processings
+    multivalued: true
+    domain_of:
+    - Container
+    range: MaterialProcessing
     inlined: true
     inlined_as_list: true
   materials:
@@ -316,12 +333,12 @@ slot_usage:
     range: Participation
     inlined: true
     inlined_as_list: true
-  processes:
-    name: processes
+  specimen_collection_processes:
+    name: specimen_collection_processes
     multivalued: true
     domain_of:
     - Container
-    range: Process
+    range: SpecimenCollectionProcess
     inlined: true
     inlined_as_list: true
   subjects:
@@ -332,6 +349,7 @@ slot_usage:
     range: Subject
     inlined: true
     inlined_as_list: true
+tree_root: true
 
 </code></pre>
 </details>
@@ -349,6 +367,14 @@ slot_usage:
     range: Investigation
     inlined: true
     inlined_as_list: true
+  material_processings:
+    name: material_processings
+    multivalued: true
+    domain_of:
+    - Container
+    range: MaterialProcessing
+    inlined: true
+    inlined_as_list: true
   materials:
     name: materials
     multivalued: true
@@ -365,12 +391,12 @@ slot_usage:
     range: Participation
     inlined: true
     inlined_as_list: true
-  processes:
-    name: processes
+  specimen_collection_processes:
+    name: specimen_collection_processes
     multivalued: true
     domain_of:
     - Container
-    range: Process
+    range: SpecimenCollectionProcess
     inlined: true
     inlined_as_list: true
   subjects:
@@ -406,16 +432,28 @@ attributes:
     range: Participation
     inlined: true
     inlined_as_list: true
-  processes:
-    name: processes
+  material_processings:
+    name: material_processings
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
     multivalued: true
-    alias: processes
+    alias: material_processings
     owner: Container
     domain_of:
     - Container
-    range: Process
+    range: MaterialProcessing
+    inlined: true
+    inlined_as_list: true
+  specimen_collection_processes:
+    name: specimen_collection_processes
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    multivalued: true
+    alias: specimen_collection_processes
+    owner: Container
+    domain_of:
+    - Container
+    range: SpecimenCollectionProcess
     inlined: true
     inlined_as_list: true
   investigations:
@@ -442,6 +480,7 @@ attributes:
     range: Subject
     inlined: true
     inlined_as_list: true
+tree_root: true
 
 </code></pre>
 </details>

@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://linkml.github.io/cmdr/Process/" rel="canonical"/>
+<link href="https://linkml.github.io/cmdr/DataObject/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: Process - cmdr</title>
+<title>Class: DataObject - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-process">
+<a class="md-skip" href="#class-dataobject">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Process
+              Class: DataObject
             
           </span>
 </div>
@@ -142,13 +142,18 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-    Inheritance
+<a class="md-nav__link" href="#slots">
+    Slots
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-    Slots
+<a class="md-nav__link" href="#aliases">
+    Aliases
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see-also">
+    See Also
   </a>
 </li>
 <li class="md-nav__item">
@@ -196,38 +201,17 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/linkml/cmdr/edit/master/docs/Process.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/linkml/cmdr/edit/master/docs/DataObject.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-process">Class: Process</h1>
-<p><em>A planned process resulting in a material or data</em></p>
-<ul>
-<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
-</ul>
-<p>URI: <a href="https://w3id.org/linkml/cmdr/Process">cmdr:Process</a></p>
+<h1 id="class-dataobject">Class: DataObject</h1>
+<p><em>A DataFile Associated with a Subject or Investigation or MaterialEntity</em></p>
+<p>URI: <a href="https://w3id.org/linkml/cmdr/DataObject">cmdr:DataObject</a></p>
 <div class="mermaid"> classDiagram
-    class Process
-      Process &lt;|-- MaterialProcessing
-      Process &lt;|-- SpecimenCollectionProcess
-
-      Process : has_input
-        Process &lt;.. string : has_input
-      Process : has_output
-        Process &lt;.. string : has_output
-      Process : id
-        Process &lt;.. uriorcurie : id
-      Process : name
-        Process &lt;.. string : name
+    class DataObject
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><strong>Process</strong><ul>
-<li><a href="../MaterialProcessing/">MaterialProcessing</a></li>
-<li><a href="../SpecimenCollectionProcess/">SpecimenCollectionProcess</a></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -240,31 +224,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_input/">has_input</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_output/">has_output</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td>direct</td>
 </tr>
 </tbody>
 </table>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>File</li>
+<li>Data</li>
+<li>DataFile</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="include:DataFile">include:DataFile</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -281,11 +257,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cmdr:Process</td>
+<td>cmdr:DataObject</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cmdr:Process</td>
+<td>cmdr:DataObject</td>
 </tr>
 </tbody>
 </table>
@@ -293,128 +269,31 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Process
-description: A planned process resulting in a material or data
+<pre><code class="language-yaml">name: DataObject
+description: A DataFile Associated with a Subject or Investigation or MaterialEntity
 from_schema: https://w3id.org/linkml/cmdr
+see_also:
+- include:DataFile
+aliases:
+- File
+- Data
+- DataFile
 rank: 1000
-abstract: true
-slots:
-- id
-- name
-- has_input
-- has_output
-slot_usage:
-  has_input:
-    name: has_input
-    multivalued: true
-    domain_of:
-    - MaterialProcessing
-    - Process
-    - SpecimenCollectionProcess
-  has_output:
-    name: has_output
-    multivalued: true
-    domain_of:
-    - MaterialProcessing
-    - Process
-    - SpecimenCollectionProcess
-  id:
-    name: id
-    identifier: true
-    domain_of:
-    - Investigation
-    - MaterialEntity
-    - Participation
-    - Process
-    - Subject
-    range: uriorcurie
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Process
-description: A planned process resulting in a material or data
+<pre><code class="language-yaml">name: DataObject
+description: A DataFile Associated with a Subject or Investigation or MaterialEntity
 from_schema: https://w3id.org/linkml/cmdr
+see_also:
+- include:DataFile
+aliases:
+- File
+- Data
+- DataFile
 rank: 1000
-abstract: true
-slot_usage:
-  has_input:
-    name: has_input
-    multivalued: true
-    domain_of:
-    - MaterialProcessing
-    - Process
-    - SpecimenCollectionProcess
-  has_output:
-    name: has_output
-    multivalued: true
-    domain_of:
-    - MaterialProcessing
-    - Process
-    - SpecimenCollectionProcess
-  id:
-    name: id
-    identifier: true
-    domain_of:
-    - Investigation
-    - MaterialEntity
-    - Participation
-    - Process
-    - Subject
-    range: uriorcurie
-attributes:
-  id:
-    name: id
-    from_schema: https://w3id.org/linkml/cmdr
-    rank: 1000
-    identifier: true
-    alias: id
-    owner: Process
-    domain_of:
-    - Investigation
-    - MaterialEntity
-    - Participation
-    - Process
-    - Subject
-    range: uriorcurie
-  name:
-    name: name
-    from_schema: https://w3id.org/linkml/cmdr
-    rank: 1000
-    alias: name
-    owner: Process
-    domain_of:
-    - Investigation
-    - MaterialEntity
-    - Participation
-    - Process
-    - Subject
-    range: string
-  has_input:
-    name: has_input
-    from_schema: https://w3id.org/linkml/cmdr
-    rank: 1000
-    multivalued: true
-    alias: has_input
-    owner: Process
-    domain_of:
-    - MaterialProcessing
-    - Process
-    - SpecimenCollectionProcess
-    range: string
-  has_output:
-    name: has_output
-    from_schema: https://w3id.org/linkml/cmdr
-    rank: 1000
-    multivalued: true
-    alias: has_output
-    owner: Process
-    domain_of:
-    - MaterialProcessing
-    - Process
-    - SpecimenCollectionProcess
-    range: string
 
 </code></pre>
 </details>

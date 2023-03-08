@@ -157,6 +157,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#see-also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -205,6 +210,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-investigation">Class: Investigation</h1>
+<p><em>General information about the Investigation</em></p>
 <p>URI: <a href="https://w3id.org/linkml/cmdr/Investigation">cmdr:Investigation</a></p>
 <div class="mermaid"> classDiagram
     class Investigation
@@ -290,6 +296,10 @@
 <li>Study</li>
 <li>Proposal</li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="include:Study">include:Study</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -319,7 +329,10 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Investigation
+description: General information about the Investigation
 from_schema: https://w3id.org/linkml/cmdr
+see_also:
+- include:Study
 aliases:
 - Study
 - Proposal
@@ -350,7 +363,10 @@ slot_usage:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Investigation
+description: General information about the Investigation
 from_schema: https://w3id.org/linkml/cmdr
+see_also:
+- include:Study
 aliases:
 - Study
 - Proposal
