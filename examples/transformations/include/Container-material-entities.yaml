@@ -1,7 +1,10 @@
 biospecimens:
 - id: omicsrus:m1
   name: water
+  volume: 33.3
 - id: omicsrus:m2
   name: soil
+  volume: 100.2
 - id: omicsrus:m3
   name: blood
+  volume: 1.2
