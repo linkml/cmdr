@@ -4,6 +4,11 @@ Core Model for Data Research (Tentative)
 
 _Currently most influenced by the Include schema, https://github.com/include-dcc/include_linkml_
 
+recommended:
+
+- `make test`
+- `make test_transform`
+
 ## Website
 
 * [https://linkml.github.io/cmdr](https://linkml.github.io/cmdr)
@@ -18,7 +23,8 @@ _Currently most influenced by the Include schema, https://github.com/include-dcc
 * [datamodel](src/cmdr/datamodel) -- Generated python datamodel
 * [tests](tests/) - python tests
 
-We've added some [HTML visualizastions of data instances](https://htmlpreview.github.io/?https://github.com/linkml/cmdr/blob/master/examples/Container-material-entities.html)!
+We've added
+some [HTML visualizastions of data instances](https://htmlpreview.github.io/?https://github.com/linkml/cmdr/blob/master/examples/Container-material-entities.html)!
 
 ## Developer Documentation
 
