@@ -1,5 +1,5 @@
 id: cmdr_to_include
-title: Transformation from Common Model for Data Research to Include
+title: Transformation from Common Model for Data Research to INCLUDE
 prefixes:
   cmdr2inc: http://example.org/cmdr2inc/
 
@@ -9,15 +9,14 @@ target_schema: include
 
 class_derivations:
   Biospecimen:
-    # an injection
     populated_from: MaterialEntity
     slot_derivations:
       id:
       name:
-  Container:
-    # an injection
+      volume:
+        expr: "{volume}.has_numeric_value"
+  Container:  # an injection
     populated_from: Container
     slot_derivations:
       biospecimens:
         populated_from: materials
-
