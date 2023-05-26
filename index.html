@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://linkml.github.io/cmdr/">
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-8.5.10">
     
     
       
@@ -381,8 +381,8 @@
 
 <h1 id="cmdr">cmdr</h1>
 <p>Core Model for Data Research (Tentative)</p>
-<p>URI: https://w3id.org/linkml/cmdr
-Name: cmdr</p>
+<p>URI: https://w3id.org/linkml/cmdr</p>
+<p>Name: cmdr</p>
 <h2 id="classes">Classes</h2>
 <table>
 <thead>
@@ -394,7 +394,7 @@ Name: cmdr</p>
 <tbody>
 <tr>
 <td><a href="Container/">Container</a></td>
-<td></td>
+<td>None</td>
 </tr>
 <tr>
 <td><a href="DataObject/">DataObject</a></td>
@@ -409,10 +409,6 @@ Name: cmdr</p>
 <td>Physical entity that is an input our output of a process from a Subject</td>
 </tr>
 <tr>
-<td><a href="MaterialProcessing/">MaterialProcessing</a></td>
-<td>A planned process which results in physical changes in a specified input mate...</td>
-</tr>
-<tr>
 <td><a href="Participation/">Participation</a></td>
 <td>Subject/Study participation information</td>
 </tr>
@@ -421,12 +417,16 @@ Name: cmdr</p>
 <td>A planned process resulting in a material or data</td>
 </tr>
 <tr>
-<td><a href="Quantity/">Quantity</a></td>
-<td></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MaterialProcessing/">MaterialProcessing</a></td>
+<td>A planned process which results in physical changes in a specified input material</td>
 </tr>
 <tr>
-<td><a href="SpecimenCollectionProcess/">SpecimenCollectionProcess</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SpecimenCollectionProcess/">SpecimenCollectionProcess</a></td>
 <td>A planned process with the objective of collecting a specimen</td>
+</tr>
+<tr>
+<td><a href="Quantity/">Quantity</a></td>
+<td>None</td>
 </tr>
 <tr>
 <td><a href="Subject/">Subject</a></td>
@@ -556,6 +556,10 @@ Name: cmdr</p>
 <tr>
 <td><a href="Boolean/">Boolean</a></td>
 <td>A binary (true or false) value</td>
+</tr>
+<tr>
+<td><a href="Curie/">Curie</a></td>
+<td>a compact URI</td>
 </tr>
 <tr>
 <td><a href="Date/">Date</a></td>

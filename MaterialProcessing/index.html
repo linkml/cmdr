@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://linkml.github.io/cmdr/MaterialProcessing/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: MaterialProcessing - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -212,13 +212,17 @@
       Process &lt;|-- MaterialProcessing
 
       MaterialProcessing : has_input
-        MaterialProcessing &lt;.. MaterialEntity : has_input
+
+          MaterialProcessing --|&gt; MaterialEntity : has_input
+
       MaterialProcessing : has_output
-        MaterialProcessing &lt;.. MaterialEntity : has_output
+
+          MaterialProcessing --|&gt; MaterialEntity : has_output
+
       MaterialProcessing : id
-        MaterialProcessing &lt;.. uriorcurie : id
+
       MaterialProcessing : name
-        MaterialProcessing &lt;.. string : name
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -241,13 +245,13 @@
 <tbody>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -316,7 +320,6 @@
 description: A planned process which results in physical changes in a specified input
   material
 from_schema: https://w3id.org/linkml/cmdr
-rank: 1000
 is_a: Process
 slots:
 - has_input
@@ -348,7 +351,6 @@ class_uri: OBI:0000094
 description: A planned process which results in physical changes in a specified input
   material
 from_schema: https://w3id.org/linkml/cmdr
-rank: 1000
 is_a: Process
 slot_usage:
   has_input:

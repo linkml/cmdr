@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://linkml.github.io/cmdr/SpecimenCollectionProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: SpecimenCollectionProcess - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -217,13 +217,17 @@
       Process &lt;|-- SpecimenCollectionProcess
 
       SpecimenCollectionProcess : has_input
-        SpecimenCollectionProcess &lt;.. Subject : has_input
+
+          SpecimenCollectionProcess --|&gt; Subject : has_input
+
       SpecimenCollectionProcess : has_output
-        SpecimenCollectionProcess &lt;.. MaterialEntity : has_output
+
+          SpecimenCollectionProcess --|&gt; MaterialEntity : has_output
+
       SpecimenCollectionProcess : id
-        SpecimenCollectionProcess &lt;.. uriorcurie : id
+
       SpecimenCollectionProcess : name
-        SpecimenCollectionProcess &lt;.. string : name
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -246,13 +250,13 @@
 <tbody>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../Subject/">Subject</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -326,7 +330,6 @@ description: A planned process with the objective of collecting a specimen
 from_schema: https://w3id.org/linkml/cmdr
 aliases:
 - MaterialCollectionProcess
-rank: 1000
 is_a: Process
 slots:
 - has_input
@@ -359,7 +362,6 @@ description: A planned process with the objective of collecting a specimen
 from_schema: https://w3id.org/linkml/cmdr
 aliases:
 - MaterialCollectionProcess
-rank: 1000
 is_a: Process
 slot_usage:
   has_input:

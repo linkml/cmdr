@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://linkml.github.io/cmdr/Subject/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Subject - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -215,9 +215,9 @@
 <div class="mermaid"> classDiagram
     class Subject
       Subject : id
-        Subject &lt;.. uriorcurie : id
+
       Subject : name
-        Subject &lt;.. string : name
+
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -234,7 +234,7 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -328,7 +328,6 @@ see_also:
 aliases:
 - Site
 - Participant
-rank: 1000
 slots:
 - id
 - name
@@ -356,7 +355,6 @@ see_also:
 aliases:
 - Site
 - Participant
-rank: 1000
 slot_usage:
   id:
     name: id

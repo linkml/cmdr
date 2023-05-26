@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://linkml.github.io/cmdr/Quantity/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Quantity - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -204,13 +204,13 @@
 <div class="mermaid"> classDiagram
     class Quantity
       Quantity : comparator
-        Quantity &lt;.. string : comparator
+
       Quantity : has_numeric_value
-        Quantity &lt;.. float : has_numeric_value
+
       Quantity : has_raw_value
-        Quantity &lt;.. string : has_raw_value
+
       Quantity : has_unit
-        Quantity &lt;.. string : has_unit
+
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -233,7 +233,7 @@
 </tr>
 <tr>
 <td><a href="../has_numeric_value/">has_numeric_value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -306,7 +306,6 @@
 <details>
 <pre><code class="language-yaml">name: Quantity
 from_schema: https://w3id.org/linkml/cmdr
-rank: 1000
 slots:
 - has_raw_value
 - has_numeric_value
@@ -340,7 +339,6 @@ slot_usage:
 <details>
 <pre><code class="language-yaml">name: Quantity
 from_schema: https://w3id.org/linkml/cmdr
-rank: 1000
 slot_usage:
   comparator:
     name: comparator

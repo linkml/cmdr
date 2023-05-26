@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://linkml.github.io/cmdr/Container/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Container - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -199,17 +199,29 @@
 <div class="mermaid"> classDiagram
     class Container
       Container : investigations
-        Container &lt;.. Investigation : investigations
+
+          Container --|&gt; Investigation : investigations
+
       Container : material_processings
-        Container &lt;.. MaterialProcessing : material_processings
+
+          Container --|&gt; MaterialProcessing : material_processings
+
       Container : materials
-        Container &lt;.. MaterialEntity : materials
+
+          Container --|&gt; MaterialEntity : materials
+
       Container : participations
-        Container &lt;.. Participation : participations
+
+          Container --|&gt; Participation : participations
+
       Container : specimen_collection_processes
-        Container &lt;.. SpecimenCollectionProcess : specimen_collection_processes
+
+          Container --|&gt; SpecimenCollectionProcess : specimen_collection_processes
+
       Container : subjects
-        Container &lt;.. Subject : subjects
+
+          Container --|&gt; Subject : subjects
+
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -226,37 +238,37 @@
 <tbody>
 <tr>
 <td><a href="../materials/">materials</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../participations/">participations</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../Participation/">Participation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../material_processings/">material_processings</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../MaterialProcessing/">MaterialProcessing</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../specimen_collection_processes/">specimen_collection_processes</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../SpecimenCollectionProcess/">SpecimenCollectionProcess</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../investigations/">investigations</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../Investigation/">Investigation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../subjects/">subjects</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../Subject/">Subject</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -292,7 +304,6 @@
 <details>
 <pre><code class="language-yaml">name: Container
 from_schema: https://w3id.org/linkml/cmdr
-rank: 1000
 slots:
 - materials
 - participations
@@ -357,7 +368,6 @@ tree_root: true
 <details>
 <pre><code class="language-yaml">name: Container
 from_schema: https://w3id.org/linkml/cmdr
-rank: 1000
 slot_usage:
   investigations:
     name: investigations

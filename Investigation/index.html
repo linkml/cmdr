@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://linkml.github.io/cmdr/Investigation/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Investigation - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -215,11 +215,13 @@
 <div class="mermaid"> classDiagram
     class Investigation
       Investigation : id
-        Investigation &lt;.. uriorcurie : id
+
       Investigation : name
-        Investigation &lt;.. string : name
+
       Investigation : part_of
-        Investigation &lt;.. Investigation : part_of
+
+          Investigation --|&gt; Investigation : part_of
+
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -236,7 +238,7 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -248,7 +250,7 @@
 </tr>
 <tr>
 <td><a href="../part_of/">part_of</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="./">Investigation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -336,7 +338,6 @@ see_also:
 aliases:
 - Study
 - Proposal
-rank: 1000
 slots:
 - id
 - name
@@ -370,7 +371,6 @@ see_also:
 aliases:
 - Study
 - Proposal
-rank: 1000
 slot_usage:
   id:
     name: id

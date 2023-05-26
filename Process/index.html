@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://linkml.github.io/cmdr/Process/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Process - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -211,13 +211,13 @@
       Process &lt;|-- SpecimenCollectionProcess
 
       Process : has_input
-        Process &lt;.. string : has_input
+
       Process : has_output
-        Process &lt;.. string : has_output
+
       Process : id
-        Process &lt;.. uriorcurie : id
+
       Process : name
-        Process &lt;.. string : name
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -241,7 +241,7 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -253,13 +253,13 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -296,7 +296,6 @@
 <pre><code class="language-yaml">name: Process
 description: A planned process resulting in a material or data
 from_schema: https://w3id.org/linkml/cmdr
-rank: 1000
 abstract: true
 slots:
 - id
@@ -336,7 +335,6 @@ slot_usage:
 <pre><code class="language-yaml">name: Process
 description: A planned process resulting in a material or data
 from_schema: https://w3id.org/linkml/cmdr
-rank: 1000
 abstract: true
 slot_usage:
   has_input:

@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://linkml.github.io/cmdr/MaterialEntity/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.4.3, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: MaterialEntity - cmdr</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -215,17 +215,25 @@
 <div class="mermaid"> classDiagram
     class MaterialEntity
       MaterialEntity : concentration
-        MaterialEntity &lt;.. Quantity : concentration
+
+          MaterialEntity --|&gt; Quantity : concentration
+
       MaterialEntity : id
-        MaterialEntity &lt;.. uriorcurie : id
+
       MaterialEntity : name
-        MaterialEntity &lt;.. string : name
+
       MaterialEntity : source
-        MaterialEntity &lt;.. Subject : source
+
+          MaterialEntity --|&gt; Subject : source
+
       MaterialEntity : used_in
-        MaterialEntity &lt;.. Investigation : used_in
+
+          MaterialEntity --|&gt; Investigation : used_in
+
       MaterialEntity : volume
-        MaterialEntity &lt;.. Quantity : volume
+
+          MaterialEntity --|&gt; Quantity : volume
+
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -242,7 +250,7 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -254,25 +262,25 @@
 </tr>
 <tr>
 <td><a href="../used_in/">used_in</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="../Investigation/">Investigation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Subject/">Subject</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../volume/">volume</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Quantity/">Quantity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../concentration/">concentration</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Quantity/">Quantity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -366,7 +374,6 @@ aliases:
 - Sample
 - Biospecimen
 - Biosample
-rank: 1000
 slots:
 - id
 - name
@@ -424,7 +431,6 @@ aliases:
 - Sample
 - Biospecimen
 - Biosample
-rank: 1000
 slot_usage:
   concentration:
     name: concentration
