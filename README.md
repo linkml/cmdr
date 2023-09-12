@@ -19,12 +19,12 @@ $ make install
 
 3. Create downstream schema artifacts, run unit tests, and also validate examples/instance data against schema
 ```
-make test
+$ make test
 ```
 
 4. LinkML transformer mapping between source and target schemas on a class
 ```
-make test_transform
+$ make test_transform
 ```
 
 ## Website
