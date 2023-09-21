@@ -2,257 +2,257 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://linkml.github.io/cmdr/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Boolean/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Container/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Curie/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/DataObject/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Date/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/DateOrDatetime/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Datetime/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Decimal/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Double/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Float/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Integer/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Investigation/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/MaterialEntity/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/MaterialProcessing/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Ncname/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Nodeidentifier/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Objectidentifier/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Participation/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/PotentialPhi/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Process/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Quantity/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/SpecimenCollectionProcess/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/String/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Subject/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/TemporalData/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Time/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Uri/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/Uriorcurie/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/cmdr/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/comparator/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/concentration/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/has_input/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/has_numeric_value/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/has_output/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/has_raw_value/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/has_unit/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/id/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/includes/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/investigations/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/involved_in/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/material_processings/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/materials/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/name/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/part_of/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/participations/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/source/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/specimen_collection_processes/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/subjects/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/used_in/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/cmdr/volume/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-09-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
