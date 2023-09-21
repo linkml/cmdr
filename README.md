@@ -1,13 +1,33 @@
-# cmdr
+# CMDR
 
-Core Model for Data Research (Tentative)
+CMDR (pronunciation: “com-mo-dore” or sometimes “com-man-der”), the Core Model for Data Research, is a LinkML schema/data model for the collection of biological sample data, and its analysis.
 
-_Currently most influenced by the Include schema, https://github.com/include-dcc/include_linkml_
+The purpose of this schema is to act as a *base* schema for other LinkML schemas/data models to bootstrap for their specific use case.
 
-recommended:
+The CMDR data model was inspired by the LinkML [data model](https://github.com/include-dcc/include_linkml) for the INCLUDE project.
 
-- `make test`
-- `make test_transform`
+## Project Setup
+
+1. Clone *cmdr* project repository
+
+```
+$ git clone https://github.com/linkml/cmdr.git
+```
+
+2. Create virtual environment and install project dependencies
+```
+$ make install
+```
+
+3. Create downstream schema artifacts, run unit tests, and also validate examples/instance data against schema
+```
+$ make test
+```
+
+4. LinkML transformer mapping between source and target schemas on a class
+```
+$ make test_transform
+```
 
 ## Website
 
