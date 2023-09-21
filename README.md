@@ -4,6 +4,8 @@ CMDR (pronunciation: “com-mo-dore” or sometimes “com-man-der”), the Core
 
 The purpose of this schema is to act as a *base* schema for other LinkML schemas/data models to bootstrap for their specific use case.
 
+The CMDR data model was inspired by the LinkML [data model](https://github.com/include-dcc/include_linkml) for the INCLUDE project.
+
 ## Project Setup
 
 1. Clone *cmdr* project repository
