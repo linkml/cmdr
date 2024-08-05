@@ -12,6 +12,7 @@ python = "^3.9"
 linkml-runtime = "^1.1.24"
 SQLAlchemy = "^1.4.32, !=1.4.46"
 linkml-transformer = "^0.1"
+linkml = "^1.8.1"
 
 
 [tool.poetry.group.dev.dependencies]
