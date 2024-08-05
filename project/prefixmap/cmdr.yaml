@@ -1,40 +1,15 @@
 {
-   "OBI": "http://purl.obolibrary.org/obo/OBI_",
+   "OBI": "http://example.org/UNKNOWN/OBI/",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
-   "TEMP": "https://example.org/TEMP/",
    "biolink": "https://w3id.org/biolink/",
    "cmdr": "https://w3id.org/linkml/cmdr/",
    "example": "https://example.org/",
    "linkml": "https://w3id.org/linkml/",
    "schema": "http://schema.org/",
-   "Container": {
-      "@id": "TEMP:Container"
-   },
-   "DataObject": {
-      "@id": "TEMP:DataObject"
-   },
-   "Investigation": {
-      "@id": "TEMP:Investigation"
-   },
-   "MaterialEntity": {
-      "@id": "TEMP:MaterialEntity"
-   },
    "MaterialProcessing": {
       "@id": "OBI:0000094"
    },
-   "Participation": {
-      "@id": "TEMP:Participation"
-   },
-   "Process": {
-      "@id": "TEMP:Process"
-   },
-   "Quantity": {
-      "@id": "TEMP:Quantity"
-   },
    "SpecimenCollectionProcess": {
       "@id": "OBI:0000659"
-   },
-   "Subject": {
-      "@id": "TEMP:Subject"
    }
 }

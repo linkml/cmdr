@@ -1,13 +1,12 @@
 # Auto generated from cmdr.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-07T15:56:51
+# Generation date: 2024-08-05T13:47:48
 # Schema: cmdr
 #
 # id: https://w3id.org/linkml/cmdr
-# description: Core Model for Data Research (Tentative)
+# description: Core Model for Clinical Data Collection
 # license: MIT
 
 import dataclasses
-import sys
 import re
 from jsonasobj2 import JsonObj, as_dict
 from typing import Optional, List, Union, Dict, ClassVar, Any
@@ -32,9 +31,8 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
+OBI = CurieNamespace('OBI', 'http://example.org/UNKNOWN/OBI/')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
-TEMP = CurieNamespace('TEMP', 'https://example.org/TEMP/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/')
 CMDR = CurieNamespace('cmdr', 'https://w3id.org/linkml/cmdr/')
 EXAMPLE = CurieNamespace('example', 'https://example.org/')
@@ -78,8 +76,8 @@ class SubjectId(URIorCURIE):
 class Container(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Container
-    class_class_curie: ClassVar[str] = "TEMP:Container"
+    class_class_uri: ClassVar[URIRef] = CMDR.Container
+    class_class_curie: ClassVar[str] = "cmdr:Container"
     class_name: ClassVar[str] = "Container"
     class_model_uri: ClassVar[URIRef] = CMDR.Container
 
@@ -112,8 +110,8 @@ class DataObject(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.DataObject
-    class_class_curie: ClassVar[str] = "TEMP:DataObject"
+    class_class_uri: ClassVar[URIRef] = CMDR.DataObject
+    class_class_curie: ClassVar[str] = "cmdr:DataObject"
     class_name: ClassVar[str] = "DataObject"
     class_model_uri: ClassVar[URIRef] = CMDR.DataObject
 
@@ -125,8 +123,8 @@ class Investigation(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Investigation
-    class_class_curie: ClassVar[str] = "TEMP:Investigation"
+    class_class_uri: ClassVar[URIRef] = CMDR.Investigation
+    class_class_curie: ClassVar[str] = "cmdr:Investigation"
     class_name: ClassVar[str] = "Investigation"
     class_model_uri: ClassVar[URIRef] = CMDR.Investigation
 
@@ -156,8 +154,8 @@ class MaterialEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.MaterialEntity
-    class_class_curie: ClassVar[str] = "TEMP:MaterialEntity"
+    class_class_uri: ClassVar[URIRef] = CMDR.MaterialEntity
+    class_class_curie: ClassVar[str] = "cmdr:MaterialEntity"
     class_name: ClassVar[str] = "MaterialEntity"
     class_model_uri: ClassVar[URIRef] = CMDR.MaterialEntity
 
@@ -200,8 +198,8 @@ class Participation(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Participation
-    class_class_curie: ClassVar[str] = "TEMP:Participation"
+    class_class_uri: ClassVar[URIRef] = CMDR.Participation
+    class_class_curie: ClassVar[str] = "cmdr:Participation"
     class_name: ClassVar[str] = "Participation"
     class_model_uri: ClassVar[URIRef] = CMDR.Participation
 
@@ -236,8 +234,8 @@ class Process(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Process
-    class_class_curie: ClassVar[str] = "TEMP:Process"
+    class_class_uri: ClassVar[URIRef] = CMDR.Process
+    class_class_curie: ClassVar[str] = "cmdr:Process"
     class_name: ClassVar[str] = "Process"
     class_model_uri: ClassVar[URIRef] = CMDR.Process
 
@@ -303,8 +301,8 @@ class MaterialProcessing(Process):
 class Quantity(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Quantity
-    class_class_curie: ClassVar[str] = "TEMP:Quantity"
+    class_class_uri: ClassVar[URIRef] = CMDR.Quantity
+    class_class_curie: ClassVar[str] = "cmdr:Quantity"
     class_name: ClassVar[str] = "Quantity"
     class_model_uri: ClassVar[URIRef] = CMDR.Quantity
 
@@ -375,8 +373,8 @@ class Subject(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = TEMP.Subject
-    class_class_curie: ClassVar[str] = "TEMP:Subject"
+    class_class_uri: ClassVar[URIRef] = CMDR.Subject
+    class_class_curie: ClassVar[str] = "cmdr:Subject"
     class_name: ClassVar[str] = "Subject"
     class_model_uri: ClassVar[URIRef] = CMDR.Subject
 
@@ -402,149 +400,149 @@ class Subject(YAMLRoot):
 class slots:
     pass
 
-slots.comparator = Slot(uri=TEMP.comparator, name="comparator", curie=TEMP.curie('comparator'),
+slots.comparator = Slot(uri=CMDR.comparator, name="comparator", curie=CMDR.curie('comparator'),
                    model_uri=CMDR.comparator, domain=None, range=Optional[str])
 
-slots.concentration = Slot(uri=TEMP.concentration, name="concentration", curie=TEMP.curie('concentration'),
+slots.concentration = Slot(uri=CMDR.concentration, name="concentration", curie=CMDR.curie('concentration'),
                    model_uri=CMDR.concentration, domain=None, range=Optional[str])
 
-slots.has_input = Slot(uri=TEMP.has_input, name="has_input", curie=TEMP.curie('has_input'),
+slots.has_input = Slot(uri=CMDR.has_input, name="has_input", curie=CMDR.curie('has_input'),
                    model_uri=CMDR.has_input, domain=None, range=Optional[str])
 
-slots.has_numeric_value = Slot(uri=TEMP.has_numeric_value, name="has_numeric_value", curie=TEMP.curie('has_numeric_value'),
+slots.has_numeric_value = Slot(uri=CMDR.has_numeric_value, name="has_numeric_value", curie=CMDR.curie('has_numeric_value'),
                    model_uri=CMDR.has_numeric_value, domain=None, range=Optional[str])
 
-slots.has_output = Slot(uri=TEMP.has_output, name="has_output", curie=TEMP.curie('has_output'),
+slots.has_output = Slot(uri=CMDR.has_output, name="has_output", curie=CMDR.curie('has_output'),
                    model_uri=CMDR.has_output, domain=None, range=Optional[str])
 
-slots.has_raw_value = Slot(uri=TEMP.has_raw_value, name="has_raw_value", curie=TEMP.curie('has_raw_value'),
+slots.has_raw_value = Slot(uri=CMDR.has_raw_value, name="has_raw_value", curie=CMDR.curie('has_raw_value'),
                    model_uri=CMDR.has_raw_value, domain=None, range=Optional[str])
 
-slots.has_unit = Slot(uri=TEMP.has_unit, name="has_unit", curie=TEMP.curie('has_unit'),
+slots.has_unit = Slot(uri=CMDR.has_unit, name="has_unit", curie=CMDR.curie('has_unit'),
                    model_uri=CMDR.has_unit, domain=None, range=Optional[str])
 
-slots.id = Slot(uri=TEMP.id, name="id", curie=TEMP.curie('id'),
+slots.id = Slot(uri=CMDR.id, name="id", curie=CMDR.curie('id'),
                    model_uri=CMDR.id, domain=None, range=Optional[str])
 
-slots.includes = Slot(uri=TEMP.includes, name="includes", curie=TEMP.curie('includes'),
+slots.includes = Slot(uri=CMDR.includes, name="includes", curie=CMDR.curie('includes'),
                    model_uri=CMDR.includes, domain=None, range=Optional[str])
 
-slots.investigations = Slot(uri=TEMP.investigations, name="investigations", curie=TEMP.curie('investigations'),
+slots.investigations = Slot(uri=CMDR.investigations, name="investigations", curie=CMDR.curie('investigations'),
                    model_uri=CMDR.investigations, domain=None, range=Optional[str])
 
-slots.involved_in = Slot(uri=TEMP.involved_in, name="involved_in", curie=TEMP.curie('involved_in'),
+slots.involved_in = Slot(uri=CMDR.involved_in, name="involved_in", curie=CMDR.curie('involved_in'),
                    model_uri=CMDR.involved_in, domain=None, range=Optional[str])
 
-slots.material_processings = Slot(uri=TEMP.material_processings, name="material_processings", curie=TEMP.curie('material_processings'),
+slots.material_processings = Slot(uri=CMDR.material_processings, name="material_processings", curie=CMDR.curie('material_processings'),
                    model_uri=CMDR.material_processings, domain=None, range=Optional[str])
 
-slots.materials = Slot(uri=TEMP.materials, name="materials", curie=TEMP.curie('materials'),
+slots.materials = Slot(uri=CMDR.materials, name="materials", curie=CMDR.curie('materials'),
                    model_uri=CMDR.materials, domain=None, range=Optional[str])
 
-slots.name = Slot(uri=TEMP.name, name="name", curie=TEMP.curie('name'),
+slots.name = Slot(uri=CMDR.name, name="name", curie=CMDR.curie('name'),
                    model_uri=CMDR.name, domain=None, range=Optional[str])
 
-slots.part_of = Slot(uri=TEMP.part_of, name="part_of", curie=TEMP.curie('part_of'),
+slots.part_of = Slot(uri=CMDR.part_of, name="part_of", curie=CMDR.curie('part_of'),
                    model_uri=CMDR.part_of, domain=None, range=Optional[str])
 
-slots.participations = Slot(uri=TEMP.participations, name="participations", curie=TEMP.curie('participations'),
+slots.participations = Slot(uri=CMDR.participations, name="participations", curie=CMDR.curie('participations'),
                    model_uri=CMDR.participations, domain=None, range=Optional[str])
 
-slots.source = Slot(uri=TEMP.source, name="source", curie=TEMP.curie('source'),
+slots.source = Slot(uri=CMDR.source, name="source", curie=CMDR.curie('source'),
                    model_uri=CMDR.source, domain=None, range=Optional[str])
 
-slots.specimen_collection_processes = Slot(uri=TEMP.specimen_collection_processes, name="specimen_collection_processes", curie=TEMP.curie('specimen_collection_processes'),
+slots.specimen_collection_processes = Slot(uri=CMDR.specimen_collection_processes, name="specimen_collection_processes", curie=CMDR.curie('specimen_collection_processes'),
                    model_uri=CMDR.specimen_collection_processes, domain=None, range=Optional[str])
 
-slots.subjects = Slot(uri=TEMP.subjects, name="subjects", curie=TEMP.curie('subjects'),
+slots.subjects = Slot(uri=CMDR.subjects, name="subjects", curie=CMDR.curie('subjects'),
                    model_uri=CMDR.subjects, domain=None, range=Optional[str])
 
-slots.used_in = Slot(uri=TEMP.used_in, name="used_in", curie=TEMP.curie('used_in'),
+slots.used_in = Slot(uri=CMDR.used_in, name="used_in", curie=CMDR.curie('used_in'),
                    model_uri=CMDR.used_in, domain=None, range=Optional[str])
 
-slots.volume = Slot(uri=TEMP.volume, name="volume", curie=TEMP.curie('volume'),
+slots.volume = Slot(uri=CMDR.volume, name="volume", curie=CMDR.curie('volume'),
                    model_uri=CMDR.volume, domain=None, range=Optional[str])
 
-slots.Container_investigations = Slot(uri=TEMP.investigations, name="Container_investigations", curie=TEMP.curie('investigations'),
+slots.Container_investigations = Slot(uri=CMDR.investigations, name="Container_investigations", curie=CMDR.curie('investigations'),
                    model_uri=CMDR.Container_investigations, domain=Container, range=Optional[Union[Dict[Union[str, InvestigationId], Union[dict, "Investigation"]], List[Union[dict, "Investigation"]]]])
 
-slots.Container_material_processings = Slot(uri=TEMP.material_processings, name="Container_material_processings", curie=TEMP.curie('material_processings'),
+slots.Container_material_processings = Slot(uri=CMDR.material_processings, name="Container_material_processings", curie=CMDR.curie('material_processings'),
                    model_uri=CMDR.Container_material_processings, domain=Container, range=Optional[Union[Dict[Union[str, MaterialProcessingId], Union[dict, "MaterialProcessing"]], List[Union[dict, "MaterialProcessing"]]]])
 
-slots.Container_materials = Slot(uri=TEMP.materials, name="Container_materials", curie=TEMP.curie('materials'),
+slots.Container_materials = Slot(uri=CMDR.materials, name="Container_materials", curie=CMDR.curie('materials'),
                    model_uri=CMDR.Container_materials, domain=Container, range=Optional[Union[Dict[Union[str, MaterialEntityId], Union[dict, "MaterialEntity"]], List[Union[dict, "MaterialEntity"]]]])
 
-slots.Container_participations = Slot(uri=TEMP.participations, name="Container_participations", curie=TEMP.curie('participations'),
+slots.Container_participations = Slot(uri=CMDR.participations, name="Container_participations", curie=CMDR.curie('participations'),
                    model_uri=CMDR.Container_participations, domain=Container, range=Optional[Union[Dict[Union[str, ParticipationId], Union[dict, "Participation"]], List[Union[dict, "Participation"]]]])
 
-slots.Container_specimen_collection_processes = Slot(uri=TEMP.specimen_collection_processes, name="Container_specimen_collection_processes", curie=TEMP.curie('specimen_collection_processes'),
+slots.Container_specimen_collection_processes = Slot(uri=CMDR.specimen_collection_processes, name="Container_specimen_collection_processes", curie=CMDR.curie('specimen_collection_processes'),
                    model_uri=CMDR.Container_specimen_collection_processes, domain=Container, range=Optional[Union[Dict[Union[str, SpecimenCollectionProcessId], Union[dict, "SpecimenCollectionProcess"]], List[Union[dict, "SpecimenCollectionProcess"]]]])
 
-slots.Container_subjects = Slot(uri=TEMP.subjects, name="Container_subjects", curie=TEMP.curie('subjects'),
+slots.Container_subjects = Slot(uri=CMDR.subjects, name="Container_subjects", curie=CMDR.curie('subjects'),
                    model_uri=CMDR.Container_subjects, domain=Container, range=Optional[Union[Dict[Union[str, SubjectId], Union[dict, "Subject"]], List[Union[dict, "Subject"]]]])
 
-slots.Investigation_id = Slot(uri=TEMP.id, name="Investigation_id", curie=TEMP.curie('id'),
+slots.Investigation_id = Slot(uri=CMDR.id, name="Investigation_id", curie=CMDR.curie('id'),
                    model_uri=CMDR.Investigation_id, domain=Investigation, range=Union[str, InvestigationId])
 
-slots.Investigation_part_of = Slot(uri=TEMP.part_of, name="Investigation_part_of", curie=TEMP.curie('part_of'),
+slots.Investigation_part_of = Slot(uri=CMDR.part_of, name="Investigation_part_of", curie=CMDR.curie('part_of'),
                    model_uri=CMDR.Investigation_part_of, domain=Investigation, range=Optional[Union[str, InvestigationId]])
 
-slots.MaterialEntity_concentration = Slot(uri=TEMP.concentration, name="MaterialEntity_concentration", curie=TEMP.curie('concentration'),
+slots.MaterialEntity_concentration = Slot(uri=CMDR.concentration, name="MaterialEntity_concentration", curie=CMDR.curie('concentration'),
                    model_uri=CMDR.MaterialEntity_concentration, domain=MaterialEntity, range=Optional[Union[dict, "Quantity"]])
 
-slots.MaterialEntity_id = Slot(uri=TEMP.id, name="MaterialEntity_id", curie=TEMP.curie('id'),
+slots.MaterialEntity_id = Slot(uri=CMDR.id, name="MaterialEntity_id", curie=CMDR.curie('id'),
                    model_uri=CMDR.MaterialEntity_id, domain=MaterialEntity, range=Union[str, MaterialEntityId])
 
-slots.MaterialEntity_source = Slot(uri=TEMP.source, name="MaterialEntity_source", curie=TEMP.curie('source'),
+slots.MaterialEntity_source = Slot(uri=CMDR.source, name="MaterialEntity_source", curie=CMDR.curie('source'),
                    model_uri=CMDR.MaterialEntity_source, domain=MaterialEntity, range=Optional[Union[str, SubjectId]])
 
-slots.MaterialEntity_used_in = Slot(uri=TEMP.used_in, name="MaterialEntity_used_in", curie=TEMP.curie('used_in'),
+slots.MaterialEntity_used_in = Slot(uri=CMDR.used_in, name="MaterialEntity_used_in", curie=CMDR.curie('used_in'),
                    model_uri=CMDR.MaterialEntity_used_in, domain=MaterialEntity, range=Optional[Union[Union[str, InvestigationId], List[Union[str, InvestigationId]]]])
 
-slots.MaterialEntity_volume = Slot(uri=TEMP.volume, name="MaterialEntity_volume", curie=TEMP.curie('volume'),
+slots.MaterialEntity_volume = Slot(uri=CMDR.volume, name="MaterialEntity_volume", curie=CMDR.curie('volume'),
                    model_uri=CMDR.MaterialEntity_volume, domain=MaterialEntity, range=Optional[Union[dict, "Quantity"]])
 
-slots.MaterialProcessing_has_input = Slot(uri=TEMP.has_input, name="MaterialProcessing_has_input", curie=TEMP.curie('has_input'),
+slots.MaterialProcessing_has_input = Slot(uri=CMDR.has_input, name="MaterialProcessing_has_input", curie=CMDR.curie('has_input'),
                    model_uri=CMDR.MaterialProcessing_has_input, domain=MaterialProcessing, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
 
-slots.MaterialProcessing_has_output = Slot(uri=TEMP.has_output, name="MaterialProcessing_has_output", curie=TEMP.curie('has_output'),
+slots.MaterialProcessing_has_output = Slot(uri=CMDR.has_output, name="MaterialProcessing_has_output", curie=CMDR.curie('has_output'),
                    model_uri=CMDR.MaterialProcessing_has_output, domain=MaterialProcessing, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
 
-slots.Participation_id = Slot(uri=TEMP.id, name="Participation_id", curie=TEMP.curie('id'),
+slots.Participation_id = Slot(uri=CMDR.id, name="Participation_id", curie=CMDR.curie('id'),
                    model_uri=CMDR.Participation_id, domain=Participation, range=Union[str, ParticipationId])
 
-slots.Participation_includes = Slot(uri=TEMP.includes, name="Participation_includes", curie=TEMP.curie('includes'),
+slots.Participation_includes = Slot(uri=CMDR.includes, name="Participation_includes", curie=CMDR.curie('includes'),
                    model_uri=CMDR.Participation_includes, domain=Participation, range=Optional[Union[str, SubjectId]])
 
-slots.Participation_involved_in = Slot(uri=TEMP.involved_in, name="Participation_involved_in", curie=TEMP.curie('involved_in'),
+slots.Participation_involved_in = Slot(uri=CMDR.involved_in, name="Participation_involved_in", curie=CMDR.curie('involved_in'),
                    model_uri=CMDR.Participation_involved_in, domain=Participation, range=Optional[Union[Union[str, InvestigationId], List[Union[str, InvestigationId]]]])
 
-slots.Process_has_input = Slot(uri=TEMP.has_input, name="Process_has_input", curie=TEMP.curie('has_input'),
+slots.Process_has_input = Slot(uri=CMDR.has_input, name="Process_has_input", curie=CMDR.curie('has_input'),
                    model_uri=CMDR.Process_has_input, domain=Process, range=Optional[Union[str, List[str]]])
 
-slots.Process_has_output = Slot(uri=TEMP.has_output, name="Process_has_output", curie=TEMP.curie('has_output'),
+slots.Process_has_output = Slot(uri=CMDR.has_output, name="Process_has_output", curie=CMDR.curie('has_output'),
                    model_uri=CMDR.Process_has_output, domain=Process, range=Optional[Union[str, List[str]]])
 
-slots.Process_id = Slot(uri=TEMP.id, name="Process_id", curie=TEMP.curie('id'),
+slots.Process_id = Slot(uri=CMDR.id, name="Process_id", curie=CMDR.curie('id'),
                    model_uri=CMDR.Process_id, domain=Process, range=Union[str, ProcessId])
 
-slots.Quantity_comparator = Slot(uri=TEMP.comparator, name="Quantity_comparator", curie=TEMP.curie('comparator'),
+slots.Quantity_comparator = Slot(uri=CMDR.comparator, name="Quantity_comparator", curie=CMDR.curie('comparator'),
                    model_uri=CMDR.Quantity_comparator, domain=Quantity, range=Optional[str])
 
-slots.Quantity_has_numeric_value = Slot(uri=TEMP.has_numeric_value, name="Quantity_has_numeric_value", curie=TEMP.curie('has_numeric_value'),
+slots.Quantity_has_numeric_value = Slot(uri=CMDR.has_numeric_value, name="Quantity_has_numeric_value", curie=CMDR.curie('has_numeric_value'),
                    model_uri=CMDR.Quantity_has_numeric_value, domain=Quantity, range=Optional[float])
 
-slots.Quantity_has_raw_value = Slot(uri=TEMP.has_raw_value, name="Quantity_has_raw_value", curie=TEMP.curie('has_raw_value'),
+slots.Quantity_has_raw_value = Slot(uri=CMDR.has_raw_value, name="Quantity_has_raw_value", curie=CMDR.curie('has_raw_value'),
                    model_uri=CMDR.Quantity_has_raw_value, domain=Quantity, range=Optional[str])
 
-slots.Quantity_has_unit = Slot(uri=TEMP.has_unit, name="Quantity_has_unit", curie=TEMP.curie('has_unit'),
+slots.Quantity_has_unit = Slot(uri=CMDR.has_unit, name="Quantity_has_unit", curie=CMDR.curie('has_unit'),
                    model_uri=CMDR.Quantity_has_unit, domain=Quantity, range=Optional[str])
 
-slots.SpecimenCollectionProcess_has_input = Slot(uri=TEMP.has_input, name="SpecimenCollectionProcess_has_input", curie=TEMP.curie('has_input'),
+slots.SpecimenCollectionProcess_has_input = Slot(uri=CMDR.has_input, name="SpecimenCollectionProcess_has_input", curie=CMDR.curie('has_input'),
                    model_uri=CMDR.SpecimenCollectionProcess_has_input, domain=SpecimenCollectionProcess, range=Optional[Union[Union[str, SubjectId], List[Union[str, SubjectId]]]])
 
-slots.SpecimenCollectionProcess_has_output = Slot(uri=TEMP.has_output, name="SpecimenCollectionProcess_has_output", curie=TEMP.curie('has_output'),
+slots.SpecimenCollectionProcess_has_output = Slot(uri=CMDR.has_output, name="SpecimenCollectionProcess_has_output", curie=CMDR.curie('has_output'),
                    model_uri=CMDR.SpecimenCollectionProcess_has_output, domain=SpecimenCollectionProcess, range=Optional[Union[Union[str, MaterialEntityId], List[Union[str, MaterialEntityId]]]])
 
-slots.Subject_id = Slot(uri=TEMP.id, name="Subject_id", curie=TEMP.curie('id'),
+slots.Subject_id = Slot(uri=CMDR.id, name="Subject_id", curie=CMDR.curie('id'),
                    model_uri=CMDR.Subject_id, domain=Subject, range=Union[str, SubjectId])
