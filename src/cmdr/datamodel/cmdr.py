@@ -1,5 +1,5 @@
 # Auto generated from cmdr.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-07T15:19:05
+# Generation date: 2023-03-07T15:56:51
 # Schema: cmdr
 #
 # id: https://w3id.org/linkml/cmdr

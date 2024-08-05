@@ -228,6 +228,44 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
+    "properties": {
+        "investigations": {
+            "items": {
+                "$ref": "#/$defs/Investigation"
+            },
+            "type": "array"
+        },
+        "material_processings": {
+            "items": {
+                "$ref": "#/$defs/MaterialProcessing"
+            },
+            "type": "array"
+        },
+        "materials": {
+            "items": {
+                "$ref": "#/$defs/MaterialEntity"
+            },
+            "type": "array"
+        },
+        "participations": {
+            "items": {
+                "$ref": "#/$defs/Participation"
+            },
+            "type": "array"
+        },
+        "specimen_collection_processes": {
+            "items": {
+                "$ref": "#/$defs/SpecimenCollectionProcess"
+            },
+            "type": "array"
+        },
+        "subjects": {
+            "items": {
+                "$ref": "#/$defs/Subject"
+            },
+            "type": "array"
+        }
+    },
     "title": "cmdr",
     "type": "object",
     "version": null

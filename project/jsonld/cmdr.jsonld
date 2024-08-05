@@ -253,7 +253,7 @@
       "definition_uri": "https://w3id.org/linkml/Objectidentifier",
       "description": "A URI or CURIE that represents an object in the model.",
       "comments": [
-        "Used for inheritence and type checking"
+        "Used for inheritance and type checking"
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
@@ -1072,6 +1072,24 @@
       ],
       "slot_usage": {},
       "class_uri": "https://example.org/TEMP/Container",
+      "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DataObject",
+      "definition_uri": "https://example.org/TEMP/DataObject",
+      "description": "A DataFile Associated with a Subject or Investigation or MaterialEntity",
+      "from_schema": "TEMP",
+      "see_also": [
+        "include:DataFile"
+      ],
+      "aliases": [
+        "File",
+        "Data",
+        "DataFile"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://example.org/TEMP/DataObject",
       "@type": "ClassDefinition"
     },
     {
@@ -1255,7 +1273,11 @@
   "source_file": "cmdr.yaml",
   "source_file_date": "2023-03-06T16:01:53",
   "source_file_size": 485,
+<<<<<<< HEAD
   "generation_date": "2023-03-07T15:54:06",
+=======
+  "generation_date": "2023-03-07T15:56:42",
+>>>>>>> main
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cmdr.context.jsonld",
