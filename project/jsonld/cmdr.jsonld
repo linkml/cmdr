@@ -1273,11 +1273,7 @@
   "source_file": "cmdr.yaml",
   "source_file_date": "2023-03-06T16:01:53",
   "source_file_size": 485,
-<<<<<<< HEAD
   "generation_date": "2023-03-07T15:54:06",
-=======
-  "generation_date": "2023-03-07T15:56:42",
->>>>>>> main
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cmdr.context.jsonld",
