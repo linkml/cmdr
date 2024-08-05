@@ -61,7 +61,7 @@
                     "type": "string"
                 },
                 "part_of": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -84,11 +84,11 @@
                     "type": "string"
                 },
                 "source": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "used_in": {
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -108,13 +108,13 @@
             "properties": {
                 "has_input": {
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -139,11 +139,11 @@
                     "type": "string"
                 },
                 "includes": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "involved_in": {
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -183,13 +183,13 @@
             "properties": {
                 "has_input": {
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -227,6 +227,7 @@
     "$id": "https://w3id.org/linkml/cmdr",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
+    "description": "",
     "metamodel_version": "1.7.0",
     "properties": {
         "investigations": {

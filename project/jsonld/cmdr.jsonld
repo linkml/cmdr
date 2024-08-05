@@ -1,14 +1,13 @@
 {
   "name": "cmdr",
-  "description": "Core Model for Data Research (Tentative)",
+  "description": "Core Model for Clinical Data Collection",
   "title": "cmdr",
   "see_also": [
     "https://linkml.github.io/cmdr"
   ],
   "id": "https://w3id.org/linkml/cmdr",
   "imports": [
-    "linkml:types",
-    "from_sheets"
+    "linkml:types"
   ],
   "license": "MIT",
   "prefixes": [
@@ -42,14 +41,14 @@
   "subsets": [
     {
       "name": "potential_phi",
-      "definition_uri": "https://example.org/TEMP/PotentialPhi",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/PotentialPhi",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "@type": "SubsetDefinition"
     },
     {
       "name": "temporal_data",
-      "definition_uri": "https://example.org/TEMP/TemporalData",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/TemporalData",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "@type": "SubsetDefinition"
     }
   ],
@@ -58,6 +57,9 @@
       "name": "string",
       "definition_uri": "https://w3id.org/linkml/String",
       "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "exact_mappings": [
@@ -71,6 +73,9 @@
       "name": "integer",
       "definition_uri": "https://w3id.org/linkml/Integer",
       "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "exact_mappings": [
@@ -84,6 +89,9 @@
       "name": "boolean",
       "definition_uri": "https://w3id.org/linkml/Boolean",
       "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "exact_mappings": [
@@ -98,6 +106,9 @@
       "name": "float",
       "definition_uri": "https://w3id.org/linkml/Float",
       "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "exact_mappings": [
@@ -111,6 +122,9 @@
       "name": "double",
       "definition_uri": "https://w3id.org/linkml/Double",
       "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "close_mappings": [
@@ -124,6 +138,9 @@
       "name": "decimal",
       "definition_uri": "https://w3id.org/linkml/Decimal",
       "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "broad_mappings": [
@@ -138,7 +155,8 @@
       "definition_uri": "https://w3id.org/linkml/Time",
       "description": "A time object represents a (local) time of day, independent of any particular day",
       "notes": [
-        "URI is dateTime because OWL reasoners do not work with straight date or time"
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
@@ -146,7 +164,7 @@
         "schema:Time"
       ],
       "base": "XSDTime",
-      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
       "repr": "str",
       "@type": "TypeDefinition"
     },
@@ -155,7 +173,8 @@
       "definition_uri": "https://w3id.org/linkml/Date",
       "description": "a date (year, month and day) in an idealized calendar",
       "notes": [
-        "URI is dateTime because OWL reasoners don't work with straight date or time"
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
@@ -171,6 +190,9 @@
       "name": "datetime",
       "definition_uri": "https://w3id.org/linkml/Datetime",
       "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "exact_mappings": [
@@ -185,6 +207,9 @@
       "name": "date_or_datetime",
       "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
       "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "base": "str",
@@ -196,6 +221,9 @@
       "name": "uriorcurie",
       "definition_uri": "https://w3id.org/linkml/Uriorcurie",
       "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "base": "URIorCURIE",
@@ -208,6 +236,9 @@
       "definition_uri": "https://w3id.org/linkml/Curie",
       "conforms_to": "https://www.w3.org/TR/curie/",
       "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
       "comments": [
         "in RDF serializations this MUST be expanded to a URI",
         "in non-RDF serializations MAY be serialized as the compact representation"
@@ -224,6 +255,9 @@
       "definition_uri": "https://w3id.org/linkml/Uri",
       "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
       "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
       "comments": [
         "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
       ],
@@ -241,6 +275,9 @@
       "name": "ncname",
       "definition_uri": "https://w3id.org/linkml/Ncname",
       "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "base": "NCName",
@@ -252,6 +289,9 @@
       "name": "objectidentifier",
       "definition_uri": "https://w3id.org/linkml/Objectidentifier",
       "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
       "comments": [
         "Used for inheritance and type checking"
       ],
@@ -266,10 +306,58 @@
       "name": "nodeidentifier",
       "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
       "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
       "base": "NodeIdentifier",
       "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
       "@type": "TypeDefinition"
     }
@@ -277,9 +365,9 @@
   "slots": [
     {
       "name": "comparator",
-      "definition_uri": "https://example.org/TEMP/comparator",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/comparator",
+      "definition_uri": "https://w3id.org/linkml/cmdr/comparator",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/comparator",
       "owner": "Quantity",
       "domain_of": [
         "Quantity"
@@ -289,9 +377,9 @@
     },
     {
       "name": "concentration",
-      "definition_uri": "https://example.org/TEMP/concentration",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/concentration",
+      "definition_uri": "https://w3id.org/linkml/cmdr/concentration",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/concentration",
       "owner": "MaterialEntity",
       "domain_of": [
         "MaterialEntity"
@@ -301,9 +389,9 @@
     },
     {
       "name": "has_input",
-      "definition_uri": "https://example.org/TEMP/has_input",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/has_input",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_input",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_input",
       "owner": "SpecimenCollectionProcess",
       "domain_of": [
         "MaterialProcessing",
@@ -315,9 +403,9 @@
     },
     {
       "name": "has_numeric_value",
-      "definition_uri": "https://example.org/TEMP/has_numeric_value",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/has_numeric_value",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_numeric_value",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_numeric_value",
       "owner": "Quantity",
       "domain_of": [
         "Quantity"
@@ -327,9 +415,9 @@
     },
     {
       "name": "has_output",
-      "definition_uri": "https://example.org/TEMP/has_output",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/has_output",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_output",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_output",
       "owner": "SpecimenCollectionProcess",
       "domain_of": [
         "MaterialProcessing",
@@ -341,9 +429,9 @@
     },
     {
       "name": "has_raw_value",
-      "definition_uri": "https://example.org/TEMP/has_raw_value",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/has_raw_value",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_raw_value",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_raw_value",
       "owner": "Quantity",
       "domain_of": [
         "Quantity"
@@ -353,9 +441,9 @@
     },
     {
       "name": "has_unit",
-      "definition_uri": "https://example.org/TEMP/has_unit",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/has_unit",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_unit",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_unit",
       "owner": "Quantity",
       "domain_of": [
         "Quantity"
@@ -365,9 +453,9 @@
     },
     {
       "name": "id",
-      "definition_uri": "https://example.org/TEMP/id",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/id",
+      "definition_uri": "https://w3id.org/linkml/cmdr/id",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/id",
       "owner": "Subject",
       "domain_of": [
         "Investigation",
@@ -381,9 +469,9 @@
     },
     {
       "name": "includes",
-      "definition_uri": "https://example.org/TEMP/includes",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/includes",
+      "definition_uri": "https://w3id.org/linkml/cmdr/includes",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/includes",
       "owner": "Participation",
       "domain_of": [
         "Participation"
@@ -393,9 +481,9 @@
     },
     {
       "name": "investigations",
-      "definition_uri": "https://example.org/TEMP/investigations",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/investigations",
+      "definition_uri": "https://w3id.org/linkml/cmdr/investigations",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/investigations",
       "owner": "Container",
       "domain_of": [
         "Container"
@@ -405,9 +493,9 @@
     },
     {
       "name": "involved_in",
-      "definition_uri": "https://example.org/TEMP/involved_in",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/involved_in",
+      "definition_uri": "https://w3id.org/linkml/cmdr/involved_in",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/involved_in",
       "owner": "Participation",
       "domain_of": [
         "Participation"
@@ -417,9 +505,9 @@
     },
     {
       "name": "material_processings",
-      "definition_uri": "https://example.org/TEMP/material_processings",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/material_processings",
+      "definition_uri": "https://w3id.org/linkml/cmdr/material_processings",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/material_processings",
       "owner": "Container",
       "domain_of": [
         "Container"
@@ -429,9 +517,9 @@
     },
     {
       "name": "materials",
-      "definition_uri": "https://example.org/TEMP/materials",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/materials",
+      "definition_uri": "https://w3id.org/linkml/cmdr/materials",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/materials",
       "owner": "Container",
       "domain_of": [
         "Container"
@@ -441,9 +529,9 @@
     },
     {
       "name": "name",
-      "definition_uri": "https://example.org/TEMP/name",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/name",
+      "definition_uri": "https://w3id.org/linkml/cmdr/name",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/name",
       "owner": "Subject",
       "domain_of": [
         "Investigation",
@@ -457,9 +545,9 @@
     },
     {
       "name": "part_of",
-      "definition_uri": "https://example.org/TEMP/part_of",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/part_of",
+      "definition_uri": "https://w3id.org/linkml/cmdr/part_of",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/part_of",
       "owner": "Investigation",
       "domain_of": [
         "Investigation"
@@ -469,9 +557,9 @@
     },
     {
       "name": "participations",
-      "definition_uri": "https://example.org/TEMP/participations",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/participations",
+      "definition_uri": "https://w3id.org/linkml/cmdr/participations",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/participations",
       "owner": "Container",
       "domain_of": [
         "Container"
@@ -481,9 +569,9 @@
     },
     {
       "name": "source",
-      "definition_uri": "https://example.org/TEMP/source",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/source",
+      "definition_uri": "https://w3id.org/linkml/cmdr/source",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/source",
       "owner": "MaterialEntity",
       "domain_of": [
         "MaterialEntity"
@@ -493,9 +581,9 @@
     },
     {
       "name": "specimen_collection_processes",
-      "definition_uri": "https://example.org/TEMP/specimen_collection_processes",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/specimen_collection_processes",
+      "definition_uri": "https://w3id.org/linkml/cmdr/specimen_collection_processes",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/specimen_collection_processes",
       "owner": "Container",
       "domain_of": [
         "Container"
@@ -505,9 +593,9 @@
     },
     {
       "name": "subjects",
-      "definition_uri": "https://example.org/TEMP/subjects",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/subjects",
+      "definition_uri": "https://w3id.org/linkml/cmdr/subjects",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/subjects",
       "owner": "Container",
       "domain_of": [
         "Container"
@@ -517,9 +605,9 @@
     },
     {
       "name": "used_in",
-      "definition_uri": "https://example.org/TEMP/used_in",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/used_in",
+      "definition_uri": "https://w3id.org/linkml/cmdr/used_in",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/used_in",
       "owner": "MaterialEntity",
       "domain_of": [
         "MaterialEntity"
@@ -529,9 +617,9 @@
     },
     {
       "name": "volume",
-      "definition_uri": "https://example.org/TEMP/volume",
-      "from_schema": "TEMP",
-      "slot_uri": "https://example.org/TEMP/volume",
+      "definition_uri": "https://w3id.org/linkml/cmdr/volume",
+      "from_schema": "https://w3id.org/linkml/cmdr",
+      "slot_uri": "https://w3id.org/linkml/cmdr/volume",
       "owner": "MaterialEntity",
       "domain_of": [
         "MaterialEntity"
@@ -541,11 +629,11 @@
     },
     {
       "name": "Container_investigations",
-      "definition_uri": "https://example.org/TEMP/investigations",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/investigations",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "investigations",
       "domain": "Container",
-      "slot_uri": "https://example.org/TEMP/investigations",
+      "slot_uri": "https://w3id.org/linkml/cmdr/investigations",
       "multivalued": true,
       "alias": "investigations",
       "owner": "Container",
@@ -561,11 +649,11 @@
     },
     {
       "name": "Container_material_processings",
-      "definition_uri": "https://example.org/TEMP/material_processings",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/material_processings",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "material_processings",
       "domain": "Container",
-      "slot_uri": "https://example.org/TEMP/material_processings",
+      "slot_uri": "https://w3id.org/linkml/cmdr/material_processings",
       "multivalued": true,
       "alias": "material_processings",
       "owner": "Container",
@@ -581,11 +669,11 @@
     },
     {
       "name": "Container_materials",
-      "definition_uri": "https://example.org/TEMP/materials",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/materials",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "materials",
       "domain": "Container",
-      "slot_uri": "https://example.org/TEMP/materials",
+      "slot_uri": "https://w3id.org/linkml/cmdr/materials",
       "multivalued": true,
       "alias": "materials",
       "owner": "Container",
@@ -601,11 +689,11 @@
     },
     {
       "name": "Container_participations",
-      "definition_uri": "https://example.org/TEMP/participations",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/participations",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "participations",
       "domain": "Container",
-      "slot_uri": "https://example.org/TEMP/participations",
+      "slot_uri": "https://w3id.org/linkml/cmdr/participations",
       "multivalued": true,
       "alias": "participations",
       "owner": "Container",
@@ -621,11 +709,11 @@
     },
     {
       "name": "Container_specimen_collection_processes",
-      "definition_uri": "https://example.org/TEMP/specimen_collection_processes",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/specimen_collection_processes",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "specimen_collection_processes",
       "domain": "Container",
-      "slot_uri": "https://example.org/TEMP/specimen_collection_processes",
+      "slot_uri": "https://w3id.org/linkml/cmdr/specimen_collection_processes",
       "multivalued": true,
       "alias": "specimen_collection_processes",
       "owner": "Container",
@@ -641,11 +729,11 @@
     },
     {
       "name": "Container_subjects",
-      "definition_uri": "https://example.org/TEMP/subjects",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/subjects",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "subjects",
       "domain": "Container",
-      "slot_uri": "https://example.org/TEMP/subjects",
+      "slot_uri": "https://w3id.org/linkml/cmdr/subjects",
       "multivalued": true,
       "alias": "subjects",
       "owner": "Container",
@@ -661,11 +749,11 @@
     },
     {
       "name": "Investigation_id",
-      "definition_uri": "https://example.org/TEMP/id",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/id",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "id",
       "domain": "Investigation",
-      "slot_uri": "https://example.org/TEMP/id",
+      "slot_uri": "https://w3id.org/linkml/cmdr/id",
       "identifier": true,
       "alias": "id",
       "owner": "Investigation",
@@ -680,11 +768,11 @@
     },
     {
       "name": "Investigation_part_of",
-      "definition_uri": "https://example.org/TEMP/part_of",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/part_of",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "part_of",
       "domain": "Investigation",
-      "slot_uri": "https://example.org/TEMP/part_of",
+      "slot_uri": "https://w3id.org/linkml/cmdr/part_of",
       "alias": "part_of",
       "owner": "Investigation",
       "domain_of": [
@@ -697,11 +785,11 @@
     },
     {
       "name": "MaterialEntity_concentration",
-      "definition_uri": "https://example.org/TEMP/concentration",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/concentration",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "concentration",
       "domain": "MaterialEntity",
-      "slot_uri": "https://example.org/TEMP/concentration",
+      "slot_uri": "https://w3id.org/linkml/cmdr/concentration",
       "alias": "concentration",
       "owner": "MaterialEntity",
       "domain_of": [
@@ -715,11 +803,11 @@
     },
     {
       "name": "MaterialEntity_id",
-      "definition_uri": "https://example.org/TEMP/id",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/id",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "id",
       "domain": "MaterialEntity",
-      "slot_uri": "https://example.org/TEMP/id",
+      "slot_uri": "https://w3id.org/linkml/cmdr/id",
       "identifier": true,
       "alias": "id",
       "owner": "MaterialEntity",
@@ -734,14 +822,14 @@
     },
     {
       "name": "MaterialEntity_source",
-      "definition_uri": "https://example.org/TEMP/source",
+      "definition_uri": "https://w3id.org/linkml/cmdr/source",
       "comments": [
         "this is a shortcut. to be expanded later."
       ],
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "source",
       "domain": "MaterialEntity",
-      "slot_uri": "https://example.org/TEMP/source",
+      "slot_uri": "https://w3id.org/linkml/cmdr/source",
       "alias": "source",
       "owner": "MaterialEntity",
       "domain_of": [
@@ -754,11 +842,11 @@
     },
     {
       "name": "MaterialEntity_used_in",
-      "definition_uri": "https://example.org/TEMP/used_in",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/used_in",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "used_in",
       "domain": "MaterialEntity",
-      "slot_uri": "https://example.org/TEMP/used_in",
+      "slot_uri": "https://w3id.org/linkml/cmdr/used_in",
       "multivalued": true,
       "alias": "used_in",
       "owner": "MaterialEntity",
@@ -772,11 +860,11 @@
     },
     {
       "name": "MaterialEntity_volume",
-      "definition_uri": "https://example.org/TEMP/volume",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/volume",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "volume",
       "domain": "MaterialEntity",
-      "slot_uri": "https://example.org/TEMP/volume",
+      "slot_uri": "https://w3id.org/linkml/cmdr/volume",
       "alias": "volume",
       "owner": "MaterialEntity",
       "domain_of": [
@@ -790,11 +878,11 @@
     },
     {
       "name": "MaterialProcessing_has_input",
-      "definition_uri": "https://example.org/TEMP/has_input",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_input",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "has_input",
       "domain": "MaterialProcessing",
-      "slot_uri": "https://example.org/TEMP/has_input",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_input",
       "multivalued": true,
       "alias": "has_input",
       "owner": "MaterialProcessing",
@@ -808,11 +896,11 @@
     },
     {
       "name": "MaterialProcessing_has_output",
-      "definition_uri": "https://example.org/TEMP/has_output",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_output",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "has_output",
       "domain": "MaterialProcessing",
-      "slot_uri": "https://example.org/TEMP/has_output",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_output",
       "multivalued": true,
       "alias": "has_output",
       "owner": "MaterialProcessing",
@@ -826,11 +914,11 @@
     },
     {
       "name": "Participation_id",
-      "definition_uri": "https://example.org/TEMP/id",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/id",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "id",
       "domain": "Participation",
-      "slot_uri": "https://example.org/TEMP/id",
+      "slot_uri": "https://w3id.org/linkml/cmdr/id",
       "identifier": true,
       "alias": "id",
       "owner": "Participation",
@@ -845,11 +933,11 @@
     },
     {
       "name": "Participation_includes",
-      "definition_uri": "https://example.org/TEMP/includes",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/includes",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "includes",
       "domain": "Participation",
-      "slot_uri": "https://example.org/TEMP/includes",
+      "slot_uri": "https://w3id.org/linkml/cmdr/includes",
       "alias": "includes",
       "owner": "Participation",
       "domain_of": [
@@ -862,11 +950,11 @@
     },
     {
       "name": "Participation_involved_in",
-      "definition_uri": "https://example.org/TEMP/involved_in",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/involved_in",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "involved_in",
       "domain": "Participation",
-      "slot_uri": "https://example.org/TEMP/involved_in",
+      "slot_uri": "https://w3id.org/linkml/cmdr/involved_in",
       "multivalued": true,
       "alias": "involved_in",
       "owner": "Participation",
@@ -880,11 +968,11 @@
     },
     {
       "name": "Process_has_input",
-      "definition_uri": "https://example.org/TEMP/has_input",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_input",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "has_input",
       "domain": "Process",
-      "slot_uri": "https://example.org/TEMP/has_input",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_input",
       "multivalued": true,
       "alias": "has_input",
       "owner": "Process",
@@ -898,11 +986,11 @@
     },
     {
       "name": "Process_has_output",
-      "definition_uri": "https://example.org/TEMP/has_output",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_output",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "has_output",
       "domain": "Process",
-      "slot_uri": "https://example.org/TEMP/has_output",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_output",
       "multivalued": true,
       "alias": "has_output",
       "owner": "Process",
@@ -916,11 +1004,11 @@
     },
     {
       "name": "Process_id",
-      "definition_uri": "https://example.org/TEMP/id",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/id",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "id",
       "domain": "Process",
-      "slot_uri": "https://example.org/TEMP/id",
+      "slot_uri": "https://w3id.org/linkml/cmdr/id",
       "identifier": true,
       "alias": "id",
       "owner": "Process",
@@ -935,11 +1023,11 @@
     },
     {
       "name": "Quantity_comparator",
-      "definition_uri": "https://example.org/TEMP/comparator",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/comparator",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "comparator",
       "domain": "Quantity",
-      "slot_uri": "https://example.org/TEMP/comparator",
+      "slot_uri": "https://w3id.org/linkml/cmdr/comparator",
       "alias": "comparator",
       "owner": "Quantity",
       "domain_of": [
@@ -952,11 +1040,11 @@
     },
     {
       "name": "Quantity_has_numeric_value",
-      "definition_uri": "https://example.org/TEMP/has_numeric_value",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_numeric_value",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "has_numeric_value",
       "domain": "Quantity",
-      "slot_uri": "https://example.org/TEMP/has_numeric_value",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_numeric_value",
       "alias": "has_numeric_value",
       "owner": "Quantity",
       "domain_of": [
@@ -969,11 +1057,11 @@
     },
     {
       "name": "Quantity_has_raw_value",
-      "definition_uri": "https://example.org/TEMP/has_raw_value",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_raw_value",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "has_raw_value",
       "domain": "Quantity",
-      "slot_uri": "https://example.org/TEMP/has_raw_value",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_raw_value",
       "alias": "has_raw_value",
       "owner": "Quantity",
       "domain_of": [
@@ -986,11 +1074,11 @@
     },
     {
       "name": "Quantity_has_unit",
-      "definition_uri": "https://example.org/TEMP/has_unit",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_unit",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "has_unit",
       "domain": "Quantity",
-      "slot_uri": "https://example.org/TEMP/has_unit",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_unit",
       "alias": "has_unit",
       "owner": "Quantity",
       "domain_of": [
@@ -1003,11 +1091,11 @@
     },
     {
       "name": "SpecimenCollectionProcess_has_input",
-      "definition_uri": "https://example.org/TEMP/has_input",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_input",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "Process_has_input",
       "domain": "SpecimenCollectionProcess",
-      "slot_uri": "https://example.org/TEMP/has_input",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_input",
       "multivalued": true,
       "alias": "has_input",
       "owner": "SpecimenCollectionProcess",
@@ -1021,11 +1109,11 @@
     },
     {
       "name": "SpecimenCollectionProcess_has_output",
-      "definition_uri": "https://example.org/TEMP/has_output",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/has_output",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "Process_has_output",
       "domain": "SpecimenCollectionProcess",
-      "slot_uri": "https://example.org/TEMP/has_output",
+      "slot_uri": "https://w3id.org/linkml/cmdr/has_output",
       "multivalued": true,
       "alias": "has_output",
       "owner": "SpecimenCollectionProcess",
@@ -1039,11 +1127,11 @@
     },
     {
       "name": "Subject_id",
-      "definition_uri": "https://example.org/TEMP/id",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/id",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "is_a": "id",
       "domain": "Subject",
-      "slot_uri": "https://example.org/TEMP/id",
+      "slot_uri": "https://w3id.org/linkml/cmdr/id",
       "identifier": true,
       "alias": "id",
       "owner": "Subject",
@@ -1060,8 +1148,8 @@
   "classes": [
     {
       "name": "Container",
-      "definition_uri": "https://example.org/TEMP/Container",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/Container",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "slots": [
         "Container_materials",
         "Container_participations",
@@ -1071,15 +1159,15 @@
         "Container_subjects"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Container",
+      "class_uri": "https://w3id.org/linkml/cmdr/Container",
       "tree_root": true,
       "@type": "ClassDefinition"
     },
     {
       "name": "DataObject",
-      "definition_uri": "https://example.org/TEMP/DataObject",
+      "definition_uri": "https://w3id.org/linkml/cmdr/DataObject",
       "description": "A DataFile Associated with a Subject or Investigation or MaterialEntity",
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "see_also": [
         "include:DataFile"
       ],
@@ -1089,31 +1177,14 @@
         "DataFile"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/DataObject",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "DataObject",
-      "definition_uri": "https://example.org/TEMP/DataObject",
-      "description": "A DataFile Associated with a Subject or Investigation or MaterialEntity",
-      "from_schema": "TEMP",
-      "see_also": [
-        "include:DataFile"
-      ],
-      "aliases": [
-        "File",
-        "Data",
-        "DataFile"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/DataObject",
+      "class_uri": "https://w3id.org/linkml/cmdr/DataObject",
       "@type": "ClassDefinition"
     },
     {
       "name": "Investigation",
-      "definition_uri": "https://example.org/TEMP/Investigation",
+      "definition_uri": "https://w3id.org/linkml/cmdr/Investigation",
       "description": "General information about the Investigation",
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "see_also": [
         "include:Study"
       ],
@@ -1127,14 +1198,14 @@
         "Investigation_part_of"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Investigation",
+      "class_uri": "https://w3id.org/linkml/cmdr/Investigation",
       "@type": "ClassDefinition"
     },
     {
       "name": "MaterialEntity",
-      "definition_uri": "https://example.org/TEMP/MaterialEntity",
+      "definition_uri": "https://w3id.org/linkml/cmdr/MaterialEntity",
       "description": "Physical entity that is an input our output of a process from a Subject",
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "see_also": [
         "include:Biospecimen"
       ],
@@ -1154,14 +1225,14 @@
         "MaterialEntity_concentration"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/MaterialEntity",
+      "class_uri": "https://w3id.org/linkml/cmdr/MaterialEntity",
       "@type": "ClassDefinition"
     },
     {
       "name": "MaterialProcessing",
-      "definition_uri": "https://example.org/TEMP/MaterialProcessing",
+      "definition_uri": "https://w3id.org/linkml/cmdr/MaterialProcessing",
       "description": "A planned process which results in physical changes in a specified input material",
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "mappings": [
         "OBI:0000094"
       ],
@@ -1173,14 +1244,14 @@
         "MaterialProcessing_has_output"
       ],
       "slot_usage": {},
-      "class_uri": "http://purl.obolibrary.org/obo/OBI_0000094",
+      "class_uri": "http://example.org/UNKNOWN/OBI/0000094",
       "@type": "ClassDefinition"
     },
     {
       "name": "Participation",
-      "definition_uri": "https://example.org/TEMP/Participation",
+      "definition_uri": "https://w3id.org/linkml/cmdr/Participation",
       "description": "Subject/Study participation information",
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "see_also": [
         "include:Participant"
       ],
@@ -1191,14 +1262,14 @@
         "Participation_includes"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Participation",
+      "class_uri": "https://w3id.org/linkml/cmdr/Participation",
       "@type": "ClassDefinition"
     },
     {
       "name": "Process",
-      "definition_uri": "https://example.org/TEMP/Process",
+      "definition_uri": "https://w3id.org/linkml/cmdr/Process",
       "description": "A planned process resulting in a material or data",
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "abstract": true,
       "slots": [
         "Process_id",
@@ -1207,13 +1278,13 @@
         "Process_has_output"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Process",
+      "class_uri": "https://w3id.org/linkml/cmdr/Process",
       "@type": "ClassDefinition"
     },
     {
       "name": "Quantity",
-      "definition_uri": "https://example.org/TEMP/Quantity",
-      "from_schema": "TEMP",
+      "definition_uri": "https://w3id.org/linkml/cmdr/Quantity",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "slots": [
         "Quantity_has_raw_value",
         "Quantity_has_numeric_value",
@@ -1221,14 +1292,14 @@
         "Quantity_comparator"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Quantity",
+      "class_uri": "https://w3id.org/linkml/cmdr/Quantity",
       "@type": "ClassDefinition"
     },
     {
       "name": "SpecimenCollectionProcess",
-      "definition_uri": "https://example.org/TEMP/SpecimenCollectionProcess",
+      "definition_uri": "https://w3id.org/linkml/cmdr/SpecimenCollectionProcess",
       "description": "A planned process with the objective of collecting a specimen",
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "aliases": [
         "MaterialCollectionProcess"
       ],
@@ -1245,14 +1316,14 @@
         "SpecimenCollectionProcess_has_output"
       ],
       "slot_usage": {},
-      "class_uri": "http://purl.obolibrary.org/obo/OBI_0000659",
+      "class_uri": "http://example.org/UNKNOWN/OBI/0000659",
       "@type": "ClassDefinition"
     },
     {
       "name": "Subject",
-      "definition_uri": "https://example.org/TEMP/Subject",
+      "definition_uri": "https://w3id.org/linkml/cmdr/Subject",
       "description": "Demographic and clinical information about the subject",
-      "from_schema": "TEMP",
+      "from_schema": "https://w3id.org/linkml/cmdr",
       "see_also": [
         "include:Participant"
       ],
@@ -1265,20 +1336,19 @@
         "name"
       ],
       "slot_usage": {},
-      "class_uri": "https://example.org/TEMP/Subject",
+      "class_uri": "https://w3id.org/linkml/cmdr/Subject",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "cmdr.yaml",
-  "source_file_date": "2023-03-06T16:01:53",
-  "source_file_size": 485,
-  "generation_date": "2023-03-07T15:54:06",
+  "source_file_date": "2024-08-05T13:46:32",
+  "source_file_size": 5859,
+  "generation_date": "2024-08-05T13:47:39",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cmdr.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
-    "from_sheets.context.jsonld",
     {
       "@base": "https://w3id.org/linkml/cmdr/"
     }

@@ -17,7 +17,7 @@ linkml:TypeDefinition a owl:Class ;
     linkml:is_a "element" ;
     linkml:mixins "type_expression" .
 
-linkml:cmdr.owl.ttl a owl:Ontology ;
+linkml:cmdr a owl:Ontology ;
     rdfs:label "cmdr" ;
     IAO:0000700 cmdr:Container,
         cmdr:DataObject,
@@ -40,23 +40,23 @@ cmdr:Container a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Container" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom cmdr:Participation ;
-            owl:onProperty cmdr:participations ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmdr:Subject ;
-            owl:onProperty cmdr:subjects ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmdr:MaterialProcessing ;
-            owl:onProperty cmdr:material_processings ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmdr:SpecimenCollectionProcess ;
-            owl:onProperty cmdr:specimen_collection_processes ],
-        [ a owl:Restriction ;
             owl:allValuesFrom cmdr:MaterialEntity ;
             owl:onProperty cmdr:materials ],
         [ a owl:Restriction ;
             owl:allValuesFrom cmdr:Investigation ;
-            owl:onProperty cmdr:investigations ] ;
+            owl:onProperty cmdr:investigations ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmdr:Participation ;
+            owl:onProperty cmdr:participations ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmdr:MaterialProcessing ;
+            owl:onProperty cmdr:material_processings ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmdr:Subject ;
+            owl:onProperty cmdr:subjects ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmdr:SpecimenCollectionProcess ;
+            owl:onProperty cmdr:specimen_collection_processes ] ;
     linkml:attributes "{}" .
 
 cmdr:DataObject a owl:Class,
@@ -194,16 +194,16 @@ cmdr:Participation a owl:Class,
             owl:onClass cmdr:Subject ;
             owl:onProperty cmdr:includes ],
         [ a owl:Restriction ;
+            owl:allValuesFrom cmdr:Investigation ;
+            owl:onProperty cmdr:involved_in ],
+        [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty cmdr:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty cmdr:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmdr:Investigation ;
-            owl:onProperty cmdr:involved_in ] ;
+            owl:onProperty cmdr:name ] ;
     skos:definition "Subject/Study participation information" ;
     linkml:attributes "{}" .
 
@@ -211,6 +211,10 @@ cmdr:Process a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Process" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty cmdr:name ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty cmdr:has_output ],
         [ a owl:Restriction ;
@@ -219,11 +223,7 @@ cmdr:Process a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty cmdr:has_input ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty cmdr:name ] ;
+            owl:onProperty cmdr:has_input ] ;
     skos:definition "A planned process resulting in a material or data" ;
     linkml:attributes "{}" .
 
@@ -236,12 +236,12 @@ cmdr:Quantity a owl:Class,
             owl:onProperty cmdr:has_raw_value ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty cmdr:comparator ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Float ;
             owl:onProperty cmdr:has_numeric_value ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty cmdr:comparator ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -263,23 +263,23 @@ cmdr:MaterialEntity a owl:Class,
     rdfs:label "MaterialEntity" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass cmdr:Quantity ;
-            owl:onProperty cmdr:volume ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmdr:Investigation ;
-            owl:onProperty cmdr:used_in ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass cmdr:Subject ;
-            owl:onProperty cmdr:source ],
+            owl:onClass linkml:String ;
+            owl:onProperty cmdr:name ],
         [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty cmdr:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:allValuesFrom cmdr:Investigation ;
+            owl:onProperty cmdr:used_in ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty cmdr:name ],
+            owl:onClass cmdr:Quantity ;
+            owl:onProperty cmdr:volume ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass cmdr:Subject ;
+            owl:onProperty cmdr:source ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass cmdr:Quantity ;
@@ -296,13 +296,13 @@ cmdr:Subject a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Subject" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty cmdr:name ],
-        [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty cmdr:id ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty cmdr:name ] ;
     skos:altLabel "Participant",
         "Site" ;
     skos:definition "Demographic and clinical information about the subject" ;
@@ -312,17 +312,17 @@ cmdr:Investigation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Investigation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty cmdr:name ],
-        [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty cmdr:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass cmdr:Investigation ;
-            owl:onProperty cmdr:part_of ] ;
+            owl:onProperty cmdr:part_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty cmdr:name ] ;
     skos:altLabel "Proposal",
         "Study" ;
     skos:definition "General information about the Investigation" ;
@@ -349,6 +349,5 @@ linkml:SlotDefinition a owl:Class ;
     linkml:attributes "{}" ;
     linkml:is_a "definition" ;
     linkml:mixins "slot_expression" .
-
 
 
