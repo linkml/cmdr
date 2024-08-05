@@ -2,7 +2,7 @@ BASE <https://w3id.org/linkml/cmdr/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX TEMP: <https://example.org/TEMP/>
+PREFIX OBI: <http://example.org/UNKNOWN/OBI/>
 
 
 linkml:String xsd:string
@@ -17,7 +17,7 @@ linkml:Double xsd:double
 
 linkml:Decimal xsd:decimal
 
-linkml:Time xsd:dateTime
+linkml:Time xsd:time
 
 linkml:Date xsd:date
 
@@ -37,98 +37,104 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
-TEMP:Container CLOSED {
-    (  $TEMP:Container_tes (  TEMP:materials @TEMP:MaterialEntity * ;
-          TEMP:participations @TEMP:Participation * ;
-          TEMP:material_processings @TEMP:MaterialProcessing * ;
-          TEMP:specimen_collection_processes @TEMP:SpecimenCollectionProcess * ;
-          TEMP:investigations @TEMP:Investigation * ;
-          TEMP:subjects @TEMP:Subject *
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<Container> CLOSED {
+    (  $<Container_tes> (  <materials> @<MaterialEntity> * ;
+          <participations> @<Participation> * ;
+          <material_processings> @<MaterialProcessing> * ;
+          <specimen_collection_processes> @<SpecimenCollectionProcess> * ;
+          <investigations> @<Investigation> * ;
+          <subjects> @<Subject> *
        ) ;
-       rdf:type [ TEMP:Container ] ?
+       rdf:type [ <Container> ] ?
     )
 }
 
-TEMP:DataObject CLOSED {
-    (  $TEMP:DataObject_tes rdf:type . * ;
-       rdf:type [ TEMP:DataObject ] ?
+<DataObject> CLOSED {
+    (  $<DataObject_tes> rdf:type . * ;
+       rdf:type [ <DataObject> ] ?
     )
 }
 
-TEMP:Investigation CLOSED {
-    (  $TEMP:Investigation_tes (  TEMP:name @linkml:String ? ;
-          TEMP:part_of @TEMP:Investigation ?
+<Investigation> CLOSED {
+    (  $<Investigation_tes> (  <name> @linkml:String ? ;
+          <part_of> @<Investigation> ?
        ) ;
-       rdf:type [ TEMP:Investigation ]
+       rdf:type [ <Investigation> ]
     )
 }
 
-TEMP:MaterialEntity CLOSED {
-    (  $TEMP:MaterialEntity_tes (  TEMP:name @linkml:String ? ;
-          TEMP:used_in @TEMP:Investigation * ;
-          TEMP:source @TEMP:Subject ? ;
-          TEMP:volume @TEMP:Quantity ? ;
-          TEMP:concentration @TEMP:Quantity ?
+<MaterialEntity> CLOSED {
+    (  $<MaterialEntity_tes> (  <name> @linkml:String ? ;
+          <used_in> @<Investigation> * ;
+          <source> @<Subject> ? ;
+          <volume> @<Quantity> ? ;
+          <concentration> @<Quantity> ?
        ) ;
-       rdf:type [ TEMP:MaterialEntity ]
+       rdf:type [ <MaterialEntity> ]
     )
 }
 
-TEMP:MaterialProcessing CLOSED {
-    (  $TEMP:MaterialProcessing_tes (  &TEMP:Process_tes ;
-          rdf:type [ TEMP:Process ] ? ;
-          TEMP:has_input @TEMP:MaterialEntity * ;
-          TEMP:has_output @TEMP:MaterialEntity *
+<MaterialProcessing> CLOSED {
+    (  $<MaterialProcessing_tes> (  &<Process_tes> ;
+          rdf:type [ <Process> ] ? ;
+          <has_input> @<MaterialEntity> * ;
+          <has_output> @<MaterialEntity> *
        ) ;
-       rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000094> ]
+       rdf:type [ OBI:0000094 ]
     )
 }
 
-TEMP:Participation CLOSED {
-    (  $TEMP:Participation_tes (  TEMP:name @linkml:String ? ;
-          TEMP:involved_in @TEMP:Investigation * ;
-          TEMP:includes @TEMP:Subject ?
+<Participation> CLOSED {
+    (  $<Participation_tes> (  <name> @linkml:String ? ;
+          <involved_in> @<Investigation> * ;
+          <includes> @<Subject> ?
        ) ;
-       rdf:type [ TEMP:Participation ]
+       rdf:type [ <Participation> ]
     )
 }
 
-TEMP:Process  (
-    @TEMP:MaterialProcessing OR @TEMP:SpecimenCollectionProcess
+<Process>  (
+    @<MaterialProcessing> OR @<SpecimenCollectionProcess>
 )
 
-TEMP:Process_struct {
-    (  $TEMP:Process_tes (  TEMP:name @linkml:String ? ;
-          TEMP:has_input @linkml:String * ;
-          TEMP:has_output @linkml:String *
+<Process_struct> {
+    (  $<Process_tes> (  <name> @linkml:String ? ;
+          <has_input> @linkml:String * ;
+          <has_output> @linkml:String *
        ) ;
-       rdf:type [ TEMP:Process ]
+       rdf:type [ <Process> ]
     )
 }
 
-TEMP:Quantity CLOSED {
-    (  $TEMP:Quantity_tes (  TEMP:has_raw_value @linkml:String ? ;
-          TEMP:has_numeric_value @linkml:Float ? ;
-          TEMP:has_unit @linkml:String ? ;
-          TEMP:comparator @linkml:String ?
+<Quantity> CLOSED {
+    (  $<Quantity_tes> (  <has_raw_value> @linkml:String ? ;
+          <has_numeric_value> @linkml:Float ? ;
+          <has_unit> @linkml:String ? ;
+          <comparator> @linkml:String ?
        ) ;
-       rdf:type [ TEMP:Quantity ] ?
+       rdf:type [ <Quantity> ] ?
     )
 }
 
-TEMP:SpecimenCollectionProcess CLOSED {
-    (  $TEMP:SpecimenCollectionProcess_tes (  &TEMP:Process_tes ;
-          rdf:type [ TEMP:Process ] ? ;
-          TEMP:has_input @linkml:String ? ;
-          TEMP:has_output @linkml:String ?
+<SpecimenCollectionProcess> CLOSED {
+    (  $<SpecimenCollectionProcess_tes> (  &<Process_tes> ;
+          rdf:type [ <Process> ] ? ;
+          <has_input> @linkml:String ? ;
+          <has_output> @linkml:String ?
        ) ;
-       rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000659> ]
+       rdf:type [ OBI:0000659 ]
     )
 }
 
-TEMP:Subject CLOSED {
-    (  $TEMP:Subject_tes TEMP:name @linkml:String ? ;
-       rdf:type [ TEMP:Subject ]
+<Subject> CLOSED {
+    (  $<Subject_tes> <name> @linkml:String ? ;
+       rdf:type [ <Subject> ]
     )
 }
 

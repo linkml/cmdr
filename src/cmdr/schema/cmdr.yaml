@@ -1,4 +1,3 @@
----
 id: https://w3id.org/linkml/cmdr
 name: cmdr
 title: cmdr
@@ -56,30 +55,30 @@ classes:
         multivalued: true
         range: Subject
     slots:
-    - materials
-    - participations
-    - material_processings
-    - specimen_collection_processes
-    - investigations
-    - subjects
+      - materials
+      - participations
+      - material_processings
+      - specimen_collection_processes
+      - investigations
+      - subjects
     tree_root: true
   DataObject:
     aliases:
-    - File
-    - Data
-    - DataFile
+      - File
+      - Data
+      - DataFile
     description: A DataFile Associated with a Subject or Investigation or MaterialEntity
     from_schema: TEMP
     see_also:
-    - include:DataFile
+      - include:DataFile
   Investigation:
     aliases:
-    - Study
-    - Proposal
+      - Study
+      - Proposal
     description: General information about the Investigation
     from_schema: TEMP
     see_also:
-    - include:Study
+      - include:Study
     slot_usage:
       id:
         identifier: true
@@ -87,20 +86,20 @@ classes:
       part_of:
         range: Investigation
     slots:
-    - id
-    - name
-    - part_of
+      - id
+      - name
+      - part_of
   MaterialEntity:
     aliases:
-    - Substance
-    - Specimen
-    - Sample
-    - Biospecimen
-    - Biosample
+      - Substance
+      - Specimen
+      - Sample
+      - Biospecimen
+      - Biosample
     description: Physical entity that is an input our output of a process from a Subject
     from_schema: TEMP
     see_also:
-    - include:Biospecimen
+      - include:Biospecimen
     slot_usage:
       concentration:
         range: Quantity
@@ -109,7 +108,7 @@ classes:
         range: uriorcurie
       source:
         comments:
-        - this is a shortcut. to be expanded later.
+          - this is a shortcut. to be expanded later.
         range: Subject
       used_in:
         multivalued: true
@@ -117,12 +116,12 @@ classes:
       volume:
         range: Quantity
     slots:
-    - id
-    - name
-    - used_in
-    - source
-    - volume
-    - concentration
+      - id
+      - name
+      - used_in
+      - source
+      - volume
+      - concentration
   MaterialProcessing:
     class_uri: OBI:0000094
     description: A planned process which results in physical changes in a specified
@@ -137,13 +136,13 @@ classes:
         multivalued: true
         range: MaterialEntity
     slots:
-    - has_input
-    - has_output
+      - has_input
+      - has_output
   Participation:
     description: Subject/Study participation information
     from_schema: TEMP
     see_also:
-    - include:Participant
+      - include:Participant
     slot_usage:
       id:
         identifier: true
@@ -154,10 +153,10 @@ classes:
         multivalued: true
         range: Investigation
     slots:
-    - id
-    - name
-    - involved_in
-    - includes
+      - id
+      - name
+      - involved_in
+      - includes
   Process:
     abstract: true
     description: A planned process resulting in a material or data
@@ -171,10 +170,10 @@ classes:
         identifier: true
         range: uriorcurie
     slots:
-    - id
-    - name
-    - has_input
-    - has_output
+      - id
+      - name
+      - has_input
+      - has_output
   Quantity:
     from_schema: TEMP
     slot_usage:
@@ -187,13 +186,13 @@ classes:
       has_unit:
         range: string
     slots:
-    - has_raw_value
-    - has_numeric_value
-    - has_unit
-    - comparator
+      - has_raw_value
+      - has_numeric_value
+      - has_unit
+      - comparator
   SpecimenCollectionProcess:
     aliases:
-    - MaterialCollectionProcess
+      - MaterialCollectionProcess
     class_uri: OBI:0000659
     description: A planned process with the objective of collecting a specimen
     from_schema: TEMP
@@ -206,23 +205,23 @@ classes:
         multivalued: true
         range: MaterialEntity
     slots:
-    - has_input
-    - has_output
+      - has_input
+      - has_output
   Subject:
     aliases:
-    - Site
-    - Participant
+      - Site
+      - Participant
     description: Demographic and clinical information about the subject
     from_schema: TEMP
     see_also:
-    - include:Participant
+      - include:Participant
     slot_usage:
       id:
         identifier: true
         range: uriorcurie
     slots:
-    - id
-    - name
+      - id
+      - name
 slots:
   comparator:
     from_schema: TEMP

@@ -6,14 +6,6 @@ SHELL := bash
 .SUFFIXES:
 .SECONDARY:
 
-# environment variables
-.EXPORT_ALL_VARIABLES:
-ifdef LINKML_ENVIRONMENT_FILENAME
-include ${LINKML_ENVIRONMENT_FILENAME}
-else
-include .env.public
-endif
-
 RUN = poetry run
 SCHEMA_NAME = $(LINKML_SCHEMA_NAME)
 SOURCE_SCHEMA_PATH = $(LINKML_SCHEMA_SOURCE_PATH)
@@ -24,11 +16,20 @@ PYMODEL = $(SRC)/$(SCHEMA_NAME)/datamodel
 DOCDIR = docs
 EXAMPLEDIR = examples
 SHEET_MODULE = from_sheets
-SHEET_ID = $(shell ${SHELL} ./utils/get-value.sh google_sheet_id)
-SHEET_TABS = $(shell ${SHELL} ./utils/get-value.sh google_sheet_tabs)
+SHEET_ID = $(LINKML_SCHEMA_GOOGLE_SHEET_ID)
+SHEET_TABS = $(LINKML_SCHEMA_GOOGLE_SHEET_TABS)
 SHEET_MODULE_PATH = $(SOURCE_SCHEMA_DIR)/$(SHEET_MODULE).yaml
+CONFIG_YAML = config.yaml
 
 # environment variables
+
+.EXPORT_ALL_VARIABLES:
+ifdef LINKML_ENVIRONMENT_FILENAME
+include ${LINKML_ENVIRONMENT_FILENAME}
+else
+include .env.public
+endif
+
 GEN_PARGS =
 ifdef LINKML_COOKIECUTTER_GEN_PROJECT_ARGS
 GEN_PARGS = ${LINKML_COOKIECUTTER_GEN_PROJECT_ARGS}
@@ -107,9 +108,9 @@ gen-examples:
 
 # generates all project files
 
-gen-project: $(PYMODEL) compile-sheets
-	$(RUN) gen-project ${CONFIG_YAML} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
-
+gen-project: $(PYMODEL)
+	$(RUN) gen-project -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+	$(RUN) gen-pydantic --pydantic-version 2 $(SOURCE_SCHEMA_PATH) > $(PYMODEL)/pydanticmodel_v2.py
 
 # non-empty arg triggers owl (workaround https://github.com/linkml/linkml/issues/1453)
 ifneq ($(strip ${GEN_OWL_ARGS}),)
@@ -129,7 +130,7 @@ endif
 test: test-schema test-python test-examples
 
 test-schema:
-	$(RUN) gen-project ${CONFIG_YAML} -d tmp $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH)
 
 test-python:
 	$(RUN) python -m unittest discover
