@@ -21,6 +21,45 @@ imports:
   - linkml:types
 
 classes:
+# These classes have been examined by the new CMDR working group
+  Entity:
+    abstract: true
+    description: The Entity class is the abstract parent class for all classes in the CMDR schema
+    attributes:
+      internal_id:
+        identifier: true
+        range: uriorcurie
+        description: A 'logical' identifier within the system of record.
+        name: id
+      global_id:
+        identifier: true
+        range: uriorcurie
+        description: The unique identifier for an entity
+        name: global_id
+      name:
+        range: string
+        description: The name of the entity
+        name: name
+      description:
+        range: string
+        description: A description of the entity
+        name: description
+  Study:
+    parent: Entity
+    aliases:
+      - ResearchStudy
+      - Investigation
+      - Proposal
+    description: General information about a Study
+    see_also:
+      - include:Study
+    slot_usage:
+      part_of:
+        range: Study
+      url:
+        range: string
+
+# These classes have not yet been examined by the new CMDR working group
   Container:
     from_schema: TEMP
     slot_usage:
@@ -71,24 +110,6 @@ classes:
     from_schema: TEMP
     see_also:
       - include:DataFile
-  Investigation:
-    aliases:
-      - Study
-      - Proposal
-    description: General information about the Investigation
-    from_schema: TEMP
-    see_also:
-      - include:Study
-    slot_usage:
-      id:
-        identifier: true
-        range: uriorcurie
-      part_of:
-        range: Investigation
-    slots:
-      - id
-      - name
-      - part_of
   MaterialEntity:
     aliases:
       - Substance
@@ -222,6 +243,8 @@ classes:
     slots:
       - id
       - name
+
+# Were investigating moving most of these slots out of the top-level class and into classes (and parent classes) as needed.
 slots:
   comparator:
     from_schema: TEMP
@@ -236,8 +259,6 @@ slots:
   has_raw_value:
     from_schema: TEMP
   has_unit:
-    from_schema: TEMP
-  id:
     from_schema: TEMP
   includes:
     from_schema: TEMP
@@ -271,3 +292,5 @@ subsets:
   temporal_data:
     from_schema: TEMP
 
+
+# Slots we expect should be defined at top level: in a parent class called Entity.
