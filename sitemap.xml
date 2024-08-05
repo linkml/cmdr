@@ -146,6 +146,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://linkml.github.io/cmdr/about/</loc>
+         <lastmod>2024-08-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://linkml.github.io/cmdr/cmdr/</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
