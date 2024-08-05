@@ -130,7 +130,7 @@ endif
 test: test-schema test-python test-examples
 
 test-schema:
-	$(RUN) gen-project ${CONFIG_YAML} -d tmp $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH)
 
 test-python:
 	$(RUN) python -m unittest discover
