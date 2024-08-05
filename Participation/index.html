@@ -209,15 +209,26 @@
 <p>URI: <a href="https://w3id.org/linkml/cmdr/Participation">cmdr:Participation</a></p>
 <div class="mermaid"> classDiagram
     class Participation
+    click Participation href "../Participation"
       Participation : id
 
       Participation : includes
 
-          Participation --|&gt; Subject : includes
+
+
+
+    Participation --&gt; "0..1" Subject : includes
+    click Subject href "../Subject"
+
 
       Participation : involved_in
 
-          Participation --|&gt; Investigation : involved_in
+
+
+
+    Participation --&gt; "*" Investigation : involved_in
+    click Investigation href "../Investigation"
+
 
       Participation : name
 
@@ -237,7 +248,7 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -249,7 +260,7 @@
 </tr>
 <tr>
 <td><a href="../involved_in/">involved_in</a></td>
-<td>0..* <br/> <a href="../Investigation/">Investigation</a></td>
+<td>* <br/> <a href="../Investigation/">Investigation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -340,10 +351,10 @@ slot_usage:
     range: Subject
   involved_in:
     name: involved_in
-    multivalued: true
     domain_of:
     - Participation
     range: Investigation
+    multivalued: true
 
 </code></pre>
 </details>
@@ -372,10 +383,10 @@ slot_usage:
     range: Subject
   involved_in:
     name: involved_in
-    multivalued: true
     domain_of:
     - Participation
     range: Investigation
+    multivalued: true
 attributes:
   id:
     name: id
@@ -408,12 +419,12 @@ attributes:
     name: involved_in
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: involved_in
     owner: Participation
     domain_of:
     - Participation
     range: Investigation
+    multivalued: true
   includes:
     name: includes
     from_schema: https://w3id.org/linkml/cmdr

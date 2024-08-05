@@ -214,13 +214,19 @@
 <p>URI: <a href="https://w3id.org/linkml/cmdr/Investigation">cmdr:Investigation</a></p>
 <div class="mermaid"> classDiagram
     class Investigation
+    click Investigation href "../Investigation"
       Investigation : id
 
       Investigation : name
 
       Investigation : part_of
 
-          Investigation --|&gt; Investigation : part_of
+
+
+
+    Investigation --&gt; "0..1" Investigation : part_of
+    click Investigation href "../Investigation"
+
 
 
 </div>
@@ -238,7 +244,7 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td></td>
 <td>direct</td>
 </tr>

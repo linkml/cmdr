@@ -214,15 +214,27 @@
 <p>URI: <a href="OBI:0000659">OBI:0000659</a></p>
 <div class="mermaid"> classDiagram
     class SpecimenCollectionProcess
+    click SpecimenCollectionProcess href "../SpecimenCollectionProcess"
       Process &lt;|-- SpecimenCollectionProcess
+        click Process href "../Process"
 
       SpecimenCollectionProcess : has_input
 
-          SpecimenCollectionProcess --|&gt; Subject : has_input
+
+
+
+    SpecimenCollectionProcess --&gt; "*" Subject : has_input
+    click Subject href "../Subject"
+
 
       SpecimenCollectionProcess : has_output
 
-          SpecimenCollectionProcess --|&gt; MaterialEntity : has_output
+
+
+
+    SpecimenCollectionProcess --&gt; "*" MaterialEntity : has_output
+    click MaterialEntity href "../MaterialEntity"
+
 
       SpecimenCollectionProcess : id
 
@@ -250,19 +262,19 @@
 <tbody>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>0..* <br/> <a href="../Subject/">Subject</a></td>
+<td>* <br/> <a href="../Subject/">Subject</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>0..* <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
+<td>* <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td></td>
 <td><a href="../Process/">Process</a></td>
 </tr>
@@ -337,20 +349,20 @@ slots:
 slot_usage:
   has_input:
     name: has_input
-    multivalued: true
     domain_of:
     - MaterialProcessing
     - Process
     - SpecimenCollectionProcess
     range: Subject
+    multivalued: true
   has_output:
     name: has_output
-    multivalued: true
     domain_of:
     - MaterialProcessing
     - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
+    multivalued: true
 class_uri: OBI:0000659
 
 </code></pre>
@@ -366,26 +378,25 @@ is_a: Process
 slot_usage:
   has_input:
     name: has_input
-    multivalued: true
     domain_of:
     - MaterialProcessing
     - Process
     - SpecimenCollectionProcess
     range: Subject
+    multivalued: true
   has_output:
     name: has_output
-    multivalued: true
     domain_of:
     - MaterialProcessing
     - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
+    multivalued: true
 attributes:
   has_input:
     name: has_input
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: has_input
     owner: SpecimenCollectionProcess
     domain_of:
@@ -393,11 +404,11 @@ attributes:
     - Process
     - SpecimenCollectionProcess
     range: Subject
+    multivalued: true
   has_output:
     name: has_output
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: has_output
     owner: SpecimenCollectionProcess
     domain_of:
@@ -405,6 +416,7 @@ attributes:
     - Process
     - SpecimenCollectionProcess
     range: MaterialEntity
+    multivalued: true
   id:
     name: id
     from_schema: https://w3id.org/linkml/cmdr

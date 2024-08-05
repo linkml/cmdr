@@ -214,9 +214,15 @@
 <p>URI: <a href="https://w3id.org/linkml/cmdr/MaterialEntity">cmdr:MaterialEntity</a></p>
 <div class="mermaid"> classDiagram
     class MaterialEntity
+    click MaterialEntity href "../MaterialEntity"
       MaterialEntity : concentration
 
-          MaterialEntity --|&gt; Quantity : concentration
+
+
+
+    MaterialEntity --&gt; "0..1" Quantity : concentration
+    click Quantity href "../Quantity"
+
 
       MaterialEntity : id
 
@@ -224,15 +230,30 @@
 
       MaterialEntity : source
 
-          MaterialEntity --|&gt; Subject : source
+
+
+
+    MaterialEntity --&gt; "0..1" Subject : source
+    click Subject href "../Subject"
+
 
       MaterialEntity : used_in
 
-          MaterialEntity --|&gt; Investigation : used_in
+
+
+
+    MaterialEntity --&gt; "*" Investigation : used_in
+    click Investigation href "../Investigation"
+
 
       MaterialEntity : volume
 
-          MaterialEntity --|&gt; Quantity : volume
+
+
+
+    MaterialEntity --&gt; "0..1" Quantity : volume
+    click Quantity href "../Quantity"
+
 
 
 </div>
@@ -250,7 +271,7 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -262,7 +283,7 @@
 </tr>
 <tr>
 <td><a href="../used_in/">used_in</a></td>
-<td>0..* <br/> <a href="../Investigation/">Investigation</a></td>
+<td>* <br/> <a href="../Investigation/">Investigation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -406,10 +427,10 @@ slot_usage:
     range: Subject
   used_in:
     name: used_in
-    multivalued: true
     domain_of:
     - MaterialEntity
     range: Investigation
+    multivalued: true
   volume:
     name: volume
     domain_of:
@@ -456,10 +477,10 @@ slot_usage:
     range: Subject
   used_in:
     name: used_in
-    multivalued: true
     domain_of:
     - MaterialEntity
     range: Investigation
+    multivalued: true
   volume:
     name: volume
     domain_of:
@@ -497,12 +518,12 @@ attributes:
     name: used_in
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: used_in
     owner: MaterialEntity
     domain_of:
     - MaterialEntity
     range: Investigation
+    multivalued: true
   source:
     name: source
     comments:

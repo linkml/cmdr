@@ -198,29 +198,60 @@
 <p>URI: <a href="https://w3id.org/linkml/cmdr/Container">cmdr:Container</a></p>
 <div class="mermaid"> classDiagram
     class Container
+    click Container href "../Container"
       Container : investigations
 
-          Container --|&gt; Investigation : investigations
+
+
+
+    Container --&gt; "*" Investigation : investigations
+    click Investigation href "../Investigation"
+
 
       Container : material_processings
 
-          Container --|&gt; MaterialProcessing : material_processings
+
+
+
+    Container --&gt; "*" MaterialProcessing : material_processings
+    click MaterialProcessing href "../MaterialProcessing"
+
 
       Container : materials
 
-          Container --|&gt; MaterialEntity : materials
+
+
+
+    Container --&gt; "*" MaterialEntity : materials
+    click MaterialEntity href "../MaterialEntity"
+
 
       Container : participations
 
-          Container --|&gt; Participation : participations
+
+
+
+    Container --&gt; "*" Participation : participations
+    click Participation href "../Participation"
+
 
       Container : specimen_collection_processes
 
-          Container --|&gt; SpecimenCollectionProcess : specimen_collection_processes
+
+
+
+    Container --&gt; "*" SpecimenCollectionProcess : specimen_collection_processes
+    click SpecimenCollectionProcess href "../SpecimenCollectionProcess"
+
 
       Container : subjects
 
-          Container --|&gt; Subject : subjects
+
+
+
+    Container --&gt; "*" Subject : subjects
+    click Subject href "../Subject"
+
 
 
 </div>
@@ -238,37 +269,37 @@
 <tbody>
 <tr>
 <td><a href="../materials/">materials</a></td>
-<td>0..* <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
+<td>* <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../participations/">participations</a></td>
-<td>0..* <br/> <a href="../Participation/">Participation</a></td>
+<td>* <br/> <a href="../Participation/">Participation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../material_processings/">material_processings</a></td>
-<td>0..* <br/> <a href="../MaterialProcessing/">MaterialProcessing</a></td>
+<td>* <br/> <a href="../MaterialProcessing/">MaterialProcessing</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../specimen_collection_processes/">specimen_collection_processes</a></td>
-<td>0..* <br/> <a href="../SpecimenCollectionProcess/">SpecimenCollectionProcess</a></td>
+<td>* <br/> <a href="../SpecimenCollectionProcess/">SpecimenCollectionProcess</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../investigations/">investigations</a></td>
-<td>0..* <br/> <a href="../Investigation/">Investigation</a></td>
+<td>* <br/> <a href="../Investigation/">Investigation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../subjects/">subjects</a></td>
-<td>0..* <br/> <a href="../Subject/">Subject</a></td>
+<td>* <br/> <a href="../Subject/">Subject</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -314,50 +345,50 @@ slots:
 slot_usage:
   investigations:
     name: investigations
-    multivalued: true
     domain_of:
     - Container
     range: Investigation
+    multivalued: true
     inlined: true
     inlined_as_list: true
   material_processings:
     name: material_processings
-    multivalued: true
     domain_of:
     - Container
     range: MaterialProcessing
+    multivalued: true
     inlined: true
     inlined_as_list: true
   materials:
     name: materials
-    multivalued: true
     domain_of:
     - Container
     range: MaterialEntity
+    multivalued: true
     inlined: true
     inlined_as_list: true
   participations:
     name: participations
-    multivalued: true
     domain_of:
     - Container
     range: Participation
+    multivalued: true
     inlined: true
     inlined_as_list: true
   specimen_collection_processes:
     name: specimen_collection_processes
-    multivalued: true
     domain_of:
     - Container
     range: SpecimenCollectionProcess
+    multivalued: true
     inlined: true
     inlined_as_list: true
   subjects:
     name: subjects
-    multivalued: true
     domain_of:
     - Container
     range: Subject
+    multivalued: true
     inlined: true
     inlined_as_list: true
 tree_root: true
@@ -371,50 +402,50 @@ from_schema: https://w3id.org/linkml/cmdr
 slot_usage:
   investigations:
     name: investigations
-    multivalued: true
     domain_of:
     - Container
     range: Investigation
+    multivalued: true
     inlined: true
     inlined_as_list: true
   material_processings:
     name: material_processings
-    multivalued: true
     domain_of:
     - Container
     range: MaterialProcessing
+    multivalued: true
     inlined: true
     inlined_as_list: true
   materials:
     name: materials
-    multivalued: true
     domain_of:
     - Container
     range: MaterialEntity
+    multivalued: true
     inlined: true
     inlined_as_list: true
   participations:
     name: participations
-    multivalued: true
     domain_of:
     - Container
     range: Participation
+    multivalued: true
     inlined: true
     inlined_as_list: true
   specimen_collection_processes:
     name: specimen_collection_processes
-    multivalued: true
     domain_of:
     - Container
     range: SpecimenCollectionProcess
+    multivalued: true
     inlined: true
     inlined_as_list: true
   subjects:
     name: subjects
-    multivalued: true
     domain_of:
     - Container
     range: Subject
+    multivalued: true
     inlined: true
     inlined_as_list: true
 attributes:
@@ -422,72 +453,72 @@ attributes:
     name: materials
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: materials
     owner: Container
     domain_of:
     - Container
     range: MaterialEntity
+    multivalued: true
     inlined: true
     inlined_as_list: true
   participations:
     name: participations
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: participations
     owner: Container
     domain_of:
     - Container
     range: Participation
+    multivalued: true
     inlined: true
     inlined_as_list: true
   material_processings:
     name: material_processings
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: material_processings
     owner: Container
     domain_of:
     - Container
     range: MaterialProcessing
+    multivalued: true
     inlined: true
     inlined_as_list: true
   specimen_collection_processes:
     name: specimen_collection_processes
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: specimen_collection_processes
     owner: Container
     domain_of:
     - Container
     range: SpecimenCollectionProcess
+    multivalued: true
     inlined: true
     inlined_as_list: true
   investigations:
     name: investigations
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: investigations
     owner: Container
     domain_of:
     - Container
     range: Investigation
+    multivalued: true
     inlined: true
     inlined_as_list: true
   subjects:
     name: subjects
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    multivalued: true
     alias: subjects
     owner: Container
     domain_of:
     - Container
     range: Subject
+    multivalued: true
     inlined: true
     inlined_as_list: true
 tree_root: true
