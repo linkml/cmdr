@@ -6,14 +6,6 @@ SHELL := bash
 .SUFFIXES:
 .SECONDARY:
 
-# environment variables
-.EXPORT_ALL_VARIABLES:
-ifdef LINKML_ENVIRONMENT_FILENAME
-include ${LINKML_ENVIRONMENT_FILENAME}
-else
-include .env.public
-endif
-
 RUN = poetry run
 SCHEMA_NAME = $(LINKML_SCHEMA_NAME)
 SOURCE_SCHEMA_PATH = $(LINKML_SCHEMA_SOURCE_PATH)
