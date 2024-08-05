@@ -99,9 +99,9 @@ gen-examples:
 
 # generates all project files
 
-gen-project: $(PYMODEL) compile-sheets
+gen-project: $(PYMODEL)
 	$(RUN) gen-project ${CONFIG_YAML} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
-
+	$(RUN) gen-pydantic --pydantic-version 2 $(SOURCE_SCHEMA_PATH) > $(PYMODEL)/pydanticmodel_v2.py
 
 # non-empty arg triggers owl (workaround https://github.com/linkml/linkml/issues/1453)
 ifneq ($(strip ${GEN_OWL_ARGS}),)
