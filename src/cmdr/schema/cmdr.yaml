@@ -1,8 +1,9 @@
+---
 id: https://w3id.org/linkml/cmdr
 name: cmdr
 title: cmdr
 description: |-
-  Core Model for Data Research (Tentative)
+  Core Model for Clinical Data Collection
 license: MIT
 see_also:
   - https://linkml.github.io/cmdr
