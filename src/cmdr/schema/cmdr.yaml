@@ -14,6 +14,7 @@ prefixes:
   schema: http://schema.org/
   PATO: http://purl.obolibrary.org/obo/PATO_
   example: https://example.org/
+  OBI: http://purl.obolibrary.org/obo/OBI_
 default_prefix: cmdr
 default_range: string
 
@@ -30,22 +31,17 @@ classes:
         identifier: true
         range: uriorcurie
         description: A 'logical' identifier within the system of record.
-        name: id
       global_id:
-        identifier: true
         range: uriorcurie
         description: The unique identifier for an entity
-        name: global_id
       name:
         range: string
         description: The name of the entity
-        name: name
       description:
         range: string
         description: A description of the entity
-        name: description
   Study:
-    parent: Entity
+    is_a: Entity
     aliases:
       - ResearchStudy
       - Investigation
@@ -63,11 +59,11 @@ classes:
   Container:
     from_schema: TEMP
     slot_usage:
-      investigations:
+      studies:
         inlined: true
         inlined_as_list: true
         multivalued: true
-        range: Investigation
+        range: Study
       material_processings:
         inlined: true
         inlined_as_list: true
@@ -88,56 +84,57 @@ classes:
         inlined_as_list: true
         multivalued: true
         range: SpecimenCollectionProcess
-      subjects:
+      participants:
         inlined: true
         inlined_as_list: true
         multivalued: true
-        range: Subject
+        range: Participant
+    attributes:
+      participants:
+        description: A list of participants in the study
+        range: Participant
+        multivalued: true
     slots:
       - materials
       - participations
       - material_processings
       - specimen_collection_processes
-      - investigations
-      - subjects
+      - studies
     tree_root: true
   DataObject:
     aliases:
       - File
       - Data
       - DataFile
-    description: A DataFile Associated with a Subject or Investigation or MaterialEntity
+    description: A DataFile Associated with a Participant or Study or MaterialEntity
     from_schema: TEMP
     see_also:
       - include:DataFile
   MaterialEntity:
+    is_a: Entity
     aliases:
       - Substance
       - Specimen
       - Sample
       - Biospecimen
       - Biosample
-    description: Physical entity that is an input our output of a process from a Subject
+    description: Physical entity that is an input our output of a process from a Participant
     from_schema: TEMP
     see_also:
       - include:Biospecimen
     slot_usage:
       concentration:
         range: Quantity
-      id:
-        identifier: true
-        range: uriorcurie
       source:
         comments:
           - this is a shortcut. to be expanded later.
-        range: Subject
+        range: Participant
       used_in:
         multivalued: true
-        range: Investigation
+        range: Study
       volume:
         range: Quantity
     slots:
-      - id
       - name
       - used_in
       - source
@@ -160,21 +157,18 @@ classes:
       - has_input
       - has_output
   Participation:
-    description: Subject/Study participation information
+    is_a: Entity
+    description: Study participation information
     from_schema: TEMP
     see_also:
       - include:Participant
     slot_usage:
-      id:
-        identifier: true
-        range: uriorcurie
       includes:
-        range: Subject
+        range: Participant
       involved_in:
         multivalued: true
-        range: Investigation
+        range: Study
     slots:
-      - id
       - name
       - involved_in
       - includes
@@ -182,16 +176,16 @@ classes:
     abstract: true
     description: A planned process resulting in a material or data
     from_schema: TEMP
+    attributes:
+      id:
+        identifier: true
+        range: uriorcurie
     slot_usage:
       has_input:
         multivalued: true
       has_output:
         multivalued: true
-      id:
-        identifier: true
-        range: uriorcurie
     slots:
-      - id
       - name
       - has_input
       - has_output
@@ -221,27 +215,23 @@ classes:
     slot_usage:
       has_input:
         multivalued: true
-        range: Subject
+        range: Participant
       has_output:
         multivalued: true
         range: MaterialEntity
     slots:
       - has_input
       - has_output
-  Subject:
+  Participant:
+    is_a: Entity
     aliases:
       - Site
       - Participant
-    description: Demographic and clinical information about the subject
+    description: Demographic and clinical information about the participant
     from_schema: TEMP
     see_also:
       - include:Participant
-    slot_usage:
-      id:
-        identifier: true
-        range: uriorcurie
     slots:
-      - id
       - name
 
 # Were investigating moving most of these slots out of the top-level class and into classes (and parent classes) as needed.
@@ -262,7 +252,7 @@ slots:
     from_schema: TEMP
   includes:
     from_schema: TEMP
-  investigations:
+  studies:
     from_schema: TEMP
   involved_in:
     from_schema: TEMP
