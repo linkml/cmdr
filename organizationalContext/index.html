@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://linkml.github.io/cmdr/name/">
+        <link rel="canonical" href="https://linkml.github.io/cmdr/organizationalContext/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: name - cmdr</title>
+        <title>Slot: organizationalContext - cmdr</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-name" class="md-skip">
+        <a href="#slot-organizationalcontext" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: name
+              Slot: organizationalContext
             
           </span>
         </div>
@@ -317,14 +317,14 @@
                 
                   
 
-  <a href="https://github.com/linkml/cmdr/edit/master/docs/name.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/linkml/cmdr/edit/master/docs/organizationalContext.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-name">Slot: name</h1>
-<p>URI: <a href="https://w3id.org/linkml/cmdr/name">cmdr:name</a></p>
+<h1 id="slot-organizationalcontext">Slot: organizationalContext</h1>
+<p>URI: <a href="https://w3id.org/linkml/cmdr/organizationalContext">cmdr:organizationalContext</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -338,40 +338,20 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Characteristic/">Characteristic</a></td>
+<td><a href="../StudyContribution/">StudyContribution</a></td>
 <td></td>
-<td>no</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../Organization/">Organization</a></td>
+<td><a href="../StudyContact/">StudyContact</a></td>
 <td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Entity/">Entity</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Person/">Person</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Agent/">Agent</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Study/">Study</a></td>
-<td></td>
-<td>no</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Organization/">Organization</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -389,29 +369,25 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cmdr:name</td>
+<td>cmdr:organizationalContext</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cmdr:name</td>
+<td>cmdr:organizationalContext</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: name
+<pre><code class="language-yaml">name: organizationalContext
 from_schema: https://w3id.org/linkml/cmdr
 rank: 1000
-alias: name
+alias: organizationalContext
 domain_of:
-- Entity
-- Characteristic
-- Study
-- Agent
-- Person
-- Organization
-range: string
+- StudyContribution
+- StudyContact
+range: Organization
 
 </code></pre>
 

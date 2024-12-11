@@ -338,38 +338,38 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
-<td>A planned process which results in physical changes in a specified input mate...</td>
+<td><a href="../Subject/">Subject</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td>Physical entity that is an input our output of a process from a Subject</td>
-<td>yes</td>
+<td><a href="../Relationship/">Relationship</a></td>
+<td></td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../Participation/">Participation</a></td>
-<td>Subject/Study participation information</td>
-<td>yes</td>
+<td><a href="../StudyParticipant/">StudyParticipant</a></td>
+<td></td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../Subject/">Subject</a></td>
-<td>Demographic and clinical information about the subject</td>
-<td>yes</td>
+<td><a href="../Family/">Family</a></td>
+<td></td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../Investigation/">Investigation</a></td>
-<td>General information about the Investigation</td>
-<td>yes</td>
+<td><a href="../Group/">Group</a></td>
+<td></td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../Process/">Process</a></td>
-<td>A planned process resulting in a material or data</td>
-<td>yes</td>
+<td><a href="../Agent/">Agent</a></td>
+<td></td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../SpecimenCollectionProcess/">SpecimenCollectionProcess</a></td>
-<td>A planned process with the objective of collecting a specimen</td>
+<td><a href="../Study/">Study</a></td>
+<td></td>
 <td>no</td>
 </tr>
 </tbody>
@@ -410,11 +410,13 @@ from_schema: https://w3id.org/linkml/cmdr
 rank: 1000
 alias: id
 domain_of:
-- Investigation
-- MaterialEntity
-- Participation
-- Process
 - Subject
+- StudyParticipant
+- Relationship
+- Family
+- Group
+- Study
+- Agent
 range: string
 
 </code></pre>

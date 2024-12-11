@@ -152,16 +152,6 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#aliases">
-    Aliases
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#see-also">
-    See Also
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -210,14 +200,38 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-subject">Class: Subject</h1>
-<p><em>Demographic and clinical information about the subject</em></p>
 <p>URI: <a href="https://w3id.org/linkml/cmdr/Subject">cmdr:Subject</a></p>
 <div class="mermaid"> classDiagram
     class Subject
     click Subject href "../Subject"
+      Subject : ageAtDeath
+
+      Subject : associatedParticipants
+
+
+
+
+    Subject --&gt; "0..1" Subject : associatedParticipants
+    click Subject href "../Subject"
+
+
+      Subject : causeOfDeath
+
+      Subject : ethnicity
+
       Subject : id
 
-      Subject : name
+      Subject : race
+
+      Subject : sex
+
+      Subject : species
+
+      Subject : vital_status
+
+      Subject : yearOfBirth
+
+      Subject : yearOfDeath
 
 
 </div>
@@ -235,13 +249,67 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
+<td><a href="../species/">species</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sex/">sex</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ethnicity/">ethnicity</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../race/">race</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../vital_status/">vital_status</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../yearOfBirth/">yearOfBirth</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../yearOfDeath/">yearOfDeath</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ageAtDeath/">ageAtDeath</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../causeOfDeath/">causeOfDeath</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../associatedParticipants/">associatedParticipants</a></td>
+<td>0..1 <br/> <a href="./">Subject</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -259,40 +327,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Container/">Container</a></td>
-<td><a href="../subjects/">subjects</a></td>
-<td>range</td>
 <td><a href="./">Subject</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td><a href="../source/">source</a></td>
-<td>range</td>
-<td><a href="./">Subject</a></td>
-</tr>
-<tr>
-<td><a href="../Participation/">Participation</a></td>
-<td><a href="../includes/">includes</a></td>
-<td>range</td>
-<td><a href="./">Subject</a></td>
-</tr>
-<tr>
-<td><a href="../SpecimenCollectionProcess/">SpecimenCollectionProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
+<td><a href="../associatedParticipants/">associatedParticipants</a></td>
 <td>range</td>
 <td><a href="./">Subject</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>Site</li>
-<li>Participant</li>
-</ul>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="include:Participant">include:Participant</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -322,79 +363,132 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Subject
-description: Demographic and clinical information about the subject
 from_schema: https://w3id.org/linkml/cmdr
-see_also:
-- include:Participant
-aliases:
-- Site
-- Participant
 slots:
 - id
-- name
-slot_usage:
-  id:
-    name: id
-    identifier: true
-    domain_of:
-    - Investigation
-    - MaterialEntity
-    - Participation
-    - Process
-    - Subject
-    range: uriorcurie
+- species
+- sex
+- ethnicity
+- race
+- vital_status
+- yearOfBirth
+- yearOfDeath
+- ageAtDeath
+- causeOfDeath
+- associatedParticipants
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Subject
-description: Demographic and clinical information about the subject
 from_schema: https://w3id.org/linkml/cmdr
-see_also:
-- include:Participant
-aliases:
-- Site
-- Participant
-slot_usage:
-  id:
-    name: id
-    identifier: true
-    domain_of:
-    - Investigation
-    - MaterialEntity
-    - Participation
-    - Process
-    - Subject
-    range: uriorcurie
 attributes:
   id:
     name: id
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    identifier: true
     alias: id
     owner: Subject
     domain_of:
-    - Investigation
-    - MaterialEntity
-    - Participation
-    - Process
     - Subject
-    range: uriorcurie
-  name:
-    name: name
+    - StudyParticipant
+    - Relationship
+    - Family
+    - Group
+    - Study
+    - Agent
+    range: string
+  species:
+    name: species
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    alias: name
+    alias: species
     owner: Subject
     domain_of:
-    - Investigation
-    - MaterialEntity
-    - Participation
-    - Process
     - Subject
     range: string
+  sex:
+    name: sex
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: sex
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
+  ethnicity:
+    name: ethnicity
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: ethnicity
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
+  race:
+    name: race
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: race
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
+  vital_status:
+    name: vital_status
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: vital_status
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
+  yearOfBirth:
+    name: yearOfBirth
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: yearOfBirth
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
+  yearOfDeath:
+    name: yearOfDeath
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: yearOfDeath
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
+  ageAtDeath:
+    name: ageAtDeath
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: ageAtDeath
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
+  causeOfDeath:
+    name: causeOfDeath
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: causeOfDeath
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
+  associatedParticipants:
+    name: associatedParticipants
+    from_schema: https://w3id.org/linkml/cmdr
+    rank: 1000
+    alias: associatedParticipants
+    owner: Subject
+    domain_of:
+    - Subject
+    range: Subject
 
 </code></pre>
 </details>

@@ -204,13 +204,9 @@
 <div class="mermaid"> classDiagram
     class Quantity
     click Quantity href "../Quantity"
-      Quantity : comparator
+      Quantity : unit
 
-      Quantity : has_numeric_value
-
-      Quantity : has_raw_value
-
-      Quantity : has_unit
+      Quantity : value
 
 
 </div>
@@ -227,25 +223,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../has_raw_value/">has_raw_value</a></td>
+<td><a href="../value/">value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../has_numeric_value/">has_numeric_value</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_unit/">has_unit</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../comparator/">comparator</a></td>
+<td><a href="../unit/">unit</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
@@ -264,14 +248,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td><a href="../volume/">volume</a></td>
-<td>range</td>
-<td><a href="./">Quantity</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td><a href="../concentration/">concentration</a></td>
+<td><a href="../TimePoint/">TimePoint</a></td>
+<td><a href="../offset_from_index/">offset_from_index</a></td>
 <td>range</td>
 <td><a href="./">Quantity</a></td>
 </tr>
@@ -308,31 +286,8 @@
 <pre><code class="language-yaml">name: Quantity
 from_schema: https://w3id.org/linkml/cmdr
 slots:
-- has_raw_value
-- has_numeric_value
-- has_unit
-- comparator
-slot_usage:
-  comparator:
-    name: comparator
-    domain_of:
-    - Quantity
-    range: string
-  has_numeric_value:
-    name: has_numeric_value
-    domain_of:
-    - Quantity
-    range: float
-  has_raw_value:
-    name: has_raw_value
-    domain_of:
-    - Quantity
-    range: string
-  has_unit:
-    name: has_unit
-    domain_of:
-    - Quantity
-    range: string
+- value
+- unit
 
 </code></pre>
 </details>
@@ -340,60 +295,22 @@ slot_usage:
 <details>
 <pre><code class="language-yaml">name: Quantity
 from_schema: https://w3id.org/linkml/cmdr
-slot_usage:
-  comparator:
-    name: comparator
-    domain_of:
-    - Quantity
-    range: string
-  has_numeric_value:
-    name: has_numeric_value
-    domain_of:
-    - Quantity
-    range: float
-  has_raw_value:
-    name: has_raw_value
-    domain_of:
-    - Quantity
-    range: string
-  has_unit:
-    name: has_unit
-    domain_of:
-    - Quantity
-    range: string
 attributes:
-  has_raw_value:
-    name: has_raw_value
+  value:
+    name: value
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    alias: has_raw_value
+    alias: value
     owner: Quantity
     domain_of:
+    - ContactPoint
     - Quantity
     range: string
-  has_numeric_value:
-    name: has_numeric_value
+  unit:
+    name: unit
     from_schema: https://w3id.org/linkml/cmdr
     rank: 1000
-    alias: has_numeric_value
-    owner: Quantity
-    domain_of:
-    - Quantity
-    range: float
-  has_unit:
-    name: has_unit
-    from_schema: https://w3id.org/linkml/cmdr
-    rank: 1000
-    alias: has_unit
-    owner: Quantity
-    domain_of:
-    - Quantity
-    range: string
-  comparator:
-    name: comparator
-    from_schema: https://w3id.org/linkml/cmdr
-    rank: 1000
-    alias: comparator
+    alias: unit
     owner: Quantity
     domain_of:
     - Quantity
