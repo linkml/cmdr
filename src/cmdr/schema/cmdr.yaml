@@ -22,265 +22,387 @@ imports:
   - linkml:types
 
 classes:
-# These classes have been examined by the new CMDR working group
   Entity:
-    abstract: true
-    description: The Entity class is the abstract parent class for all classes in the CMDR schema
-    attributes:
-      internal_id:
-        identifier: true
-        range: uriorcurie
-        description: A 'logical' identifier within the system of record.
-      global_id:
-        range: uriorcurie
-        description: The unique identifier for an entity
-      name:
-        range: string
-        description: The name of the entity
-      description:
-        range: string
-        description: A description of the entity
+    slots:
+      - internalId
+      - globalIds
+      - name
+      - description
+
+  Subject:
+    slots:
+      - id
+      - species
+      - sex
+      - ethnicity
+      - race
+      - vital_status
+      - yearOfBirth
+      - yearOfDeath
+      - ageAtDeath
+      - causeOfDeath
+      - associatedParticipants
+
+  StudyParticipant:
+    slots:
+      - id
+      - study
+      - enrollment
+      - entSite
+      - demographics
+      - observations
+      - conditions
+      - relationships
+    slot_usage:
+      associatedParticipants:
+        range: Subject
+      relationships:
+        range: Relationship
+
+  Relationship:
+    slots:
+      - id
+      - participant
+      - relative
+      - relationshipType
+    slot_usage:
+      participant:
+        range: StudyParticipant
+      relative:
+        range: StudyParticipant
+
+  Family:
+    slots:
+      - id
+      - study
+      - family_type
+      - members
+      - relationships
+      - probands
+    slot_usage:
+      members:
+        range: StudyParticipant
+      relationships:
+        range: Relationship
+      probands:
+        range: StudyParticipant
+
+  Group:
+    slots:
+      - id
+      - memberType
+      - members
+      - memberCount
+      - criteria
+      - hasSubset
+      - characteristics
+      - subsetOf
+    slot_usage:
+      members:
+        range: StudyParticipant
+      hasSubset:
+        range: Group
+      subsetOf:
+        range: Group
+
+  Characteristic:
+    slots:
+      - name
+      - values
+      - valueOperator
+      - exclude
+
   Study:
-    is_a: Entity
-    aliases:
-      - ResearchStudy
-      - Investigation
-      - Proposal
-    description: General information about a Study
-    see_also:
-      - include:Study
+    slots:
+      - id
+      - name
+      - design
+      - researchFocus
+      - selectionCriteriaDescription
+      - period
+      - studyGroup
+      - contributions
+      - contacts
     slot_usage:
-      part_of:
-        range: Study
-      url:
-        range: string
+      studyGroup:
+        range: Group
+      contributions:
+        range: StudyContribution
+      contacts:
+        range: StudyContact
 
-# These classes have not yet been examined by the new CMDR working group
-  Container:
-    from_schema: TEMP
-    slot_usage:
-      studies:
-        inlined: true
-        inlined_as_list: true
-        multivalued: true
-        range: Study
-      material_processings:
-        inlined: true
-        inlined_as_list: true
-        multivalued: true
-        range: MaterialProcessing
-      materials:
-        inlined: true
-        inlined_as_list: true
-        multivalued: true
-        range: MaterialEntity
-      participations:
-        inlined: true
-        inlined_as_list: true
-        multivalued: true
-        range: Participation
-      specimen_collection_processes:
-        inlined: true
-        inlined_as_list: true
-        multivalued: true
-        range: SpecimenCollectionProcess
-      participants:
-        inlined: true
-        inlined_as_list: true
-        multivalued: true
-        range: Participant
+  StudyContribution:
     attributes:
-      participants:
-        description: A list of participants in the study
-        range: Participant
-        multivalued: true
-    slots:
-      - materials
-      - participations
-      - material_processings
-      - specimen_collection_processes
-      - studies
-    tree_root: true
-  DataObject:
-    aliases:
-      - File
-      - Data
-      - DataFile
-    description: A DataFile Associated with a Participant or Study or MaterialEntity
-    from_schema: TEMP
-    see_also:
-      - include:DataFile
-  MaterialEntity:
-    is_a: Entity
-    aliases:
-      - Substance
-      - Specimen
-      - Sample
-      - Biospecimen
-      - Biosample
-    description: Physical entity that is an input our output of a process from a Participant
-    from_schema: TEMP
-    see_also:
-      - include:Biospecimen
+      - agent
+      - contributorRole
+      - period
+      - organizationalContext
+      - status
+      - preferredContact
     slot_usage:
-      concentration:
-        range: Quantity
-      source:
-        comments:
-          - this is a shortcut. to be expanded later.
-        range: Participant
-      used_in:
-        multivalued: true
-        range: Study
-      volume:
-        range: Quantity
-    slots:
-      - name
-      - used_in
-      - source
-      - volume
-      - concentration
-  MaterialProcessing:
-    class_uri: OBI:0000094
-    description: A planned process which results in physical changes in a specified
-      input material
-    from_schema: TEMP
-    is_a: Process
-    slot_usage:
-      has_input:
-        multivalued: true
-        range: MaterialEntity
-      has_output:
-        multivalued: true
-        range: MaterialEntity
-    slots:
-      - has_input
-      - has_output
-  Participation:
-    is_a: Entity
-    description: Study participation information
-    from_schema: TEMP
-    see_also:
-      - include:Participant
-    slot_usage:
-      includes:
-        range: Participant
-      involved_in:
-        multivalued: true
-        range: Study
-    slots:
-      - name
-      - involved_in
-      - includes
-  Process:
-    abstract: true
-    description: A planned process resulting in a material or data
-    from_schema: TEMP
+      agent:
+        range: Agent
+      organizationalContext:
+        range: Organization
+      preferredContact:
+        range: StudyContact
+
+  StudyContact:
     attributes:
-      id:
-        identifier: true
-        range: uriorcurie
+      - agent
+      - contactPoints
+      - purpose
+      - period
+      - organizationalContext
     slot_usage:
-      has_input:
-        multivalued: true
-      has_output:
-        multivalued: true
+      agent:
+        range: Agent
+      organizationalContext:
+        range: Organization
+
+  Agent:
+    slots:
+      - id
+      - name
+      - urls
+
+  Person:
     slots:
       - name
-      - has_input
-      - has_output
+      - contactPoints
+      - affiliations
+    slot_usage:
+      affiliations:
+        range: Affiliation
+
+  Organization:
+    slots:
+      - name
+      - contactPoints
+      - parentOrganizations
+      - childOrganizations
+    slot_usage:
+      parentOrganizations:
+        range: Organization
+      childOrganizations:
+        range: Organization
+
+  Software:
+    slots:
+      - version
+
+  TimePeriod:
+    slots:
+      - start
+      - end
+
+  TimePoint:
+    slots:
+      - dateTime
+      - index_time_point
+      - offset_from_index
+      - event_type
+
+  ContactPoint:
+    slots:
+      - system
+      - value
+      - validDates
+
+  Affiliation:
+    slots:
+      - member
+      - organization
+      - memberRole
+      - started
+      - ended
+      - status
+    slot_usage:
+      member:
+        range: Agent
+      organization:
+        range: Organization
+
   Quantity:
-    from_schema: TEMP
-    slot_usage:
-      comparator:
-        range: string
-      has_numeric_value:
-        range: float
-      has_raw_value:
-        range: string
-      has_unit:
-        range: string
     slots:
-      - has_raw_value
-      - has_numeric_value
-      - has_unit
-      - comparator
-  SpecimenCollectionProcess:
-    aliases:
-      - MaterialCollectionProcess
-    class_uri: OBI:0000659
-    description: A planned process with the objective of collecting a specimen
-    from_schema: TEMP
-    is_a: Process
-    slot_usage:
-      has_input:
-        multivalued: true
-        range: Participant
-      has_output:
-        multivalued: true
-        range: MaterialEntity
-    slots:
-      - has_input
-      - has_output
-  Participant:
-    is_a: Entity
-    aliases:
-      - Site
-      - Participant
-    description: Demographic and clinical information about the participant
-    from_schema: TEMP
-    see_also:
-      - include:Participant
-    slots:
-      - name
+      - value
+      - unit
 
-# Were investigating moving most of these slots out of the top-level class and into classes (and parent classes) as needed.
 slots:
-  comparator:
-    from_schema: TEMP
-  concentration:
-    from_schema: TEMP
-  has_input:
-    from_schema: TEMP
-  has_numeric_value:
-    from_schema: TEMP
-  has_output:
-    from_schema: TEMP
-  has_raw_value:
-    from_schema: TEMP
-  has_unit:
-    from_schema: TEMP
-  includes:
-    from_schema: TEMP
-  studies:
-    from_schema: TEMP
-  involved_in:
-    from_schema: TEMP
-  material_processings:
-    from_schema: TEMP
-  materials:
-    from_schema: TEMP
+  internalId:
+    range: string
+  globalIds:
+    range: string
   name:
-    from_schema: TEMP
-  part_of:
-    from_schema: TEMP
-  participations:
-    from_schema: TEMP
-  source:
-    from_schema: TEMP
-  specimen_collection_processes:
-    from_schema: TEMP
-  subjects:
-    from_schema: TEMP
-  used_in:
-    from_schema: TEMP
-  volume:
-    from_schema: TEMP
-subsets:
-  potential_phi:
-    from_schema: TEMP
-  temporal_data:
-    from_schema: TEMP
+    range: string
+  description:
+    range: string
+  id:
+    range: string
+  exclude:
+    range: boolean
+  species:
+    range: string
+  sex:
+    range: string
+  ethnicity:
+    range: string
+  race:
+    range: string
+  vital_status:
+    range: string
+  yearOfBirth:
+    range: string
+  yearOfDeath:
+    range: string
+  ageAtDeath:
+    range: string
+  causeOfDeath:
+    range: string
+  associatedParticipants:
+    range: Subject
+  study:
+    range: Study
+  enrollment:
+    range: string
+  entSite:
+    range: Organization
+  demographics:
+    range: string
+  observations:
+    range: string
+  conditions:
+    range: string
+  relationships:
+    range: Relationship
+  participant:
+    range: StudyParticipant
+  relative:
+    range: StudyParticipant
+  relationshipType:
+    range: string
+  family_type:
+    range: string
+  members:
+    range: StudyParticipant
+  probands:
+    range: StudyParticipant
+  memberType:
+    range: string
+  memberCount:
+    range: integer
+  criteria:
+    range: string
+  hasSubset:
+    range: Group
+  characteristics:
+    range: Characteristic
+  subsetOf:
+    range: Group
+  contributorRole:
+    range: string
+  period:
+    range: string
+  organizationalContext:
+    range: Organization
+  status:
+    range: string
+  preferredContact:
+    range: StudyContact
+  contactPoints:
+    range: string
+  purpose:
+    range: string
+  urls:
+    range: string
+  affiliations:
+    range: Affiliation
+  parentOrganizations:
+    range: Organization
+  childOrganizations:
+    range: Organization
+  version:
+    range: string
+  start:
+    range: TimePoint
+  end:
+    range: TimePoint
+  dateTime:
+    range: string
+  index_time_point:
+    range: TimePoint
+  offset_from_index:
+    range: Quantity
+  event_type:
+    range: string
+  system:
+    range: string
+  validDates:
+    range: TimePeriod
+  member:
+    range: Agent
+  organization:
+    range: Organization
+  memberRole:
+    range: string
+  started:
+    range: string
+  ended:
+    range: string
+  value:
+    range: string
+  values:
+    range: string
+    multivalued: true
+  valueOperator:
+    range: string
+  unit:
+    range: string
+  design:
+    range: string  # need StudyDesignEnum
+  researchFocus:
+    range: string  # need ResearchFocusEnum
+  selectionCriteriaDescription:
+    range: string  # need SelectionCriteriaEnum
+  studyGroup:
+    range: string  # need StudyGroupEnum
+  contributions:
+    range: StudyContributorEnum
+  contacts:
+    range: StudyContact
 
-
-# Slots we expect should be defined at top level: in a parent class called Entity.
+enums:
+  StudyContributorEnum:
+    permissible_values:
+      - Funder
+      - Sponsor
+      - Principal Investigator
+      - DCC
+      - Research Site
+  ContributionStatusEnum:
+    permissible_values:
+      - Paused
+      - Ongoing
+      - Completed
+      - Terminated
+  ContactSystemEnum:
+    permissible_values:
+      - Fax
+      - Email
+      - Telephone
+      - Pager
+      - URL
+      - Mailing Address
+      - Slack handle
+  AffiliationStatusEnum:
+    permissible_values:
+      - Active
+      - Inactive
+      - Pending
+  OrganizationalRoleEnum:
+    permissible_values:
+      - Lab Manager
+      - Graduate Student
+      - Post Doctoral Fellow
+      - Faculty
+      - Program Directory
