@@ -2,39 +2,12 @@
 skinparam nodesep 10
 hide circle
 hide empty members
-class "Container" [[{None}]] {
-
-}
-class "Subject" [[{Demographic and clinical information about the subject}]] {
-    {field} id : uriorcurie  
+class "MaterialEntity" [[{Physical entity that is an input our output of a process from a Participant}]] {
     {field} name : string  
+    {field} internal_id(i) : uriorcurie  
+    {field} global_id(i) : uriorcurie  
+    {field} description(i) : string  
 }
-class "MaterialEntity" [[{Physical entity that is an input our output of a process from a Subject}]] {
-    {field} id : uriorcurie  
-    {field} name : string  
-}
-class "Participation" [[{Subject/Study participation information}]] {
-    {field} id : uriorcurie  
-    {field} name : string  
-}
-class "SpecimenCollectionProcess" [[{A planned process with the objective of collecting a specimen}]] {
-    {field} has_input : string  
-    {field} has_output : string  
-    {field} id(i) : uriorcurie  
-    {field} name(i) : string  
-}
-"Container" *--> "0..*" "Subject" : "subjects"
-"MaterialEntity" --> "0..1" "Subject" : "source"
-"Participation" --> "0..1" "Subject" : "includes"
-"SpecimenCollectionProcess" --> "0..*" "Subject" : "has_input"(i)
-abstract "Process" [[{A planned process resulting in a material or data}]] {
-    {field} id : uriorcurie  
-    {field} name : string  
-    {field} has_input : string  [0..*]
-    {field} has_output : string  [0..*]
-}
-"Container" *--> "0..*" "SpecimenCollectionProcess" : "specimen_collection_processes"
-"Process" ^-- "SpecimenCollectionProcess"
 class "Quantity" [[{None}]] {
     {field} has_raw_value : string  
     {field} has_numeric_value : float  
@@ -43,26 +16,73 @@ class "Quantity" [[{None}]] {
 }
 "MaterialEntity" *--> "0..1" "Quantity" : "concentration"
 "MaterialEntity" *--> "0..1" "Quantity" : "volume"
-class "MaterialProcessing" [[{A planned process which results in physical changes in a specified input material}]] {
-    {field} id(i) : uriorcurie  
-    {field} name(i) : string  
-}
-"Process" ^-- "MaterialProcessing"
-class "Investigation" [[{General information about the Investigation}]] {
-    {field} id : uriorcurie  
+abstract "Process" [[{A planned process resulting in a material or data}]] {
     {field} name : string  
+    {field} has_input : string  [0..*]
+    {field} has_output : string  [0..*]
+    {field} id : uriorcurie  
 }
-"Participation" --> "0..*" "Investigation" : "involved_in"
-"Container" *--> "0..*" "Participation" : "participations"
+class "SpecimenCollectionProcess" [[{A planned process with the objective of collecting a specimen}]] {
+    {field} has_input : string  
+    {field} has_output : string  
+    {field} name(i) : string  
+    {field} id(i) : uriorcurie  
+}
+class "MaterialProcessing" [[{A planned process which results in physical changes in a specified input material}]] {
+    {field} name(i) : string  
+    {field} id(i) : uriorcurie  
+}
+"Process" ^-- "SpecimenCollectionProcess"
+"Process" ^-- "MaterialProcessing"
+class "Container" [[{None}]] {
+
+}
+"Container" *--> "0..*" "SpecimenCollectionProcess" : "specimen_collection_processes"
 "MaterialProcessing" --> "0..*" "MaterialEntity" : "has_output"
 "MaterialProcessing" --> "0..*" "MaterialEntity" : "has_input"
 "Container" *--> "0..*" "MaterialProcessing" : "material_processings"
-"MaterialEntity" --> "0..*" "Investigation" : "used_in"
+class "Participant" [[{Demographic and clinical information about the participant}]] {
+    {field} name : string  
+    {field} internal_id(i) : uriorcurie  
+    {field} global_id(i) : uriorcurie  
+    {field} description(i) : string  
+}
+class "Study" [[{General information about a Study}]] {
+    {field} url : string  
+    {field} internal_id(i) : uriorcurie  
+    {field} global_id(i) : uriorcurie  
+    {field} name(i) : string  
+    {field} description(i) : string  
+}
+abstract "Entity" [[{The Entity class is the abstract parent class for all classes in the CMDR schema}]] {
+    {field} internal_id : uriorcurie  
+    {field} global_id : uriorcurie  
+    {field} name : string  
+    {field} description : string  
+}
+"MaterialEntity" --> "0..1" "Participant" : "source"
+"MaterialEntity" --> "0..*" "Study" : "used_in"
 "Container" *--> "0..*" "MaterialEntity" : "materials"
 "SpecimenCollectionProcess" --> "0..*" "MaterialEntity" : "has_output"(i)
-"Investigation" --> "0..1" "Investigation" : "part_of"
-"Container" *--> "0..*" "Investigation" : "investigations"
-class "DataObject" [[{A DataFile Associated with a Subject or Investigation or MaterialEntity}]] {
+"Entity" ^-- "MaterialEntity"
+class "Participation" [[{Study participation information}]] {
+    {field} name : string  
+    {field} internal_id(i) : uriorcurie  
+    {field} global_id(i) : uriorcurie  
+    {field} description(i) : string  
+}
+"Study" --> "0..1" "Study" : "part_of"
+"Container" *--> "0..*" "Study" : "studies"
+"Participation" --> "0..*" "Study" : "involved_in"
+"Entity" ^-- "Study"
+"Participation" --> "0..1" "Participant" : "includes"
+"Container" *--> "0..*" "Participation" : "participations"
+"Entity" ^-- "Participation"
+"Container" *--> "0..*" "Participant" : "participants"(i)
+"SpecimenCollectionProcess" --> "0..*" "Participant" : "has_input"(i)
+"Container" --> "0..*" "Participant" : "participants"
+"Entity" ^-- "Participant"
+class "DataObject" [[{A DataFile Associated with a Participant or Study or MaterialEntity}]] {
 
 }
 @enduml
